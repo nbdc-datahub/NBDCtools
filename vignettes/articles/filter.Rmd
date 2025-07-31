@@ -1,0 +1,186 @@
+---
+title: "Filter data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate how to filter a loaded dataset using
+different conditions, such as by participant ID & session ID, event types,
+excluding empty rows/columns, or combination of these.
+
+## Prepare data
+
+> **NOTE:** Before running the code in this vignette, we assume that you have
+already read the [Get started](NBDCtools.html) page or the [Join
+data](join.html) vignette, and know how to load data for a given NBDC study
+release.
+
+For demonstration purposes, we load a simulated ABCD dataset that is included
+with the package.
+
+```{r}
+library(NBDCtools)
+
+data <- readRDS(
+  system.file("extdata", "simulated_data_abcd.rds", package = "NBDCtools")
+)
+
+dplyr::glimpse(data)
+```
+
+## Filter by participant ID and session ID
+
+The `filter_id_events()` function accepts a vector of concatenated participant
+and session IDs, separated by an underscore `_`, or a data frame with
+`participant_id` and `session_id` columns. The function will filter the data by
+the specified participant/events and return a data frame with the filtered
+data.
+
+```{r}
+# filter using a vector of concatenated participant and session IDs
+vec_id_events = c(
+  "sub-0000000006_ses-04A", 
+  "sub-0000000007_ses-05A",
+  "sub-0000000002_ses-03A"
+)
+data |> 
+  filter_id_events(vec_id_events)
+
+# filter using a data frame with participant_id and session_id columns
+data_filter <- dplyr::tribble(
+  ~participant_id,  ~session_id,
+  "sub-0000000006", "ses-04A", 
+  "sub-0000000007", "ses-05A", 
+  "sub-0000000002", "ses-03A"
+)
+data |>
+  filter_id_events(data_filter)
+```
+
+Alternatively, if we only want to keep the rows that *do not match* the
+specified participant and session IDs, we can set the `revert = TRUE` argument.
+
+```{r}
+data |> 
+  filter_id_events(vec_id_events, revert = TRUE)
+```
+
+## Filter ABCD events
+
+The `filter_events_abcd()` function provides a convenient way to specify
+event-based filters for ABCD datasets using shorthands. These shorthands can be
+a single condition, such as `"annual"`, `"substudy"`, or `"odd"`, or a
+combination of conditions provided as a vector of strings, like `c("annual",
+"even")`.
+
+The following conditions are available:
+
+- `"core"`: events for the ABCD core study
+- `"annual"`: annual events for the ABCD core study
+- `"mid_year"`: mid-year events for the ABCD core study
+- `"substudy"`: events for ABCD substudies
+- `"covid"`: events for the COVID substudy
+- `"sdev"`: events for the Social Development substudy
+- `"even"`: even-numbered events
+- `"odd"`: odd-numbered events
+- numerical expressions like `>2` or `<=5` to filter events by number
+- any other string to be used as filter for the `session_id` column
+
+```{r}
+# retain only annual events
+data |> 
+  filter_events_abcd("annual")
+
+# retain only even annual events ("imaging events")
+data |> 
+  filter_events_abcd(c("annual", "even"))
+
+# retain only odd annual events before the 4-year follow-up
+data |> 
+  filter_events_abcd(c("annual", "odd", "<4"))
+
+# retain only screener events (using a string condition to filter events)
+data |> 
+  filter_events_abcd(c("00S"))
+```
+
+## Filter empty rows
+
+When combining data from different tables, we can end up with rows that do not
+have values for any of the variables (besides the identifier columns). We
+typically do not want to keep those rows as they don't contain any useful
+information. The package provides a function to remove such
+rows—`filter_empty_rows()`.
+
+The simulated dataset does not have empty rows. To demonstrate the function, we
+can manually set some rows to `NA` values and apply the `filter_empty_rows()`
+function afterwards.
+
+```{r}
+data_empty <- data[1:5, ] |>
+  dplyr::mutate(dplyr::across(-c(participant_id, session_id), ~ NA)) |> 
+  dplyr::bind_rows(data[-(1:5), ])
+data_empty
+
+# filter empty rows
+data_empty |> 
+  filter_empty_rows()
+```
+
+As you can see, the first 5 rows that had missing values for all variables were
+removed.
+
+> **NOTE:**</span> The `filter_empty_rows()` function is automatically called by
+the `join_tabulated()` or `create_dataset()` functions when joining data from
+NBDC study datasets, so you do not need to call it explicitly. If you want to
+keep the empty rows, you can set the `remove_empty_rows = FALSE` argument in
+these two functions.
+
+## Filter empty columns
+
+Similarly, datasets can also contain completely empty columns. We can remove
+them from the data using the `filter_empty_cols()` function.
+
+Here, we modify the simulated data to create two empty columns and execute
+`filter_empty_cols()` to remove them.
+
+```{r}
+data_empty_cols <- data |> 
+  dplyr::mutate(
+    ab_g_dyn__visit_type = NA,
+    ab_g_dyn__cohort_grade = NA
+  ) 
+data_empty_cols
+
+# filter empty columns
+data_empty_cols |> 
+  filter_empty_cols()
+```
+
+## Combining filters
+
+We can combine several of the above filters by chaining the functions using the
+pipe operator. For example, we can first exclude certain participant/events,
+then filter by events, and finally remove empty rows using the following code:
+
+```{r}
+data_empty |> 
+  filter_id_events(
+    id_events = c("sub-0000000002_ses-03A"),
+    revert = TRUE
+  ) |>
+  filter_events_abcd("odd") |>
+  filter_empty_rows()
+```

@@ -1,0 +1,149 @@
+---
+title: "Join data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate how to load/join selected variables and/or
+tables from data files downloaded from the NBDC Data Hub into a single data
+frame in memory.
+
+```{r}
+library(NBDCtools)
+```
+
+To download data from the ABCD or HBCD studies through the NBDC Data Hub, users
+need to have a valid Data Use Certification (DUC) (see
+[here](https://www.nbdc-datahub.org/data-access-process) for more details). In
+this documentation, we will use simulated ABCD data files to demonstrate the
+package's functionality.
+
+You can use the following command to inspect the simulated data files:
+
+```{r}
+dir_abcd <- system.file("extdata", "phenotype", package = "NBDCtools")
+list.files(dir_abcd)
+```
+
+We can see that the `phenotype/` directory contains several files. Each file
+contains the data from a database table in the ABCD study. For example, the
+`ab_g_dyn.parquet` file contains variables from the
+`r NBDCtools:::get_url_deap_table_abcd("ab_g_dyn", link_name = "label")` table.
+
+In a more realistic scenario, once you downloaded the ABCD data files to a local
+directory, there will be a lot more files in the `phenotype/` directory; it
+should contain one file per database table for a given study. To see the tables
+available in the ABCD tabulated data resource, you can use `NBDCtools`'
+`get_dd_abcd()` function:
+
+```{r}
+dd_abcd <- get_dd_abcd()
+dd_abcd |>
+  dplyr::distinct(table_name, table_label)
+```
+
+## Join data
+
+We can use the `join_tabulated()` function to load the data from the files in
+the `phenotype/` directory. The function will read and join the data from
+different tables based on the variables and/or tables specified in the
+these four arguments:
+
+- `vars`: individual variables of interest
+- `tables`: full tables of interest
+- `vars_add`: additional individual variables
+- `tables_add`: additional full tables
+
+The `vars` and `tables` arguments are used to specify the main variables and/or
+tables of interest. They will be extracted from the respective files
+on disk and will be joined by the identifier columns into a single data frame in
+memory. The used join operation is a `full_join()`, i.e., the resulting data
+frame retains all rows that have at least one non-missing value in the
+chosen variables/tables.
+
+The `vars_add` and `tables_add` arguments are used to specify additional
+variables and/or tables to be joined with the main variables/tables of interest.
+The used join operation for adding these variables is a `left_join()`, i.e.,
+only values for already existing rows will be added and no new rows will be
+created. This is useful for adding variables to the dataset that are important
+for a given analysis but are not the main variables of interest (e.g.,
+design/nesting or demographic information). By left-joining these variables, one
+avoids creating new rows that contain only missing values for the main variables
+of interest selected using `vars` and `tables`.
+
+```{r echo=FALSE}
+dd_internal <- arrow::read_parquet(
+  file = file.path(dir_abcd, "../dd.parquet")
+) 
+vars <- dd_internal$name
+tables <- dd_internal$table_name |> 
+  unique()
+```
+
+```{r}
+join_tabulated(
+  dir_data = dir_abcd,
+  study = "abcd",
+  vars = c(
+    "mr_y_qc__raw__dmri__r01__series_t",
+    "ab_g_dyn__visit_type",
+    "ab_g_dyn__cohort_grade", 
+    "ab_g_dyn__visit__day1_dt",
+    "ab_g_stc__gen_pc__01", 
+    "ab_g_dyn__visit_age",
+    "ab_g_dyn__visit_days", 
+    "ab_g_dyn__visit_dtt"
+  )
+)
+```
+
+```{r echo=FALSE}
+# cat("ℹ Joining 8 variables from 3 tables...")
+# data <- readRDS(file.path(dir_abcd, "../simulated_data_abcd.rds"))
+```
+
+> **NOTE:** This is a simulated dataset, so the number of rows are significantly
+smaller than the real data.
+
+***`remove_empty_rows` argument***
+
+Joining selected columns from different tables using `join_tabulated()` may
+result in rows with only missing values. This can occur when some
+participant/events lack data for the selected variables but have data for other,
+unselected variables in the joined tables. Since rows without any data are not
+useful for analysis, the `join_tabulated()` function includes the
+`remove_empty_rows` argument to eliminate these rows from the resulting dataset.
+By default, this argument is set to `TRUE`, meaning rows with all missing data
+will be removed. To keep these rows, set the argument to `FALSE`.
+
+### Shadow matrices
+
+For HBCD data, the `join_tabulated()` function can also join shadow matrices,
+which store the reasons for missing values. Shadow matrix files are located in
+the same directory as the data files, with one `{table_name}_shadow.parquet`
+file accompanying each `{table_name}.parquet` file. To load the shadow matrices,
+use the `shadow = TRUE` argument in the `join_tabulated()` function. This will
+load selected columns or tables from the shadow matrix files and combine them
+into a single table, just like the main data. For more information about shadow
+matrices, see the [Work with shadow matrices](shadow.html) vignette.
+
+```{r eval=FALSE}
+join_tabulated(
+  dir_data = dir_abcd,
+  study = "hbcd",
+  vars = ...,
+  tables = ...,
+  ...,
+  shadow = TRUE
+)
+```

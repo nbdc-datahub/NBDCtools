@@ -1,0 +1,53 @@
+Package: NBDCtools
+Title: NIH Brain Development Cohorts (NBDC) Data Hub Tools
+Description: This package provides functions to work with data from the NBDC
+  Data Hub.
+URL: https://software.nbdc-datahub.org/NBDCtools/
+Version: 1.0.0
+Authors@R: c(
+  person(given = "Janosch",
+         family = "Linkersdoerfer",
+         email = "dairc.service@gmail.com",
+         role = c("aut", "cre"),
+         comment = c(ORCID = "0000-0002-1577-1233")),
+  person(given = "Le",
+       family = "Zhang",
+       email = "lezhang100@gmail.com",
+       role = c("aut"),
+       comment = c(ORCID = "0009-0008-0205-2150"))) 
+Depends:
+  R (>= 4.3.0)
+Imports:
+  arrow,
+  chk,
+  cli,
+  dplyr,
+  glue,
+  magrittr,
+  purrr,
+  readr,
+  stringr,
+  sjlabelled,
+  jsonlite,
+  hms,
+  tidyr,
+  rlang,
+  utils,
+  tibble,
+  stats,
+  sjmisc,
+  haven
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+  testthat (>= 3.0.0),
+  usethis,
+  knitr,
+  rmarkdown,
+  naniar
+Config/testthat/edition: 3
+Config/Needs/website: rmarkdown
+LazyData: true
+VignetteBuilder: knitr

@@ -1,0 +1,160 @@
+---
+title: "Transform data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate how to apply different transformations to
+a joined dataset such as converting categorical columns to factors, adding
+variable and value labels, converting categorical values to labels, and more.
+
+## Prepare data
+
+> **NOTE:** Before running the code in this vignette, we assume that you have
+already read the [Get started](NBCtools.html) vignette or the [Join
+data](join.html) vignette, and know how to load the data for a given NBDC study
+release.
+
+To demonstrate the transformation functions, we load a simulated ABCD dataset
+that is included with the package.
+
+```{r}
+library(NBDCtools)
+data <- readRDS(
+  system.file("extdata", "simulated_data_abcd.rds", package = "NBDCtools")
+)
+dplyr::glimpse(data)
+```
+
+## Convert categorical columns to factors
+
+From looking at the simulated data, we can see that categorical columns like
+`ab_g_dyn__visit_type` are of type "character". We can use `transf_factor()`
+function to convert these columns to type "factor" which is the correct type
+for categorical variables in R.
+
+```{r}
+data_transf <- data |>
+  transf_factor(study = "abcd")
+dplyr::glimpse(data_transf)
+```
+
+The `transf_factor()` function automatically detects categorical columns and
+converts them to ordered or unordered factors based on the specification in the
+data dictionary and levels table for a given study.
+
+## Apply variable and value labels
+
+Next, we can add variable and value labels to the dataset.
+
+```{r}
+data_transf <- data_transf |> 
+  transf_label(study = "abcd")
+```
+
+To inspect the *variable labels*, we can use `sjlabelled::get_label()` function:
+
+```{r}
+sjlabelled::get_label(data_transf)
+```
+
+To inspect the *value labels*, we can use `sjlabelled::get_labels()` function:
+
+```{r}
+sjlabelled::get_labels(data_transf, attr.only = TRUE, values = "n")
+```
+
+If the labeling is done incorrectly, we can simply rerun the `transf_label()`
+function to fix it. If we want to remove all labels, we can use
+
+```{r}
+data_labels_removed <- sjlabelled::remove_all_labels(data_transf) 
+sjlabelled::get_label(data_labels_removed)
+sjlabelled::get_labels(data_labels_removed, attr.only = TRUE, values = "n")
+```
+
+## Convert time columns to hms format
+
+Time columns in the dataset (e.g. `mr_y_qc__raw__dmri__r01__series_t`) are
+formatted as character strings `"HH:MM:SS"` by default. If we want to convert
+these columns into [`hms`](https://hms.tidyverse.org/reference/hms-package.html)
+format, we can use the `transf_time_to_hms()` function:
+
+```{r}
+data_transf <- data_transf |> 
+  transf_time_to_hms(study = "abcd")
+dplyr::glimpse(data_transf)
+```
+
+As we can see, the column type is converted from `character` to `time` (`hms`)
+class.
+
+## Convert categorical column levels to labels
+
+In some cases, such as for creating plots, it is useful to convert categorical
+values to labels. We can use the `transf_value_to_label()` function to do so:
+
+```{r}
+data_transf |> 
+  transf_value_to_label()
+```
+
+> **NOTE:** Before running this function, make sure that the data has been
+transformed with the `transf_factor()` and `transf_label()` functions, so that
+the variable and value labels are available.
+
+## Convert missing codes to `NA`
+
+In ABCD and HBCD Study datasets, some of the categorical columns use specific
+codes to denote missingness/non-responses (e.g., `"999"` for "Don't know" or
+`"777"` for "Decline to answer"). If we want to remove these values before
+analysis, we can use the `transf_value_to_na()` function to convert these codes
+to `NA`.
+
+> **NOTE:** By default, this function converts all standard categorical
+missingness codes (`"222"` through `"999"`) to `NA`. In the ABCD Study, these
+codes are consistenly used throughout the whole dataset; in the HBCD Study,
+however, columns may use different codes for non-responses or missing values.
+Please refer to the data dictionary and levels table for the specific study to
+see which codes to convert.
+
+```{r}
+data_transf |> 
+  transf_value_to_na()
+```
+
+The simulated dataset does not contain categorical missingness codes. However,
+this function provides a custom parameter `missing_codes` to specify the codes
+that should be converted to `NA`. For example, if we want to convert the
+categorical values `"1"` and `"2"` to `NA`, we can use:
+
+```{r}
+data_transf |> 
+  transf_value_to_na(missing_codes = c("1", "2"))
+```
+
+In the `ab_g_dyn__visit_type` column, we can see that the values `"1"` and `"2"`
+have been converted to `NA`.
+
+The function has another parameter, `ignore_col_pattern`, that can be used to
+ignore specific columns, so that they are exempt from the conversion. This
+parameter accepts a regular expression pattern, meaning all columns that match
+the pattern will be ignored. For example, we can ignore all columns that start
+with `ab_g_dyn__visit` by using:
+
+```{r}
+data_transf |> 
+  transf_value_to_na(ignore_col_pattern = "^ab_g_dyn__visit")
+```

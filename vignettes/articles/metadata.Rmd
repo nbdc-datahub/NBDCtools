@@ -1,0 +1,218 @@
+---
+title: "Work with metadata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate how to retrieve and work with metadata for
+NBDC studies, including data dictionaries, levels tables, session/event
+information, and identifier columns.
+
+## Overview
+
+The `NBDCtools` package provides functions to access the following metadata
+elements for ABCD and HBCD studies:
+
+- **Data dictionary**: Variable and table definitions, data types, and other
+  information.
+- **Levels table**: Value, labels, and order for categorical variables.
+- **Sessions table**: Information about study sessions/events.
+- **Identifier columns**: Variables used to identify unique observations.
+
+## Setup
+
+```{r}
+library(NBDCtools)
+```
+
+## Data dictionary
+
+The data dictionary contains information about all variables in the tabulated
+data for a given study, including their names, labels, data types, which
+tables they belong to, etc. To read more about the structure of the data
+dictionary for NBDC studies, see
+[here](https://docs.abcdstudy.org/latest/documentation/curation/metadata.html#dd_levels_tables).
+
+### Basic usage
+
+```{r error = TRUE}
+# Get data dictionary for the ABCD Study (latest release)
+get_dd("abcd")
+
+# Get data dictionary for the HBCD Study (latest release)
+get_dd("hbcd")
+
+# Get data dictionary for a specific release
+get_dd("abcd", release = "6.0")
+
+# If you are not sure what releases are available, just use a random number
+# and the function will return an error message presenting the available
+# releases
+get_dd("abcd", release = "999.0")
+```
+
+### Study-specific functions
+
+For convenience, you can use study-specific functions that do not require
+specifying the study parameter:
+
+```{r}
+# ABCD-specific function
+get_dd_abcd()
+
+# HBCD-specific function  
+get_dd_hbcd(release = "1.0")
+```
+
+### Filtering by variables
+
+You can retrieve a subset of the data dictionary for specific variables:
+
+```{r}
+# Get data dictionary for specific variables
+vars_of_interest <- c(
+  "ab_g_dyn__visit_dtt", 
+  "ab_g_dyn__visit_age", 
+  "ab_g_stc__design_id__fam"
+)
+get_dd("abcd", vars = vars_of_interest)
+```
+
+### Filtering by tables
+
+You can also retrieve a subset of the data dictionary for specific tables:
+
+```{r}
+# Get data dictionary for specific tables
+tables_of_interest <- c(
+  "ab_g_dyn",
+  "ab_g_stc"
+)
+get_dd_abcd(tables = tables_of_interest)
+```
+
+## Levels table
+
+The levels table provides value labels for categorical variables, showing what
+each numeric value in the data corresponds to, as well as the order of levels.
+To read more about the structure of the levels table for NBDC studies, see
+[here](https://docs.abcdstudy.org/latest/documentation/curation/metadata.html#dd_levels_tables).
+
+### Basic usage
+
+```{r}
+# Get levels table for ABCD Study (latest release)
+get_levels("abcd")
+
+# Get levels table for HBCD Study (latest release)
+get_levels("hbcd")
+
+# Get levels table for a specific release
+get_levels("abcd", release = "6.0")
+```
+
+### Study-specific functions
+
+```{r}
+# ABCD-specific function
+get_levels_abcd(release = "6.0")
+
+# HBCD-specific function
+get_levels_hbcd()
+```
+
+### Filtering by variables and/or tables
+
+As for the data dictionary, you can also retrieve a subset of the levels table
+for specific variables or tables:
+
+```{r}
+# Get levels for specific categorical variables
+get_levels("abcd", vars = c("ab_g_dyn__visit_type"))
+
+# Get levels for all categorical variables in specific tables
+get_levels("abcd", tables = "ab_g_dyn")
+
+# Get levels for a combination of specific variables and tables
+get_levels_abcd(vars = "ab_g_dyn__visit_type", tables = "ab_g_stc")
+```
+
+## Sessions table
+
+The sessions table contains information about the events/session IDs that are
+part of a given release as well as their labels.
+
+### Basic usage
+
+```{r}
+# Get sessions information for ABCD Study (latest release)
+get_sessions("abcd")
+
+# Get sessions information for HBCD Study (latest release)
+get_sessions("hbcd")
+```
+
+### Study-specific functions
+
+```{r}
+# ABCD-specific function (for a specified release)
+get_sessions_abcd(release = "6.0")
+
+# HBCD-specific function (for a specified release)
+get_sessions_hbcd(release = "1.0")
+```
+
+## Identifier columns
+
+Identifier columns are the variables used to uniquely identify observations in
+the dataset. These columns are essential for joining data from different tables.
+The `get_id_cols()` function retrieves the identifier columns for a given study.
+
+### Basic usage
+
+```{r}
+# Get identifier columns for ABCD Study (latest release)
+get_id_cols("abcd")
+
+# Get identifier columns for HBCD Study (latest release)
+get_id_cols("hbcd")
+```
+
+### Study-specific functions
+
+```{r}
+# ABCD-specific function (for a specified release)
+get_id_cols_abcd(release = "6.0")
+
+# HBCD-specific function (for a specified release)
+get_id_cols_hbcd(release = "1.0")
+```
+
+## General metadata function
+
+The `get_metadata()` function is the low-level function that is used by all
+specific metadata functions. You can use it directly to retrieve any type of
+metadata:
+
+```{r}
+# Get data dictionary (same as get_dd)
+get_metadata("abcd", type = "dd", release = "6.0")
+
+# Get levels table (same as get_levels)  
+get_metadata("abcd", type = "levels", vars = "ab_g_dyn__visit_type")
+
+# Get sessions table (same as get_sessions)
+get_metadata("abcd", type = "sessions")
+```

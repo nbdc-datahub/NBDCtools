@@ -1,0 +1,209 @@
+---
+title: "Work with shadow matrices"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate how to work with shadow matrices for NBDC
+studies. Shadow matrices are used to store information about the reasons for
+missing values in the main data (see
+[here](https://docs.hbcdstudy.org/latest/datacuration/phenotypes/#shadow-matrices)
+for more details). Currently, the HBCD Study releases shadow matrices, while the
+ABCD Study does not (see below for how to use the R package `naniar` to create a
+basic shadow matrix for ABCD data).
+
+## Prepare data
+
+> **NOTE:** Before running the code in this vignette, we assume that you have
+already read the [Get started](NBDCtools.html) page or the [Join
+data](join.html) vignette, and know how to load the data/shadow from a given
+NBDC study release.
+
+For demonstration purposes, we load a simulated HBCD dataset and shadow matrix
+that are included with the package.
+
+```{r}
+library(NBDCtools)
+data <- readRDS(
+  system.file("extdata", "simulated_data_hbcd.rds", package = "NBDCtools")
+)
+dplyr::glimpse(data)
+
+shadow <- readRDS(
+  system.file("extdata", "simulated_data_hbcd_shadow.rds", package = "NBDCtools")
+)
+dplyr::glimpse(shadow)
+```
+
+> **IMPORTANT:** Before running any shadow-related functions, it is very
+important to ensure that the *dimensions of the main data and shadow matrix
+match*, i.e., that they have the same number of rows and columns, all the
+columns in the main data are also present in the shadow matrix, and all the
+identifier pairs (`participant_id`, `session_id`, `run_id`) exist in both data
+frames.
+
+The `join_tabulated()` function has a parameter `remove_empty_rows` that removes
+rows that only have missing values by default. This can lead to a situation
+where the main data and shadow matrix have different dimensions, which will
+cause problems in the subsequent shadow-related functions. If you know that
+downstream processing involves shadow matrices, make sure to set this parameter
+to `remove_empty_rows = FALSE` when calling `join_tabulated()`.
+
+This is not a problem if you are using `create_dataset()` function, as it
+automatically sets `remove_empty_rows = FALSE` when creating a dataset with
+shadow matrix.
+
+## Bind shadow matrix to main data
+
+### Using a provided shadow matrix
+
+If you have a data frame with a shadow matrix, you can bind it to the main data
+using the `shadow_bind_data()` function. This function will bind the shadow
+matrix to the data using the identifier columns (`participant_id`, `session_id`,
+and `run_id` by default). The appended shadow columns will have the same column
+names as the corresponding columns in the main data, but with a suffix
+(`_shadow` by default).
+
+- If there are rows with identifier pairs in the main data that don't exist in
+  the shadow matrix, the appended shadow matrix rows will be filled with `NA`
+  values.
+- If there are rows with identifier pairs in the shadow matrix that don't exist
+  in the main data, these rows will be dropped from the resulting data frame.
+
+```{r}
+shadow_bind_data(
+  data = data,
+  shadow = shadow
+) |> 
+  dplyr::glimpse()
+```
+
+### Using a `naniar` shadow matrix
+
+If there is no shadow matrix provided, like for ABCD data, or you do not wish to
+use the provided shadow matrix, you can create a shadow matrix using the
+[`naniar`](https://naniar.njtierney.com/) R package. To do so, set
+`naniar_shadow = TRUE`.
+
+> **IMPORTANT:** `naniar` is not a dependency of the `NBDCtools` package, so you
+need to install it separately. You can do so using the following command:
+
+```{r}
+if (!requireNamespace("naniar", quietly = TRUE)) {
+  install.packages("naniar")
+}
+```
+
+To create a shadow matrix using `naniar`, you can use the following command:
+
+```{r}
+shadow_bind_data(
+  data = data,
+  shadow = NULL, # no shadow matrix provided
+  naniar_shadow = TRUE
+) |> 
+  dplyr::glimpse()
+```
+
+The downside of this approach is that the shadow matrix will not contain
+reasons for missing values, but will only indicate that the value is
+missing. The benefit of using `naniar_shadow = TRUE` is that you can use
+functionality from the `naniar` R package to explore and visualize missingness
+in the data (see [here](https://naniar.njtierney.com/articles/naniar.html) for
+more details).
+
+## Fix missing values in the shadow matrix
+
+Joining shadow matrices for different tables using `join_tabulated()` can result
+in missing values in the shadow matrix for certain observations (e.g., because
+one instrument was administered at more time points than another, or because
+a participant did not complete a certain instrument). These missing values in
+the shadow matrix could be mistakenly interpreted as indicating that the main
+data has values for these cells. But indeed these cells are missing in both
+the main data and the shadow matrix.
+
+Here is a simplified example of this scenario:
+
+```{r}
+my_table1 <- dplyr::tibble(
+  participant_id = c("sub-001", "sub-002"),
+  session_id = c("ses-001", "ses-002"),
+  run_id = c("run-001", "run-002"),
+  var1 = c("reason1", NA),
+  var2 = c(NA, "reason2")
+)
+my_table1
+
+my_table2 <- dplyr::tibble(
+  participant_id = c("sub-001", "sub-003"),
+  session_id = c("ses-001", "ses-003"),
+  run_id = c("run-001", "run-003"),
+  var3 = c(NA, "reason3"),
+  var4 = c("reason4", NA)
+)
+my_table2
+```
+
+When binding these two tables together, we will get the following result:
+
+```{r}
+id_table <- dplyr::full_join(
+  dplyr::select(my_table1, participant_id, session_id, run_id),
+  dplyr::select(my_table2, participant_id, session_id, run_id)
+)
+dplyr::left_join(id_table, my_table1) |> 
+  dplyr::left_join(my_table2) 
+```
+
+We can see that there are missing values (`NA`) in the `var3` and `var4` columns
+for the `sub-002`/`ses-002`/`run-002` row and in the `var1` and `var2` columns
+for the `sub-003`/`ses-003`/`run-003` row. If this table was a shadow matrix,
+this would indicate that there should be values for these cells in the main
+data, but in reality the shadow matrix just has missing values due to joining
+the two tables.
+
+To fix this issue, you can use the `shadow_replace_binding_missing()`
+function, which will replace the `NA` values in the shadow matrix with a custom
+value (default `"Missing due to joining"`).
+
+The simulated shadow matrix does not have cases where the shadow matrix has `NA`
+values due to joining. For demonstration, we will manually convert a few values
+to `NA`:
+
+```{r}
+shadow$mh_cg_ibqr_surg_001
+# set them to NA
+shadow$mh_cg_ibqr_surg_001[1:5] <- NA_character_
+shadow$mh_cg_ibqr_surg_001
+```
+
+Now we can use the `shadow_replace_binding_missing()` function to replace
+the `NA` values in the shadow matrix with an indicator: 
+
+```{r}
+shadow_replace_binding_missing(
+  data = data,
+  shadow = shadow
+)
+```
+
+As you can see, the `mh_cg_ibqr_surg_001` column now has
+`"Missing due to joining"` values.
+
+> **IMPORTANT:** Unlike the `shadow_bind_data()` where unmatched rows between
+the main data and the shadow matrix are allowed, this function requires the
+dimensions of the data and shadow matrix to match, i.e., to have the same 
+number of rows and columns. If they do not match, the function will throw an
+error.

@@ -1,0 +1,57 @@
+url: https://software.nbdc-datahub.org/NBDCtools/
+repo:
+  url:
+    home: https://github.com/nbdc-datahub/NBDCtools/
+    source: https://github.com/nbdc-datahub/NBDCtools/blob/main/
+    issue: https://github.com/nbdc-datahub/NBDCtools/issues/
+template:
+  bootstrap: 5
+  light-switch: true
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - articles/join
+  - articles/transformation
+  - articles/filter
+  - articles/metadata
+  - articles/shadow
+  - articles/benchmark
+reference:
+  - title: "Create dataset"
+    desc: High-level functions to create datasets
+    contents:
+    - matches("^create_dataset")
+
+  - title: "Read and join data"
+    desc: Read and join data released in the NBDC Data Hub.
+    contents:
+    - matches("^read_|^join_")
+
+  - title: "Transform data"
+    desc: Transform/format data released in the NBDC Data Hub.
+    contents:
+    - matches("^transf_")
+
+  - title: "Filter data"
+    desc: Filter/subset data released in the NBDC Data Hub.
+    contents:
+    - matches("^filter_")
+
+  - title: "Shadow matrices"
+    desc: Work with shadow matrices for data in the NBDC Data Hub.
+    contents:
+    - matches("^shadow_")
+
+  - title: "Metadata"
+    desc: Retrieve metadata (data dictionary, levels table, sessions table, identifier columns) for studies released in the NBDC Data Hub.
+    contents:
+    - get_metadata
+    - matches("^get_dd|^get_levels|^get_sessions")
+    - matches("^get_id_cols")
+
+  - title: "Utility functions"
+    desc: Utility functions for working with data in the NBDC Data Hub.
+    contents:
+    - create_bids_sidecar
+    - matches("^convert_names")
