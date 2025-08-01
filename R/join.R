@@ -179,20 +179,34 @@ join_tabulated <- function(
     }
   }
 
+  id_cols <- get_id_cols(study, release)
+
   data <- purrr::map(
     unique(dd$identifier_columns),
     ~ join_by_identifier(dir_data, dd, .x, format, shadow = shadow)
-  ) |>
-    purrr::reduce(
-      ~ if ("session_id" %in% names(.x) & "session_id" %in% names(.y)) {
-        full_join(.x, .y, by = join_by(participant_id, session_id))
-      } else {
-        full_join(.x, .y, by = join_by(participant_id))
-      }
-    )
+  )
+  # find first df with most id cols
+  first_full_tbl <- purrr::map_int(
+    data,
+    ~ {
+      names(.x) |>
+        intersect(id_cols) |>
+        length()
+    }) |>
+    which.max() |>
+    first()
 
-  id_cols <- get_id_cols(study, release) |>
-    intersect(names(data))
+  data <- purrr::reduce(
+    data[-first_full_tbl],
+    .init = data[[first_full_tbl]],
+    ~ full_join(
+      .x, .y,
+      # join id_cols first then y to save time
+      by = intersect(names(.x), id_cols) |>
+        intersect(names(.y))
+    )
+  )
+
 
   if (remove_empty_rows) {
     data <- data |>
@@ -203,43 +217,49 @@ join_tabulated <- function(
     data_add <- purrr::map(
       unique(dd_add$identifier_columns),
       ~ join_by_identifier(dir_data, dd_add, .x, format, shadow = shadow)
-    ) |>
-      purrr::reduce(
-        ~ if ("session_id" %in% names(.y)) {
-          full_join(.x, .y, by = join_by(participant_id, session_id))
-        } else {
-          full_join(.x, .y, by = join_by(participant_id))
-        }
+    )
+    # find first df with most id cols
+    first_full_tbl_add <- purrr::map_int(
+      data_add,
+      ~ {
+        names(.x) |>
+          intersect(id_cols) |>
+          length()
+      }) |>
+      which.max() |>
+      first()
+
+    data_add <- purrr::reduce(
+        data_add[-first_full_tbl_add],
+        .init = data_add[[first_full_tbl_add]],
+        ~ full_join(
+          .x, .y,
+          by = intersect(names(.x), id_cols) |>
+            intersect(names(.y))
+        )
       )
 
-    if ("session_id" %in% names(data_add)) {
-      data <- left_join(
-        data,
-        data_add,
-        by = join_by(participant_id, session_id)
-      )
-    } else {
-      data <- left_join(
-        data,
-        data_add,
-        by = join_by(participant_id)
-      )
-    }
+    data <- left_join(
+      data,
+      data_add,
+      by = intersect(names(data), id_cols) |>
+        intersect(names(data_add))
+    )
   }
 
   data |>
     mutate(
       across(
-        all_of(id_cols),
+        all_of(intersect(id_cols, names(data))),
         as.character
       )
     ) |>
     relocate(
-      all_of(id_cols),
+      all_of(intersect(id_cols, names(data))),
       all_of(vars_all)
     ) |>
     arrange(
-      across(all_of(id_cols))
+      across(all_of(intersect(id_cols, names(data))))
     )
 }
 

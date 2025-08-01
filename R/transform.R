@@ -368,14 +368,18 @@ transf_value_to_label <- function(data, transf_sess_id = FALSE) {
         function(.x) {
           col_label <- attr(.x, "label")
           value_labels <- attr(.x, "labels")
+
           if (is.null(value_labels)) {
             return(.x) # No labels to transform
           }
           label_values <- names(value_labels) |>
             setNames(paste0("^", value_labels, "$"))
 
-          .x <- stringr::str_replace_all(.x, label_values) |>
-            as.factor()
+          .x <- factor(
+            stringr::str_replace_all(.x, label_values),
+            levels = names(value_labels),
+            ordered = inherits(.x, "ordered")
+          )
 
           if(!is.null(col_label)) {
             attr(.x, "label") <- col_label
