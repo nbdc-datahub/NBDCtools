@@ -10,8 +10,8 @@
 This R package provides functions for working with data released by the
 [NIH Brain Development Cohorts (NBDC) Data
 Hub](https://www.nbdc-datahub.org), which currently offers data for the
-[ABCD](https://www.abcdstudy.org/) and
-[HBCD](https://www.hbcdstudy.org/) studies.
+[ABCD](https://abcdstudy.org/) and [HBCD](https://hbcdstudy.org/)
+studies.
 
 The `NBDCtools` package is designed to help researchers and data
 analysts create analysis-ready datasets from the tabulated data released

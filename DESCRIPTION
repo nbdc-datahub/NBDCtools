@@ -1,7 +1,7 @@
 Package: NBDCtools
-Title: NIH Brain Development Cohorts (NBDC) Data Hub Tools
-Description: This package provides functions to work with data from the NBDC
-  Data Hub.
+Title: NIH Brain Development Cohorts Data Hub Tools
+Description: A suite of functions to work with data from the 
+  NIH Brain Development Cohorts Data Hub.
 URL: https://software.nbdc-datahub.org/NBDCtools/
 Version: 1.0.0
 Authors@R: c(
