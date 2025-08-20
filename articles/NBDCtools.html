@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,8 +101,29 @@ memory-efficient, and highly reproducible way to work with data from the
 NBDC Data Hub that can be used as an alternative to creating and
 downloading different datasets (and creating on-disk representations for
 each of them) through the <a href="https://nbdc.deapscience.com" class="external-link">Data
-Exploration &amp; Analysis Portal (DEAP)</a> or <a href="https://nbdc-datashare.lassoinformatics.com" class="external-link">Lasso</a>
-applications.</p>
+Exploration &amp; Analysis Portal (DEAP)</a> or the <a href="https://nbdc-datashare.lassoinformatics.com" class="external-link">NBDC Data Access
+Platform</a>.</p>
+<div class="section level3">
+<h3 id="download-data-using-deap">Download data using DEAP<a class="anchor" aria-label="anchor" href="#download-data-using-deap"></a>
+</h3>
+<p>To download data from the NBDC Data Hub in the format that is
+required by the <code>NBDCtools</code> package, follow the following
+steps:</p>
+<ol style="list-style-type: decimal">
+<li>Log in to the <a href="https://nbdc.deapscience.com" class="external-link">DEAP</a>
+application and select the <code>My datasets</code> tab.</li>
+<li>On the bottom of the page, click on
+<code>Pre-assembled datasets</code>.</li>
+<li>In the pop-up window, select the <code>All tables</code>
+option.</li>
+<li>Click on the <code>Download tables</code> button to download the
+data files.</li>
+<li>Unzip the downloaded file to a local directory and remember the path
+to this directory, as you will need it to load the data using the
+<code>NBDCtools</code> package.</li>
+</ol>
+<p><img src="img/get_data.png" style="width:100.0%"></p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -169,15 +190,15 @@ interest.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables from 3 tables...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[341ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[352ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[130ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[132ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[226ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[230ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">10</span> rows and <span style="color: #0000BB;">10</span> columns has been created. Time used: <span style="color: #0000BB;">0.02</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>
@@ -252,15 +273,15 @@ we will have different number of rows in the data:</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables (1 main; 7 additional) from 3 tables</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 15 variables (8 main; 7 additional) from 3 tables <span style="color: #B2B2B2;">[113ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 15 variables (8 main; 7 additional) from 3 tables <span style="color: #B2B2B2;">[117ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[111ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[114ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[216ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[220ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">7</span> rows and <span style="color: #0000BB;">10</span> columns has been created. Time used: <span style="color: #0000BB;">0.01</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>
@@ -342,24 +363,24 @@ function <code><a href="../reference/transf_value_to_na.html">transf_value_to_na
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables from 3 tables...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[132ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[135ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[111ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[113ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[218ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[221ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables' numeric values to labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables' numeric values to labels. <span style="color: #B2B2B2;">[20ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables' numeric values to labels. <span style="color: #B2B2B2;">[19ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>. <span style="color: #B2B2B2;">[88ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting time variables to <span style="color: #0000BB;">&lt;hms&gt;</span> class.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting time variables to <span style="color: #0000BB;">&lt;hms&gt;</span> class. <span style="color: #B2B2B2;">[80ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting time variables to <span style="color: #0000BB;">&lt;hms&gt;</span> class. <span style="color: #B2B2B2;">[79ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">10</span> rows and <span style="color: #0000BB;">10</span> columns has been created. Time used: <span style="color: #0000BB;">0.01</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>
@@ -468,21 +489,21 @@ argument to the <code><a href="../reference/create_dataset.html">create_dataset(
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables from 3 tables...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[131ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[133ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[110ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[112ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[213ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[218ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Argument `missing_codes` is passed to `transf_value_to_na()`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Argument `missing_codes` is passed to `transf_value_to_na()`. <span style="color: #B2B2B2;">[12ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Argument `missing_codes` is passed to `transf_value_to_na()`. <span style="color: #B2B2B2;">[11ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>.<span style="color: #00BB00;">✔</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>. <span style="color: #B2B2B2;">[112ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>.<span style="color: #00BB00;">✔</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>. <span style="color: #B2B2B2;">[113ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">10</span> rows and <span style="color: #0000BB;">10</span> columns has been created. Time used: <span style="color: #0000BB;">0.01</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>
@@ -527,15 +548,15 @@ this argument at all:</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables from 3 tables...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[131ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[136ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[110ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[111ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[212ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[214ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical missingness/non-response codes to <span style="color: #0000BB;">"NA"</span>. <span style="color: #B2B2B2;">[88ms]</span></span></span>
