@@ -85,8 +85,8 @@ install.packages("naniar")
 
 ## Usage
 
-For a general overview of how to use the R package to handle NBDC
-datasets, see the [Get
+For a general overview of how to download data from the NBDC Data Hub
+and use this R package to create custom datasets, see the [Get
 Started](https://software.nbdc-datahub.org/NBDCtools/articles/NBDCtools.html)
 page. To browse the documentation of all available functions, see the
 [Reference](https://software.nbdc-datahub.org/NBDCtools/reference/index.html)

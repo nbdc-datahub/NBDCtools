@@ -40,7 +40,23 @@ highly reproducible way to work with data from the NBDC Data Hub that can be
 used as an alternative to creating and downloading different datasets (and
 creating on-disk representations for each of them) through the
 [Data Exploration & Analysis Portal (DEAP)](https://nbdc.deapscience.com) or
-[Lasso](https://nbdc-datashare.lassoinformatics.com) applications.
+the [NBDC Data Access Platform](https://nbdc-datashare.lassoinformatics.com).
+
+### Download data using DEAP
+
+To download data from the NBDC Data Hub in the format that is required by the
+`NBDCtools` package, follow the following steps:
+
+1. Log in to the [DEAP](https://nbdc.deapscience.com) application and select
+   the `My datasets` tab.
+1. On the bottom of the page, click on `Pre-assembled datasets`.
+1. In the pop-up window, select the `All tables` option.
+1. Click on the `Download tables` button to download the data files.
+1. Unzip the downloaded file to a local directory and remember the path to this
+   directory, as you will need it to load the data using the `NBDCtools`
+   package.
+
+![](img/get_data.png){width=100%}
 
 ## Getting started
 

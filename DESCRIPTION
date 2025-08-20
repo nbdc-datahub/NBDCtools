@@ -3,7 +3,7 @@ Title: NIH Brain Development Cohorts Data Hub Tools
 Description: A suite of functions to work with data from the 
   NIH Brain Development Cohorts Data Hub.
 URL: https://software.nbdc-datahub.org/NBDCtools/
-Version: 1.0.1
+Version: 1.0.0
 Authors@R: c(
   person(given = "Janosch",
          family = "Linkersdoerfer",
