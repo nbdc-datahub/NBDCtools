@@ -503,7 +503,7 @@ convert_names_file <- function(
 #'   the default, or `"html"`).
 #' @param link_name character. The name to use for the hyperlink (Default:
 #'   `NULL`, i.e., the URL is used as name)
-#'
+#' @noRd
 #' @return character. The URL or hyperlink for the selected node(s) and study.
 #' @keywords internal
 #' @examples
@@ -636,7 +636,7 @@ get_url_deap <- function(
 #'
 #' @return character. The URL or hyperlink for the specified table.
 #' @keywords internal
-#'
+#' @noRd
 #' @examples
 #' NBDCtools:::get_url_deap_table("ab_g_dyn", "abcd")
 #'
@@ -702,7 +702,7 @@ get_url_deap_table <- function(
 }
 
 
-#' @rdname get_url_deap_table
+#' @noRd
 #' @keywords internal
 get_url_deap_table_abcd <- function(...) {
   args <- list(...)
@@ -713,7 +713,7 @@ get_url_deap_table_abcd <- function(...) {
   get_url_deap_table(study = "abcd", ...)
 }
 
-#' @rdname get_url_deap_table
+#' @noRd
 #' @keywords internal
 get_url_deap_table_hbcd <- function(...) {
   args <- list(...)

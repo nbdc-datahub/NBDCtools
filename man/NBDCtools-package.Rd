@@ -4,9 +4,9 @@
 \name{NBDCtools-package}
 \alias{NBDCtools}
 \alias{NBDCtools-package}
-\title{NBDCtools: NIH Brain Development Cohorts Data Hub Tools}
+\title{NBDCtools: National Institutes of Health Brain Development Cohorts Data Hub Tools}
 \description{
-A suite of functions to work with data from the NIH Brain Development Cohorts Data Hub.
+A suite of functions to work with data from the National Institutes of Health Brain Development Cohorts Data Hub. The package provides tools to create, clean, process, and filter datasets and associated metadata. These utilities are intended to simplify reproducible data-preparation for future research.
 }
 \seealso{
 Useful links:
