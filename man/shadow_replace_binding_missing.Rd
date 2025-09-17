@@ -42,6 +42,7 @@ use the same column order and the same row order (by ID columns) in both
 dataframes, which saves some processing time.
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 shadow <- tibble::tibble(
   participant_id = c("1", "2", "3"),
   session_id = c("1", "2", "3"),
@@ -55,4 +56,5 @@ data <- tibble::tibble(
   var2 = c(NA, 2, NA)
 )
 shadow_replace_binding_missing(data, shadow)
+\dontshow{\}) # examplesIf}
 }

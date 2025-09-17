@@ -40,7 +40,11 @@ transf_factor <- function(
       name %in% col_names
     ) |>
     pull(name, type_level)
-  cols_factor <- c("session_id", cols_factor)
+  cols_factor <- if ("session_id" %in% colnames(data)) {
+    c("session_id", cols_factor)
+  } else {
+    cols_factor
+  }
 
   data[cols_factor] <- purrr::map2(
     .x = cols_factor,

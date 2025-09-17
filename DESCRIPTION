@@ -6,18 +6,19 @@ Description: A suite of functions to work with data from the National Institutes
   utilities are intended to simplify reproducible data-preparation for 
   future research.
 URL: https://software.nbdc-datahub.org/NBDCtools/
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
-  person(given = "Janosch",
-         family = "Linkersdoerfer",
-         email = "dairc.service@gmail.com",
-         role = c("aut", "cre"),
-         comment = c(ORCID = "0000-0002-1577-1233")),
-  person(given = "Le",
+    person(given = "Le",
        family = "Zhang",
-       email = "lezhang100@gmail.com",
+       email = "dairc.service@gmail.com",
+       role = c("aut", "cre"),
+       comment = c(ORCID = "0009-0008-0205-2150")),
+    person(given = "Janosch",
+       family = "Linkersdoerfer",
+       email = "linkersdoerfer@gmail.com",
        role = c("aut"),
-       comment = c(ORCID = "0009-0008-0205-2150"))) 
+       comment = c(ORCID = "0000-0002-1577-1233")))
+Additional_repositories: https://nbdc-datahub.r-universe.dev
 Depends:
   R (>= 4.3.0)
 Imports:
@@ -40,16 +41,17 @@ Imports:
   stats,
   sjmisc,
   haven
-License: GPL (>= 3)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 Suggests: 
   testthat (>= 3.0.0),
   usethis,
   knitr,
   rmarkdown,
-  naniar
+  naniar,
+  NBDCtoolsData
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
 Config/testthat/edition: 3
 Config/Needs/website: rmarkdown
 LazyData: true

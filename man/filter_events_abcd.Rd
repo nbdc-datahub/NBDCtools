@@ -38,6 +38,7 @@ string can be one of the following conditions:
 The conditions can be combined with logical \code{"and"} or \code{"or"}.
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 data <- tibble::tribble(
   ~session_id,     ~study,     ~type,
   "ses-00S",       "core",     "screener",
@@ -83,4 +84,5 @@ filter_events_abcd(data, c("mid_year", "<5"))
 
 # COVID or Social Development substudy events
 filter_events_abcd(data, c("covid", "sdev"), connect = "or")
+\dontshow{\}) # examplesIf}
 }

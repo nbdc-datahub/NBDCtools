@@ -981,6 +981,12 @@ check_pkgs <- function(
 #' @keywords internal
 #' @noRd
 check_data_pkg_installed <- function(quiet = FALSE) {
+  if (
+    is.environment(getOption("NBDCtoolsData.env")) &&
+    exists("lst_dds", envir = getOption("NBDCtoolsData.env"))
+  ) {
+    return(invisible(TRUE))
+  }
   check_pkgs(
      pkgs = list(
        NBDCtoolsData = list(
@@ -989,6 +995,16 @@ check_data_pkg_installed <- function(quiet = FALSE) {
     ),
     abort_msg = "NBDCtoolsData package is not installed",
     quiet = quiet
+  )
+  # if installed, and objects not loaded, load them
+  utils::data(
+    list = c(
+      "lst_dds",
+      "lst_levels",
+      "lst_sessions"
+    ),
+    package = "NBDCtoolsData",
+    envir = getOption("NBDCtoolsData.env")
   )
 }
 
@@ -1007,15 +1023,10 @@ check_data_pkg_installed <- function(quiet = FALSE) {
 get_data_pkg <- function(x = c("dds", "levels", "sessions")) {
   x <- rlang::arg_match(x)
   data_name <- paste0("lst_", x)
-  return(get(data_name, envir = asNamespace("NBDCtools")))
-}
-
-
-# CRAN checks ------------------------------------------------------------------
-#' @noRd
-#' @return logical. Whether the package is being checked on CRAN.
-is_on_cran <- function() {
-  (!is.na(Sys.getenv("_R_CHECK_CRAN_INCOMING_", unset = NA))) && !interactive()
+  if(!exists(data_name, envir = getOption("NBDCtoolsData.env"))) {
+    check_data_pkg_installed()
+  }
+  return(get(data_name, envir = getOption("NBDCtoolsData.env")))
 }
 
 # Memory and loading time estimation -------------------------------------------

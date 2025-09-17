@@ -23,6 +23,7 @@ A tibble with the filtered data.
 This function filters out rows that are empty
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 data <- tibble::tibble(
   participant_id = c("sub-001", "sub-002", "sub-003"),
   session_id = c("ses-001", "ses-001", "ses-002"),
@@ -31,4 +32,5 @@ data <- tibble::tibble(
   var3 = c(NA, NA, 3)
 )
 filter_empty_rows(data)
+\dontshow{\}) # examplesIf}
 }

@@ -61,6 +61,7 @@ from the data using \code{naniar::as_shadow()}.
 }
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 shadow <- tibble::tibble(
   participant_id = c("1", "2", "3"),
   session_id = c("1", "2", "3"),
@@ -74,7 +75,8 @@ data <- tibble::tibble(
   var2 = c(NA, 2, NA)
 )
 shadow_bind_data(data, shadow)
-\dontrun{
-shadow_bind_data(data, naniar_shadow = TRUE)
+if (requireNamespace("naniar", quietly = TRUE)) {
+  shadow_bind_data(data, naniar_shadow = TRUE)
 }
+\dontshow{\}) # examplesIf}
 }

@@ -1,3 +1,22 @@
+# NBDCtools 1.0.2
+
+## Changes
+
+- Removed startup check for `NBDCtoolsData` package, as CRAN does not allow
+  skipping checks. Now the `check_data_pkg_installed` performs the check when
+  other functions are called.
+- Data from `NBDCtoolsData` is now loaded into a separate environment as 
+  caching for faster access.
+- Added `NBDCtoolsData` to `Suggests` in `DESCRIPTION` file.
+- Removed `is_on_cran()` internal function.
+- Used `@examplesIf` roxygen tag to avoid examples being run on CRAN
+  if `NBDCtoolsData` is not installed.
+
+## Bug fixes
+
+- Fixed in `transf_factor` function that caused an error when the data
+  has no `session_id` column.
+
 # NBDCtools 1.0.1
 
 ## Bug fixes

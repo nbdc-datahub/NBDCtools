@@ -27,6 +27,7 @@ this function filters the data to keep or alternatively
 remove the rows for the given \emph{ID/events}.
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 data <- tibble::tribble(
   ~participant_id, ~session_id,
   "sub-001",       "ses-001",
@@ -59,4 +60,5 @@ filter_id_events(
   id_events = c("sub-001_ses-001", "sub-003_ses-002"),
   revert = TRUE
 )
+\dontshow{\}) # examplesIf}
 }

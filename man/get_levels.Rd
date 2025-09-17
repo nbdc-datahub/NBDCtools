@@ -46,6 +46,7 @@ that the \code{study} argument is set to the respective study by default, and
 should not be set by the user.
 }
 \examples{
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_levels("abcd")
 
 get_levels("hbcd", release = "1.0")
@@ -57,4 +58,5 @@ get_levels("abcd", tables = "ab_g_dyn")
 get_levels_abcd(release = "6.0")
 
 get_levels_hbcd()
+\dontshow{\}) # examplesIf}
 }

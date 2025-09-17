@@ -15,7 +15,7 @@
 #' matching the `id_events`).
 #' @return A tibble with the filtered data.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' data <- tibble::tribble(
 #'   ~participant_id, ~session_id,
 #'   "sub-001",       "ses-001",
@@ -98,7 +98,7 @@ filter_id_events <- function(data, id_events, revert = FALSE) {
 #'
 #' @return A tibble with the filtered data.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' data <- tibble::tribble(
 #'   ~session_id,     ~study,     ~type,
 #'   "ses-00S",       "core",     "screener",
@@ -218,7 +218,7 @@ filter_events_abcd <- function(data, conditions, connect = "and") {
 #'
 #' @return A tibble with the filtered data.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' data <- tibble::tibble(
 #'   participant_id = c("sub-001", "sub-002", "sub-003"),
 #'   session_id = c("ses-001", "ses-001", "ses-002"),
@@ -251,7 +251,7 @@ filter_empty_rows <- function(
 #' HBCD).
 #' @return A tibble with the filtered data.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' data <- tibble::tibble(
 #'   participant_id = c("sub-001", "sub-002", "sub-003"),
 #'   session_id = c("ses-001", "ses-001", "ses-002"),

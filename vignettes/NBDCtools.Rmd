@@ -80,7 +80,23 @@ To load `NBDCtools`, use the following command:
 
 ```{r setup}
 library(NBDCtools)
+
 ```
+
+```{r, include=FALSE, echo=FALSE}
+data_env <- getOption("NBDCtoolsData.env")
+purrr::walk(
+  c("lst_dds", "lst_levels", "lst_sessions"),
+  ~ {
+    value <- readRDS(system.file(
+      "extdata", "meta_internal", glue::glue("{.x}.rds"),
+      package = "NBDCtools"
+    ))
+    assign(.x, value = value, envir = data_env)
+  }
+)
+```
+
 
 Alternatively, you can call functions directly without loading the package by
 using `::`, e.g., `NBDCtools::name_of_function(...)`. You can also access

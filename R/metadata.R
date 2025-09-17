@@ -18,7 +18,7 @@
 #'
 #' @return Data frame with the metadata.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' get_metadata("abcd", type = "levels")
 #'
 #' get_metadata("hbcd", release = "1.0")
@@ -37,9 +37,7 @@ get_metadata <- function(
   tables = NULL,
   type = "dd"
 ) {
-  if (!is_on_cran()) {
-    check_data_pkg_installed()
-  }
+  check_data_pkg_installed()
   chk::chk_string(study)
   chk::chk_subset(study, names(get_data_pkg("dds")))
   chk::chk_string(release)
@@ -160,7 +158,8 @@ get_metadata <- function(
 #' [get_dd()] function.
 #' @return Data frame with the data dictionary.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
+#'
 #' get_dd("abcd")
 #'
 #' get_dd("hbcd", release = "1.0")
@@ -228,7 +227,7 @@ get_dd_hbcd <- function(...) {
 #' [get_levels()] function.
 #' @return Data frame with the levels table.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' get_levels("abcd")
 #'
 #' get_levels("hbcd", release = "1.0")
@@ -290,7 +289,7 @@ get_levels_hbcd <- function(...) {
 #' [get_sessions()] function.
 #' @return Data frame with the sessions table.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' get_sessions("abcd")
 #'
 #' get_sessions("hbcd")
@@ -350,7 +349,7 @@ get_sessions_hbcd <- function(...) {
 #' [get_id_cols()] function.
 #' @return character vector with the identifier columns.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' get_id_cols("abcd")
 #'
 #' get_id_cols("hbcd")

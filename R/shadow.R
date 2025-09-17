@@ -40,7 +40,7 @@
 #' @return a dataframe of the data matrix with shadow columns. It will be
 #' 2x the size of the original data matrix.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' shadow <- tibble::tibble(
 #'   participant_id = c("1", "2", "3"),
 #'   session_id = c("1", "2", "3"),
@@ -54,8 +54,8 @@
 #'   var2 = c(NA, 2, NA)
 #' )
 #' shadow_bind_data(data, shadow)
-#' \dontrun{
-#' shadow_bind_data(data, naniar_shadow = TRUE)
+#' if (requireNamespace("naniar", quietly = TRUE)) {
+#'   shadow_bind_data(data, naniar_shadow = TRUE)
 #' }
 shadow_bind_data <- function(
   data,
@@ -134,7 +134,7 @@ shadow_bind_data <- function(
 #'
 #' @return A tibble of the shadow matrix with missing values replaced.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
 #' shadow <- tibble::tibble(
 #'   participant_id = c("1", "2", "3"),
 #'   session_id = c("1", "2", "3"),

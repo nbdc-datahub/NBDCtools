@@ -98,9 +98,8 @@ join_tabulated <- function(
   remove_empty_rows = TRUE,
   bypass_ram_check = FALSE
 ) {
-  if (!is_on_cran()) {
-    check_data_pkg_installed()
-  }
+  check_data_pkg_installed()
+
   chk::chk_dir(dir_data)
   chk::chk_string(study)
   chk::chk_subset(study, names(get_data_pkg("dds")))
