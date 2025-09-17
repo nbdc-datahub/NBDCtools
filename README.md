@@ -36,6 +36,14 @@ functions to assist users in working with the data, including:
 > the large data dictionary and levels tables used by the `NBDCtools`
 > package.
 
+To install the stable version of the main package from CRAN, and the
+data package from `r-universe`, use the following command:
+
+``` r
+install.packages("NBDCtools")
+install.packages("NBDCtoolsData", repos = "https://nbdc-datahub.r-universe.dev")
+```
+
 To install the *latest version* of the packages from
 [GitHub](https://github.com/nbdc-datahub/NBDCtools), use the following
 command:
@@ -55,7 +63,9 @@ processing shadow matrices. To install all the dependencies, use the
 following command:
 
 ``` r
-remotes::install_github("nbdc-datahub/NBDCtools", dependencies = TRUE)
+install.packages("NBDCtools", dependencies = TRUE)
+# or some specific dependencies
+install.packages("naniar") # e.g. shadow matrix processing
 ```
 
 To install a *specific version* of the package, specify the version
@@ -73,15 +83,6 @@ remotes::install_github("nbdc-datahub/NBDCtoolsData@v1.0.0")
 > changed across ABCD/HBCD data releases, but the `NBDCtoolsData`
 > package is updated with each data release. Therefore, it is
 > recommended to always update the data package to the latest version.
-
-Some package dependencies are not installed by default, as they are only
-needed for specific features, such as processing shadow matrices. To
-install these dependencies, use the following command:
-
-``` r
-# for shadow_bind_data function
-install.packages("naniar")
-```
 
 ## Usage
 
