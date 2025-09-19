@@ -29,7 +29,7 @@ should not be set by the user."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,47 +126,130 @@ included.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,206 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,196 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   table_nda &lt;chr&gt;, table_nda_5_0 &lt;chr&gt;, table_redcap &lt;chr&gt;, name_nda &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   name_deap &lt;chr&gt;, name_redcap &lt;chr&gt;, name_redcap_exp &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"hbcd"</span>, release <span class="op">=</span> <span class="st">"1.0"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 48,699 × 30</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    study domain     source table_name table_label name  label instruction header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Nail… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Numb… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Any … <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 48,689 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 21 more variables: note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_level &lt;chr&gt;, type_field &lt;chr&gt;, order_display &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   branching_logic &lt;chr&gt;, label_es &lt;chr&gt;, instruction_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   header_es &lt;chr&gt;, note_es &lt;chr&gt;, name_short &lt;chr&gt;, name_stata &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   url_table &lt;chr&gt;, url_warn_use &lt;chr&gt;, url_warn_data &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   url_table_warn_use &lt;chr&gt;, url_table_warn_data &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ab_g_dyn__visit_dtt"</span>, <span class="st">"ab_g_dyn__visit_age"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   study domain sub_domain source metric atlas table_name table_label name  label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 34 more variables: instruction &lt;chr&gt;, header &lt;chr&gt;, note &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;, type_field &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   order_display &lt;chr&gt;, branching_logic &lt;chr&gt;, label_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;, table_nda &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   table_nda_5_0 &lt;chr&gt;, table_redcap &lt;chr&gt;, name_nda &lt;chr&gt;, name_deap &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   name_redcap &lt;chr&gt;, name_redcap_exp &lt;chr&gt;, url_table &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   url_warn_use &lt;chr&gt;, url_warn_data &lt;chr&gt;, url_table_warn_use &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span>, tables <span class="op">=</span> <span class="st">"ab_g_dyn"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 24 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   table_nda &lt;chr&gt;, table_nda_5_0 &lt;chr&gt;, table_redcap &lt;chr&gt;, name_nda &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   name_deap &lt;chr&gt;, name_redcap &lt;chr&gt;, name_redcap_exp &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd_abcd</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,206 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,196 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   table_nda &lt;chr&gt;, table_nda_5_0 &lt;chr&gt;, table_redcap &lt;chr&gt;, name_nda &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   name_deap &lt;chr&gt;, name_redcap &lt;chr&gt;, name_redcap_exp &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd_hbcd</span><span class="op">(</span>release <span class="op">=</span> <span class="st">"1.0"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 48,699 × 30</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    study domain     source table_name table_label name  label instruction header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Nail… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Numb… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Any … <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 48,689 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 21 more variables: note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_level &lt;chr&gt;, type_field &lt;chr&gt;, order_display &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   branching_logic &lt;chr&gt;, label_es &lt;chr&gt;, instruction_es &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   header_es &lt;chr&gt;, note_es &lt;chr&gt;, name_short &lt;chr&gt;, name_stata &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   url_table &lt;chr&gt;, url_warn_use &lt;chr&gt;, url_warn_data &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   url_table_warn_use &lt;chr&gt;, url_table_warn_data &lt;chr&gt;, …</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -174,7 +257,7 @@ included.</p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Janosch Linkersdoerfer, Le Zhang.</p>
+  <p>Developed by Le Zhang, Janosch Linkersdoerfer.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>NIH Brain Development Cohorts Data Hub Tools • NBDCtools</title>
+<title>National Institutes of Health Brain Development Cohorts Data Hub Tools • NBDCtools</title>
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="NIH Brain Development Cohorts Data Hub Tools">
-<meta name="description" content="A suite of functions to work with data from the NIH Brain Development Cohorts Data Hub.">
-<meta property="og:description" content="A suite of functions to work with data from the NIH Brain Development Cohorts Data Hub.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="National Institutes of Health Brain Development Cohorts Data Hub Tools">
+<meta name="description" content="A suite of functions to work with data from the National Institutes of Health Brain Development Cohorts Data Hub. The package provides tools to create, clean, process, and filter datasets and associated metadata. These utilities are intended to simplify reproducible data-preparation for future research.">
+<meta property="og:description" content="A suite of functions to work with data from the National Institutes of Health Brain Development Cohorts Data Hub. The package provides tools to create, clean, process, and filter datasets and associated metadata. These utilities are intended to simplify reproducible data-preparation for future research.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,8 +85,12 @@
 <blockquote>
 <p><strong>IMPORTANT:</strong> Besides the <code>NBDCtools</code> main package, users also need to install the accompanying <code>NBDCtoolsData</code> package, which contains the large data dictionary and levels tables used by the <code>NBDCtools</code> package.</p>
 </blockquote>
-<p>To install the <em>latest version</em> of the packages from <a href="https://github.com/nbdc-datahub/NBDCtools" class="external-link">GitHub</a>, use the following command:</p>
+<p>To install the stable version of the main package from CRAN, and the data package from <code>r-universe</code>, use the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NBDCtools"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NBDCtoolsData"</span>, repos <span class="op">=</span> <span class="st">"https://nbdc-datahub.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
+<p>To install the <em>latest version</em> of the packages from <a href="https://github.com/nbdc-datahub/NBDCtools" class="external-link">GitHub</a>, use the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -94,19 +98,17 @@
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nbdc-datahub/NBDCtools"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nbdc-datahub/NBDCtoolsData"</span><span class="op">)</span></span></code></pre></div>
 <p>There are some additional dependencies that are not installed by default, as they are only needed for specific features, such as processing shadow matrices. To install all the dependencies, use the following command:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nbdc-datahub/NBDCtools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>To install a <em>specific version</em> of the package, specify the version number in the <code>remotes::install_github()</code> call. For example, to install version 1.0.0, use the following command:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NBDCtools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># or some specific dependencies</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"naniar"</span><span class="op">)</span> <span class="co"># e.g. shadow matrix processing</span></span></code></pre></div>
+<p>To install a <em>specific version</em> of the package, specify the version number in the <code>remotes::install_github()</code> call. For example, to install version 1.0.0, use the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nbdc-datahub/NBDCtools@v1.0.0"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nbdc-datahub/NBDCtoolsData@v1.0.0"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p><strong>NOTE:</strong> The <code>NBDCtoolsData</code> package version does not match the <code>NBDCtools</code> package version, i.e., the two package follow different release cycles. For example, the <code>NBDCtools</code> package may not be changed across ABCD/HBCD data releases, but the <code>NBDCtoolsData</code> package is updated with each data release. Therefore, it is recommended to always update the data package to the latest version.</p>
 </blockquote>
-<p>Some package dependencies are not installed by default, as they are only needed for specific features, such as processing shadow matrices. To install these dependencies, use the following command:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># for shadow_bind_data function</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"naniar"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -128,6 +130,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=NBDCtools" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/nbdc-datahub/NBDCtools/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
@@ -150,8 +153,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Janosch Linkersdoerfer <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1577-1233" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
-<li>Le Zhang <br><small class="roles"> Author </small> <a href="https://orcid.org/0009-0008-0205-2150" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Le Zhang <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0008-0205-2150" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Janosch Linkersdoerfer <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1577-1233" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -162,7 +165,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Janosch Linkersdoerfer, Le Zhang.</p>
+  <p>Developed by Le Zhang, Janosch Linkersdoerfer.</p>
 </div>
 
 <div class="pkgdown-footer-right">

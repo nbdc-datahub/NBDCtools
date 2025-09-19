@@ -25,7 +25,7 @@ should not be set by the user."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,32 +111,16 @@ should not be set by the user.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_id_cols</span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "participant_id" "session_id"    </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_id_cols</span><span class="op">(</span><span class="st">"hbcd"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "participant_id" "session_id"     "run_id"        </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_id_cols_abcd</span><span class="op">(</span>release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "participant_id" "session_id"    </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_id_cols_hbcd</span><span class="op">(</span>release <span class="op">=</span> <span class="st">"1.0"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in check_pkgs(pkgs = list(NBDCtoolsData = list(remote = "nbdc-datahub/NBDCtoolsData")),     abort_msg = "NBDCtoolsData package is not installed", quiet = quiet):</span> NBDCtoolsData package is not installed</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> `NBDCtoolsData`</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please install the missing packages with:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> renv::install(c("nbdc-datahub/NBDCtoolsData"))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "participant_id" "session_id"     "run_id"        </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -144,7 +128,7 @@ should not be set by the user.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Janosch Linkersdoerfer, Le Zhang.</p>
+  <p>Developed by Le Zhang, Janosch Linkersdoerfer.</p>
 </div>
 
 <div class="pkgdown-footer-right">

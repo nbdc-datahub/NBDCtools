@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,22 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.1" id="nbdctools-101">NBDCtools 1.0.1<a class="anchor" aria-label="anchor" href="#nbdctools-101"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.0.2" id="nbdctools-102">NBDCtools 1.0.2<a class="anchor" aria-label="anchor" href="#nbdctools-102"></a></h2>
+<div class="section level3">
+<h3 id="changes-1-0-2">Changes<a class="anchor" aria-label="anchor" href="#changes-1-0-2"></a></h3>
+<ul><li>Removed startup check for <code>NBDCtoolsData</code> package, as CRAN does not allow skipping checks. Now the <code>check_data_pkg_installed</code> performs the check when other functions are called.</li>
+<li>Data from <code>NBDCtoolsData</code> is now loaded into a separate environment as caching for faster access.</li>
+<li>Added <code>NBDCtoolsData</code> to <code>Suggests</code> in <code>DESCRIPTION</code> file.</li>
+<li>Removed <code>is_on_cran()</code> internal function.</li>
+<li>Used <code>@examplesIf</code> roxygen tag to avoid examples being run on CRAN if <code>NBDCtoolsData</code> is not installed.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-0-2">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-0-2"></a></h3>
+<ul><li>Fixed in <code>transf_factor</code> function that caused an error when the data has no <code>session_id</code> column.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.0.1" id="nbdctools-101">NBDCtools 1.0.1<a class="anchor" aria-label="anchor" href="#nbdctools-101"></a></h2><p class="text-muted">CRAN release: 2025-09-10</p>
 <div class="section level3">
 <h3 id="bug-fixes-1-0-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-0-1"></a></h3>
 <ul><li>Fixed an error in the <code><a href="../reference/transf_value_to_label.html">transf_value_to_label()</a></code> function that led to the order of categorical levels being incorrect after transformation to labels.</li>
@@ -72,7 +87,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Janosch Linkersdoerfer, Le Zhang.</p>
+  <p>Developed by Le Zhang, Janosch Linkersdoerfer.</p>
 </div>
 
 <div class="pkgdown-footer-right">
