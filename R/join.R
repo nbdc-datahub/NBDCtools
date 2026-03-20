@@ -54,6 +54,19 @@
 #' @param remove_empty_rows logical. Whether to filter out rows that have
 #'   all values missing in the joined variables, except for the
 #'   ID columns (default: `TRUE`).
+#' @param ignore_version_mismatch logical. Whether to ignore version mismatch
+#' between data files and metadata (dd, levels, etc)
+#' and proceed with joining anyway (default: `FALSE`).
+#'
+#' The function performs a version check by reading a specific file from the
+#' `dir_data` directory to determine the latest session in the data files.
+#' This session is then compared to the expected latest session for the
+#' specified `release`. If there is a mismatch, a warning or error
+#' is raised depending on the value of this parameter.
+#' If set to `FALSE`, the function will abort on version mismatch. If set to
+#' `TRUE`, a warning will be issued, and the function will proceed with
+#' joining the data.
+#'
 #' @param ... Additional arguments passed to the underlying function
 #' [join_tabulated()]
 #'
@@ -96,7 +109,8 @@ join_tabulated <- function(
   format = "parquet",
   shadow = FALSE,
   remove_empty_rows = TRUE,
-  bypass_ram_check = FALSE
+  bypass_ram_check = FALSE,
+  ignore_version_mismatch = FALSE
 ) {
   check_data_pkg_installed()
 
@@ -120,6 +134,19 @@ join_tabulated <- function(
   }
   chk::chk_logical(remove_empty_rows)
   chk::chk_logical(bypass_ram_check)
+  chk::chk_logical(ignore_version_mismatch)
+
+  release <- resolve_release(study, release)
+  cli::cli_progress_step(c(
+    i = "Using metadata {.val {study}} version {.val {release}} to join data\n"
+  ))
+  check_data_metadata_version(
+    dir_data = dir_data,
+    study = study,
+    release = release,
+    format = format,
+    ignore_version_mismatch = ignore_version_mismatch
+  )
 
   dd <- get_dd(study, release, vars, tables)
   n_vars <- length(dd$name)
@@ -282,6 +309,81 @@ join_tabulated_hbcd <- function(...) {
     {.fn join_tabulated_hbcd}. It is set to {.val hbcd} by default.")
   }
   join_tabulated(study = "hbcd", ...)
+}
+
+
+#' @param dir_data character. Path to the directory with the data files in
+#' @param study character. NBDC study (One of `"abcd"` or `"hbcd"`).
+#' @param release character. Release versions
+#' @param format character. Data format (One of `"parquet"` or `"tsv"`)
+#' @param ignore_version_mismatch logical. Whether to ignore version mismatch
+#' @noRd
+check_data_metadata_version <- function(
+    dir_data,
+    study,
+    release,
+    format,
+    ignore_version_mismatch = FALSE) {
+  release <- resolve_release(study, release)
+  if (packageVersion("NBDCtoolsData") < "3.0.1") {
+    cli::cli_inform(c(
+      "i" = "Data and metadata version check is only available with
+      NBDCtoolsData version >= 3.0.1. Skipping version check."
+    ))
+    return(invisible(TRUE))
+  }
+  session_latest <- get_data_pkg("session_latest")[[study]][[release]]
+  session_file <- file.path(
+    dir_data,
+    paste0(session_latest$table_name, ".", format)
+  )
+  if (!file.exists(session_file)) {
+    cli::cli_inform(c(
+      "x" = crayon::make_style("orange")$bold(
+        "Warning: cannot verify data and metadata version match"
+      ),
+     "The session file {.file {session_file}} does not exist in the
+      specified {.arg dir_data} directory.",
+      "i" = "Please make sure to have this file if you want to verify that
+      your data files match the metadata version."
+    ))
+    return(invisible(FALSE))
+  }
+  tbl_session <- if (format == "parquet") {
+    arrow::read_parquet(
+      session_file,
+      col_select = all_of("session_id")
+    )
+  } else {
+    readr::read_tsv(
+      session_file, show_col_types = FALSE,
+      col_types = readr::cols(.default = "c"),
+      col_select = all_of("session_id")
+    )
+  }
+  sessions <- tbl_session |>
+    pull(session_id) |>
+    as.character() |>
+    unique() |>
+    stringr::str_sort(numeric = TRUE)
+  session_highest <- tail(sessions, 1)
+  if (session_highest != session_latest$session) {
+    action <- if (ignore_version_mismatch) {
+      cli::cli_warn
+    } else {
+      cli::cli_abort
+    }
+    action(c(
+      "x" = crayon::red$bold("Data and metadata version mismatch detected"),
+      "i" = "The latest session in the data files is {.val {session_highest}},",
+      "however you specified release version {.val {release}}, ",
+      "which expects the latest session to be {.val {session_latest$session}}.",
+      "i" = "Please make sure you have the correct data files for release ",
+      "{.val {release}} in the specified {.arg dir_data} directory."
+    ))
+    return(invisible(FALSE))
+  }
+  invisible(TRUE)
 }
 
 #' Join by identifier set

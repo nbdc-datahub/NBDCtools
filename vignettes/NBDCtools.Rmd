@@ -86,7 +86,7 @@ library(NBDCtools)
 ```{r, include=FALSE, echo=FALSE}
 data_env <- getOption("NBDCtoolsData.env")
 purrr::walk(
-  c("lst_dds", "lst_levels", "lst_sessions"),
+  c("lst_dds", "lst_levels", "lst_sessions", "lst_session_latest"),
   ~ {
     value <- readRDS(system.file(
       "extdata", "meta_internal", glue::glue("{.x}.rds"),

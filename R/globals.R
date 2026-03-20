@@ -15,6 +15,7 @@ utils::globalVariables(
     "label",
     "col_type",
     "type_data",
-    "type_level"
+    "type_level",
+    "id"
   )
 )

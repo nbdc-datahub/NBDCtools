@@ -84,6 +84,29 @@ remotes::install_github("nbdc-datahub/NBDCtoolsData@v1.0.0")
 > package is updated with each data release. Therefore, it is
 > recommended to always update the data package to the latest version.
 
+### Using tarballs to install
+
+On every new release page of the
+[`NBDCtools`](https://github.com/nbdc-datahub/NBDCtools/releases) and
+[`NBDCtoolsData`](https://github.com/nbdc-datahub/NBDCtoolsData/releases),
+you can find the source tarballs (`tar.gz` files) for the corresponding
+release. If compute environments do not have internet access, you can
+download the tarballs on a different machine and transfer them to the
+target environment. Then, use the following command to install the
+packages from the local tarball files:
+
+``` r
+install.packages("path/to/NBDCtools_x.y.z.tar.gz", repos = NULL, type = "source")
+install.packages("path/to/NBDCtoolsData_x.y.z.tar.gz", repos = NULL, type = "source")
+```
+
+However, please make sure that all dependencies are already installed in
+the target environment, as the installation from tarballs does not
+resolve dependencies automatically, for example, please see the list of
+dependencies in the
+[DESCRIPTION](https://github.com/nbdc-datahub/NBDCtools/blob/main/DESCRIPTION)
+Imports and Suggests fields.
+
 ## Usage
 
 For a general overview of how to download data from the NBDC Data Hub

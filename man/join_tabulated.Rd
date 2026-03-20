@@ -17,7 +17,8 @@ join_tabulated(
   format = "parquet",
   shadow = FALSE,
   remove_empty_rows = TRUE,
-  bypass_ram_check = FALSE
+  bypass_ram_check = FALSE,
+  ignore_version_mismatch = FALSE
 )
 
 join_tabulated_abcd(...)
@@ -68,6 +69,19 @@ estimated RAM before running this function.
 This argument is only used for the ABCD study, as the HBCD data
 is small enough to be loaded without RAM issues with most personal computers.
 As HBCD data grows in the future, this may change.}
+
+\item{ignore_version_mismatch}{logical. Whether to ignore version mismatch
+between data files and metadata (dd, levels, etc)
+and proceed with joining anyway (default: \code{FALSE}).
+
+The function performs a version check by reading a specific file from the
+\code{dir_data} directory to determine the latest session in the data files.
+This session is then compared to the expected latest session for the
+specified \code{release}. If there is a mismatch, a warning or error
+is raised depending on the value of this parameter.
+If set to \code{FALSE}, the function will abort on version mismatch. If set to
+\code{TRUE}, a warning will be issued, and the function will proceed with
+joining the data.}
 
 \item{...}{Additional arguments passed to the underlying function
 \code{\link[=join_tabulated]{join_tabulated()}}

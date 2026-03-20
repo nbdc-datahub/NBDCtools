@@ -1,6 +1,6 @@
 # BIDS sidecars ----------------------------------------------------------------
 
-#' Create BIDS sidecar
+#' Create BIDS sidecar from labelled data
 #'
 #' @description
 #' Creates a Brain Imaging Data Structure (BIDS) JSON sidecar file from the
@@ -18,15 +18,21 @@
 #' @param path_out character. the path to the output file.
 #' If `NULL`, the function will return the json object.
 #' @param pretty logical. Whether to pretty print the json.
-#'
+#' @details
+#' - If you have a labelled dataset, and want to create data specific
+#' BIDS sidecar with variable levels from the data, please use
+#' [create_bids_sidecar_data()].
+#' - If you want to create a BIDS sidecar without the underlying data,
+#' please use [create_bids_sidecar_metadata()].
 #' @return the json object or the path to the json file
+#' @seealso [create_bids_sidecar_metadata()]
 #' @export
 #' @examples
 #' \dontrun{
-#' data |> create_bids_sidecar()
-#' data |> create_bids_sidecar(path_out = "data.json")
+#' data |> create_bids_sidecar_data()
+#' data |> create_bids_sidecar_data(path_out = "data.json")
 #' }
-create_bids_sidecar <- function(
+create_bids_sidecar_data <- function(
   data,
   study,
   release = "latest",
@@ -79,6 +85,87 @@ create_bids_sidecar <- function(
   jsonlite::write_json(list_bids, path_out, pretty = TRUE, auto_unbox = TRUE)
   path_out
 }
+
+#' Create BIDS sidecar from metadata
+#'
+#' @description
+#' Generates a Brain Imaging Data Structure (BIDS) JSON sidecar using
+#' metadata tables (data dictionary and levels) without requiring the
+#' underlying data.
+#'
+#' @param dd tibble, Data dictionary metadata, see [get_dd()] or provide
+#' a custom data dictionary. The custom data dictionary must have
+#' same structure as the official data dictionaries.
+#' @param levels tibble, Levels metadata corresponding to `dd`,
+#' see [get_levels()], or provide a custom levels table. The custom levels table
+#' must have same structure as the official levels tables.
+#' @param vars character vector,  variable names to include. `vars` and
+#' `tables` cannot be both `NULL`.
+#' @param tables character vector, table names to include.
+#' @inherit create_bids_sidecar_data params details
+#' @seealso [create_bids_sidecar_data()]
+#' @return Either a JSON string (when `path_out` is `NULL`) or the output
+#' file path (invisibly) after writing the JSON sidecar to disk.
+#' @export
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
+#' create_bids_sidecar_metadata(
+#'   dd = get_dd("abcd"),
+#'   levels = get_levels("abcd"),
+#'   tables = c("ph_y_mctq")
+#' )
+create_bids_sidecar_metadata <- function(
+  dd,
+  levels,
+  vars = NULL,
+  tables = NULL,
+  metadata_description = "Dataset exported using NBDCtools",
+  path_out = NULL,
+  pretty = TRUE
+) {
+  chk::chk_data(dd)
+  chk::chk_data(levels)
+  if (is.null(vars) && is.null(tables)) {
+    cli::cli_abort("`vars` and `tables` cannot be both `NULL`.")
+  }
+  if (!is.null(vars)) {
+    chk::chk_character(vars)
+  }
+  if (!is.null(tables)) {
+    chk::chk_character(tables)
+  }
+  chk::chk_string(metadata_description)
+  if (!is.null(path_out)) {
+    chk::chk_string(path_out)
+    dir_out <- dirname(path_out)
+    if (!dir.exists(dir_out)) {
+      cli::cli_abort(c("The directory does not exist: ", dir_out))
+    }
+  }
+  chk::chk_logical(pretty)
+
+  list_bids <- build_bids_json2(
+    dd = dd,
+    levels = levels,
+    vars = vars,
+    tables = tables,
+    metadata_description = metadata_description
+  )
+
+  if (is.null(path_out)) {
+    return(jsonlite::toJSON(list_bids, pretty = pretty))
+  }
+
+  cli::cli_inform(c(i = "Writing BIDS format to {.file path_out}"))
+  jsonlite::write_json(
+    list_bids,
+    path_out,
+    pretty = pretty,
+    auto_unbox = TRUE
+  )
+
+  path_out
+}
+
 
 #' @noRd
 #' @return list list_bids
@@ -137,6 +224,130 @@ bids_build_json <- function(
     }
     list_bids[[col_name]]$Derivative <- bids_get_derivative(col_name, dd)
   }
+  list_bids
+}
+
+#' @noRd
+#' @keywords internal
+build_bids_json2 <- function(
+  dd,
+  levels,
+  vars = NULL,
+  tables = NULL,
+  metadata_description = "Dataset exported using NBDCtools"
+) {
+  chk::chk_data(dd)
+  chk::chk_data(levels)
+  if (!is.null(vars)) {
+    chk::chk_character(vars)
+    vars <- unique(vars)
+    missing_vars <- setdiff(vars, unique(dd$name))
+    if (length(missing_vars) > 0) {
+      cli::cli_abort(c(
+        "The following variables are not present in the data dictionary:",
+        paste(missing_vars, collapse = ", ")
+      ))
+    }
+  }
+  if (!is.null(tables)) {
+    chk::chk_character(tables)
+    tables <- unique(tables)
+    missing_tables <- setdiff(tables, unique(dd$table_name))
+    if (length(missing_tables) > 0) {
+      cli::cli_abort(c(
+        "The following tables are not present in the data dictionary:",
+        paste(missing_tables, collapse = ", ")
+      ))
+    }
+  }
+
+  dd_filtered <- dd
+  order_names <- character()
+  target_names <- character()
+
+  if (!is.null(vars)) {
+    dd_vars <- dd |>
+      filter(name %in% vars)
+    if (nrow(dd_vars) > 0) {
+      order_names <- c(order_names, vars[vars %in% dd_vars$name])
+      target_names <- union(target_names, dd_vars$name)
+    }
+  }
+
+  if (!is.null(tables)) {
+    dd_tables <- dd |>
+      filter(table_name %in% tables)
+    if (nrow(dd_tables) > 0) {
+      dd_tables <- dd_tables |>
+        arrange(match(table_name, tables))
+      order_names <- c(order_names, dd_tables$name)
+      target_names <- union(target_names, dd_tables$name)
+    }
+  }
+
+  order_names <- unique(order_names)
+  target_names <- unique(target_names)
+
+  if (length(target_names) > 0) {
+    dd_filtered <- dd |>
+      filter(name %in% target_names) |>
+      arrange(match(name, order_names))
+  }
+
+  if (nrow(dd_filtered) == 0) {
+    cli::cli_abort("No variables available to build BIDS JSON after filtering.")
+  }
+
+  var_names <- dd_filtered |>
+    distinct(name) |>
+    pull(name) |>
+    as.character()
+
+  list_bids <- vector("list", length(var_names) + 1) |>
+    setNames(c("MeasurementToolMetadata", var_names))
+
+  list_bids[["MeasurementToolMetadata"]] <- list(
+    "Description" = metadata_description
+  )
+
+  levels_filtered <- levels |>
+    filter(name %in% var_names)
+
+  for (var_name in var_names) {
+    var_dd <- dd_filtered |>
+      filter(name == var_name) |>
+      slice(1)
+
+    description <- var_dd$label
+    if (length(description) == 0 || is.na(description)) {
+      description <- var_name
+    }
+    description <- as.character(description)
+
+    var_entry <- list(
+      "Description" = description
+    )
+
+    var_levels <- levels_filtered |>
+      filter(name == var_name) |>
+      arrange(order_level, value)
+
+    if (nrow(var_levels) > 0) {
+      levels_list <- as.list(as.character(var_levels$label))
+      names(levels_list) <- as.character(var_levels$value)
+      var_entry$Levels <- levels_list
+    }
+
+    units <- bids_get_units(var_name, dd)
+    if (!is.null(units) && !is.na(units) && units != "") {
+      var_entry$Units <- units
+    }
+
+    var_entry$Derivative <- bids_get_derivative(var_name, dd)
+
+    list_bids[[var_name]] <- var_entry
+  }
+
   list_bids
 }
 
@@ -1001,7 +1212,8 @@ check_data_pkg_installed <- function(quiet = FALSE) {
     list = c(
       "lst_dds",
       "lst_levels",
-      "lst_sessions"
+      "lst_sessions",
+      "lst_session_latest"
     ),
     package = "NBDCtoolsData",
     envir = getOption("NBDCtoolsData.env")
@@ -1020,7 +1232,13 @@ check_data_pkg_installed <- function(quiet = FALSE) {
 #' get_data_pkg("levels")
 #' get_data_pkg("sessions")
 #' }
-get_data_pkg <- function(x = c("dds", "levels", "sessions")) {
+get_data_pkg <- function(
+    x = c(
+      "dds",
+      "levels",
+      "sessions",
+      "session_latest"
+    )) {
   x <- rlang::arg_match(x)
   data_name <- paste0("lst_", x)
   if(!exists(data_name, envir = getOption("NBDCtoolsData.env"))) {

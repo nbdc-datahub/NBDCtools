@@ -135,6 +135,7 @@ create_dataset <- function(
   release = "latest",
   format = "parquet",
   bypass_ram_check = FALSE,
+  ignore_version_mismatch = FALSE,
   categ_to_factor = TRUE,
   add_labels = TRUE,
   value_to_label = FALSE,
@@ -150,6 +151,7 @@ create_dataset <- function(
   chk::chk_logical(value_to_na)
   chk::chk_logical(time_to_hms)
   chk::chk_logical(bind_shadow)
+  chk::chk_logical(ignore_version_mismatch)
 
   args_user <- list(...)
 
@@ -181,7 +183,8 @@ create_dataset <- function(
       format = format,
       shadow = TRUE,
       remove_empty_rows = !bind_shadow,
-      bypass_ram_check = bypass_ram_check
+      bypass_ram_check = bypass_ram_check,
+      ignore_version_mismatch = ignore_version_mismatch
     )
     invisible(gc()) # force garbage collection to free memory
   } else {
@@ -202,7 +205,8 @@ create_dataset <- function(
     format = format,
     shadow = FALSE,
     remove_empty_rows = !bind_shadow,
-    bypass_ram_check = bypass_ram_check
+    bypass_ram_check = bypass_ram_check,
+    ignore_version_mismatch = ignore_version_mismatch
   )
   invisible(gc())
 

@@ -1,3 +1,25 @@
+# NBDCtools 1.0.3
+
+## New Features
+
+- Added `create_bids_sidecar_metadata()` function to create BIDS sidecar
+  from metadata without using any processed datasets. The old 
+  `create_bids_sidecar()` function is now renamed to
+  `create_bids_sidecar_data()`.
+- Added `get_all_releases()` and `get_latest_release()` functions to retrieve 
+  information about all data releases, the latest release, respectively.
+- Added a validation step in `join_tabulated()` that checks if the specified 
+  release version is the same as the data version of files in the `dir_data`
+  directory. This is done by searching for a special file by study that contains
+  the correct session IDs for that release. If this file is not found, users
+  will get a warning message and futher validation is skipped. If the file is
+  found but the session IDs do not match, an error is raised.
+  
+## Other Changes
+
+- Updated instructions on how to install install the package from a release
+  downloaded tarball file in the README.md.
+
 # NBDCtools 1.0.2
 
 ## Changes

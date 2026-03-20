@@ -37,6 +37,28 @@ elements for ABCD and HBCD studies:
 library(NBDCtools)
 ```
 
+## Release information
+
+Before working with metadata, it is important to know which data releases are
+available for each study. You can use the `get_releases()` function to retrieve
+the list of available releases:
+
+```{r}
+get_releases("abcd")
+# study specific releases
+get_releases_abcd()
+get_releases_hbcd()
+```
+
+We can also check what is the latest release for each study:
+
+```{r}
+get_latest_release("abcd")
+# study specific latest release
+get_latest_release_abcd()
+get_latest_release_hbcd()
+```
+
 ## Data dictionary
 
 The data dictionary contains information about all variables in the tabulated

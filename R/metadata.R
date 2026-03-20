@@ -1,5 +1,79 @@
 # all metadata -----------------------------------------------------------------
 
+#' Get release version number(s)
+#' @description These functions retrieve all release version number(s)
+#' for a given study, or the latest release version number.
+#'
+#' @param study character. The study name. One of "abcd" or "hbcd".
+#'
+#' @returns character. The latest release version number(s)
+#' of the specified study.
+#' @export
+#' @examplesIf requireNamespace("NBDCtoolsData", quietly = TRUE)
+#' get_releases("abcd")
+#' get_releases("hbcd")
+#' get_latest_release("abcd")
+#' get_latest_release("hbcd")
+get_releases <- function(study) {
+  chk::chk_string(study)
+  chk::chk_subset(study, names(get_data_pkg("dds")))
+  names(get_data_pkg("dds")[[study]])
+}
+
+#' @rdname get_releases
+#' @export
+get_releases_abcd <- function() {
+  get_releases("abcd")
+}
+
+#' @rdname get_releases
+#' @export
+get_releases_hbcd <- function() {
+  get_releases("hbcd")
+}
+
+#' @rdname get_releases
+#' @export
+get_latest_release <- function(study) {
+  get_releases(study) |>
+    tail(1)
+}
+
+#' @rdname get_releases
+#' @export
+get_latest_release_abcd <- function() {
+  get_latest_release("abcd")
+}
+
+#' @rdname get_releases
+#' @export
+get_latest_release_hbcd <- function() {
+  get_latest_release("hbcd")
+}
+
+#' Internal function to resolve release version to make sure
+#' "latest" is converted to the actual latest release version number,
+#' and other versions are validated.
+#' @return character. The resolved release version number.
+#' @noRd
+resolve_release <- function(study, release) {
+  if (release == "latest") {
+    return(get_latest_release(study))
+  }
+  releases <- get_releases(study)
+  if (!release %in% releases) {
+    chk::abort_chk(
+      glue::glue(
+        "Invalid release '{release}'. Valid releases are: ",
+        "{paste(releases, collapse = ', ')}\n",
+        "If you believe this version should exist, your metadata might be outdated.\n",
+        "Please update the `NBDCtoolsData` package to get the latest metadata."
+      )
+    )
+  }
+  release
+}
+
 #' Get metadata
 #'
 #' @description
@@ -41,23 +115,9 @@ get_metadata <- function(
   chk::chk_string(study)
   chk::chk_subset(study, names(get_data_pkg("dds")))
   chk::chk_string(release)
-  release_names <- c(names(get_data_pkg("dds")[[study]]), "latest")
-  if (!release %in% release_names) {
-    chk::abort_chk(
-      glue::glue(
-        "Invalid release '{release}'. Valid releases are: ",
-        "{paste(release_names, collapse = ', ')}\n",
-        "If you believe this version should exist, it might be the metadata\n",
-        "is outdated. ",
-        "Please update the `NBDCtoolsData` package to get the latest metadata."
-      )
-    )
-  }
-  chk::chk_subset(release, release_names)
-  if (release == "latest") {
-    releases_study <- names(get_data_pkg("dds")[[study]])
-    release <- releases_study[which.max(releases_study)]
-  }
+
+  release <- resolve_release(study, release)
+
   if (!is.null(vars)) {
     chk::chk_character(vars)
     vars_valid <- get_data_pkg("dds")[[study]][[release]] |>
@@ -326,6 +386,14 @@ get_sessions_hbcd <- function(...) {
   get_sessions(study = "hbcd", ...)
 }
 
+get_session_latest <- function(study, release) {
+  chk::chk_string(study)
+  chk::chk_subset(study, names(get_data_pkg("sessions")))
+  chk::chk_string(release)
+  session_latest <- get_data_pkg("session_latest")[[study]]
+  chk::chk_subset(release, names(session_latest))
+  session_latest[[length(session_latest)]]
+}
 
 # identifier columns -----------------------------------------------------------
 

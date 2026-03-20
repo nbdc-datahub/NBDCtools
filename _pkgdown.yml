@@ -44,14 +44,14 @@ reference:
     - matches("^shadow_")
 
   - title: "Metadata"
-    desc: Retrieve metadata (data dictionary, levels table, sessions table, identifier columns) for studies released in the NBDC Data Hub.
+    desc: Retrieve metadata (data dictionary, levels table, sessions table, identifier columns, release numbers) for studies released in the NBDC Data Hub.
     contents:
     - get_metadata
-    - matches("^get_dd|^get_levels|^get_sessions")
+    - matches("^get_dd|^get_levels|^get_sessions|^get_all_releases|^get_latest_release")
     - matches("^get_id_cols")
 
   - title: "Utility functions"
     desc: Utility functions for working with data in the NBDC Data Hub.
     contents:
-    - create_bids_sidecar
+    - matches("^create_bids_sidecar")
     - matches("^convert_names")

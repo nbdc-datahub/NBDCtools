@@ -23,7 +23,7 @@ variable and value labels, converting categorical values to labels, and more.
 ## Prepare data
 
 > **NOTE:** Before running the code in this vignette, we assume that you have
-already read the [Get started](NBCtools.html) vignette or the [Join
+already read the [Get started](NBDCtools.html) vignette or the [Join
 data](join.html) vignette, and know how to load the data for a given NBDC study
 release.
 

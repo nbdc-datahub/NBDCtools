@@ -6,7 +6,7 @@ Description: A suite of functions to work with data from the National Institutes
   utilities are intended to simplify reproducible data-preparation for 
   future research.
 URL: https://software.nbdc-datahub.org/NBDCtools/
-Version: 1.0.2
+Version: 1.1.0
 Authors@R: c(
     person(given = "Le",
        family = "Zhang",
@@ -40,7 +40,9 @@ Imports:
   tibble,
   stats,
   sjmisc,
-  haven
+  haven,
+  crayon,
+  utils
 Suggests: 
   testthat (>= 3.0.0),
   usethis,
@@ -51,7 +53,7 @@ Suggests:
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Config/testthat/edition: 3
 Config/Needs/website: rmarkdown
 LazyData: true
