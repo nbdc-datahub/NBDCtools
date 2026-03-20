@@ -22,6 +22,20 @@ frame in memory.
 library(NBDCtools)
 ```
 
+```{r, include=FALSE, echo=FALSE}
+data_env <- getOption("NBDCtoolsData.env")
+purrr::walk(
+  c("lst_dds", "lst_levels", "lst_sessions", "lst_session_latest"),
+  ~ {
+    value <- readRDS(system.file(
+      "extdata", "meta_internal", glue::glue("{.x}.rds"),
+      package = "NBDCtools"
+    ))
+    assign(.x, value = value, envir = data_env)
+  }
+)
+```
+
 To download data from the ABCD or HBCD studies through the NBDC Data Hub, users
 need to have a valid Data Use Certification (DUC) (see
 [here](https://www.nbdc-datahub.org/data-access-process) for more details). In
