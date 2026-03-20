@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,7 +150,7 @@ have a specific domain of interest and want to load all variables from a
 few selected tables within that domain.</p>
 <p>Because the number of variables varies between tables, the plot below
 displays the results by the number of variables.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 <div class="section level4">
 <h4 id="randomly-selected-variables">Randomly selected variables<a class="anchor" aria-label="anchor" href="#randomly-selected-variables"></a>
@@ -166,14 +166,14 @@ to load and join variables from a larger number of tables.</p>
 <p>This plot includes only cases with under 1000 variables which
 represents a more common use case, as typically the analyses are done on
 a small subset of variables.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 <div class="section level5">
 <h5 id="all-ranges">All ranges<a class="anchor" aria-label="anchor" href="#all-ranges"></a>
 </h5>
 <p>This plot includes all cases, with datasets ranging from a few
 hundred to 80k variables.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 </div>
 <div class="section level4">
@@ -182,7 +182,7 @@ hundred to 80k variables.</p>
 <p>In the following plot, we compare the time taken to load random
 variables vs. random tables. As expected, loading random variables takes
 significantly more time than loading random tables.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 </div>
 <div class="section level3">
@@ -199,7 +199,7 @@ memory difference is not significant, and the memory usage is stable
 across different runs. Therefore, the following statistics can be used
 as gold standard for memory requirements when loading and joining data
 using <code>NBDCtools</code>.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-7-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 </div>
 <div class="section level2">
@@ -218,7 +218,7 @@ plot.</p>
 <div class="section level3">
 <h3 id="time">Time<a class="anchor" aria-label="anchor" href="#time"></a>
 </h3>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 <div class="section level3">
 <h3 id="memory-usage-1">Memory usage<a class="anchor" aria-label="anchor" href="#memory-usage-1"></a>
@@ -226,7 +226,7 @@ plot.</p>
 <p>The following plot presents the object size difference after the data
 has been loaded and has been processed with <code><a href="../reference/transf_factor.html">transf_factor()</a></code>
 as a consecutive step.</p>
-<p><img src="benchmark_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
+<p><img src="benchmark_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="768"></p>
 <blockquote>
 <p><strong>IMPORTANT NOTE:</strong> The plot displays the memory needed
 to represent the <em>resulting object</em>. For example, based on the
@@ -254,7 +254,7 @@ memory issues during processing.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@ categorical values to labels, and more.</p>
 </h2>
 <blockquote>
 <p><strong>NOTE:</strong> Before running the code in this vignette, we
-assume that you have already read the <a href="NBCtools.html">Get
+assume that you have already read the <a href="NBDCtools.html">Get
 started</a> vignette or the <a href="join.html">Join data</a> vignette,
 and know how to load the data for a given NBDC study release.</p>
 </blockquote>
@@ -160,7 +160,7 @@ given study.</p>
 <span><span class="co">#&gt;                                                                        session_id </span></span>
 <span><span class="co">#&gt;                                                                "Event identifier" </span></span>
 <span><span class="co">#&gt;                                                              ab_g_dyn__visit_type </span></span>
-<span><span class="co">#&gt;                    "Visit information: Type of visit (In-person, remote, hybrid)" </span></span>
+<span><span class="co">#&gt;                    "Visit information: Type of event (In-person, remote, hybrid)" </span></span>
 <span><span class="co">#&gt;                                                            ab_g_dyn__cohort_grade </span></span>
 <span><span class="co">#&gt; "Cohort description: Current school grade [Cross-listed: ab_p_demo__ed__yth_001]" </span></span>
 <span><span class="co">#&gt;                                                          ab_g_dyn__visit__day1_dt </span></span>
@@ -174,7 +174,7 @@ given study.</p>
 <span><span class="co">#&gt;                                                 mr_y_qc__raw__dmri__r01__series_t </span></span>
 <span><span class="co">#&gt;                                              "Diffusion MRI (run 1): Series time" </span></span>
 <span><span class="co">#&gt;                                                               ab_g_dyn__visit_dtt </span></span>
-<span><span class="co">#&gt;                      "Visit information: Date and time at the start of the visit"</span></span></code></pre></div>
+<span><span class="co">#&gt;                      "Visit information: Date and time at the start of the event"</span></span></code></pre></div>
 <p>To inspect the <em>value labels</em>, we can use
 <code><a href="https://strengejacke.github.io/sjlabelled/reference/get_labels.html" class="external-link">sjlabelled::get_labels()</a></code> function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -432,7 +432,7 @@ example, we can ignore all columns that start with
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

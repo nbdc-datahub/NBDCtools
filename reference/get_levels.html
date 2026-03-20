@@ -29,7 +29,7 @@ should not be set by the user."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,25 +127,25 @@ included.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_levels</span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 63,502 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 63,498 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                      value order_level label                    label_es</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1               1 Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2               2 High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3               3 Some college             <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__cohort_edu__cgs 4               4 Bachelor’s degree        <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__cohort_edu__cgs 5               5 Graduate school or prof… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__cohort_grade    0               1 Kindergarten             <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__cohort_grade    1               2 1st grade                <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__cohort_grade    2               3 2nd grade                <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__cohort_grade    3               4 3rd grade                <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ab_g_dyn__cohort_grade    4               5 4th grade                <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 63,492 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1     1           Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2     2           High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3     3           Some college             <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__cohort_edu__cgs 4     4           Bachelor’s degree        <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__cohort_edu__cgs 5     5           Graduate school or prof… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__cohort_grade    0     1           Kindergarten             <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__cohort_grade    1     2           1st grade                <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__cohort_grade    2     3           2nd grade                <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__cohort_grade    3     4           3rd grade                <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ab_g_dyn__cohort_grade    4     5           4th grade                <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 63,488 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_levels</span><span class="op">(</span><span class="st">"hbcd"</span>, release <span class="op">=</span> <span class="st">"1.0"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17,051 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                                         value order_level label label_es</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_bio_test_ord… 1               1 Cust… <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_bio_test_ord… 2               2 Only… <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_bio_test_ord… 3               3 Canc… <span style="color: #BB0000;">NA</span>      </span>
@@ -161,31 +161,31 @@ included.</p></dd>
 <span class="r-in"><span><span class="fu">get_levels</span><span class="op">(</span><span class="st">"abcd"</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ab_g_dyn__visit_type"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   name                 value order_level label   label_es</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1               1 On-site <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2               2 Remote  <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3               3 Hybrid  <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1     1           On-site <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2     2           Remote  <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3     3           Hybrid  <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_levels</span><span class="op">(</span><span class="st">"abcd"</span>, tables <span class="op">=</span> <span class="st">"ab_g_dyn"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 123 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                         value order_level label             label_es</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type         1               1 On-site           <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type         2               2 Remote            <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type         3               3 Hybrid            <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__visit__day1_inform 1               1 Biological mother <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__visit__day1_inform 2               2 Biological father <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__visit__day1_inform 3               3 Adoptive mother   <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__visit__day1_inform 4               4 Adoptive father   <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__visit__day1_inform 5               5 Custodial mother  <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__visit__day1_inform 6               6 Custodial father  <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ab_g_dyn__visit__day1_inform 7               7 Grandmother       <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type         1     1           On-site           <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type         2     2           Remote            <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type         3     3           Hybrid            <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__visit__day1_inform 1     1           Biological mother <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__visit__day1_inform 2     2           Biological father <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__visit__day1_inform 3     3           Adoptive mother   <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__visit__day1_inform 4     4           Adoptive father   <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__visit__day1_inform 5     5           Custodial mother  <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__visit__day1_inform 6     6           Custodial father  <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ab_g_dyn__visit__day1_inform 7     7           Grandmother       <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 113 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_levels_abcd</span><span class="op">(</span>release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 63,502 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                      value order_level label                    label_es</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1               1 Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2               2 High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3               3 Some college             <span style="color: #BB0000;">NA</span>      </span>
@@ -199,20 +199,20 @@ included.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 63,492 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_levels_hbcd</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17,051 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 90,666 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                                         value order_level label label_es</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_bio_test_ord… 1               1 Cust… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_bio_test_ord… 2               2 Only… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_bio_test_ord… 3               3 Canc… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_bio_test_ord… 4               4 no r… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_bio_c_any_sp… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_bio_c_any_sp… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_bio_c_any_sp… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_bio_c_any_st… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_bio_c_any_st… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_bio_c_any_st… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17,041 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_Nail_type     1               1 <span style="color: #949494;">"</span>\"F… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_Nail_type     2               2 <span style="color: #949494;">"</span>\"T… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_Nail_type     3               3 <span style="color: #949494;">"</span>\"B… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_Nail_type     4               4 <span style="color: #949494;">"</span>\"U… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_test_ordered… 1               1 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_test_ordered… 2               2 <span style="color: #949494;">"</span>\"O… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_test_ordered… 3               3 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_c_any_specim… 1               1 <span style="color: #949494;">"</span>\"P… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_c_any_specim… 0               2 <span style="color: #949494;">"</span>\"N… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_c_any_specim… 3               3 <span style="color: #949494;">"</span>\"Q… <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 90,656 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -224,7 +224,7 @@ included.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

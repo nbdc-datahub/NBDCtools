@@ -15,7 +15,8 @@
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/benchmark_models.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/convert_names_data.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/convert_names_file.html</loc></url>
-<url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/create_bids_sidecar.html</loc></url>
+<url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/create_bids_sidecar_data.html</loc></url>
+<url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/create_bids_sidecar_metadata.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/create_dataset.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/filter_empty_cols.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/filter_empty_rows.html</loc></url>
@@ -25,6 +26,7 @@
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/get_id_cols.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/get_levels.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/get_metadata.html</loc></url>
+<url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/get_releases.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/get_sessions.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/index.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/join_by_identifier.html</loc></url>

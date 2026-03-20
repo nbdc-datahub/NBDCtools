@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,6 +111,31 @@ unique observations.</li>
 <span><span class="co">#&gt; This package is developed by the ABCD Data Analysis, Informatics &amp; Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="release-information">Release information<a class="anchor" aria-label="anchor" href="#release-information"></a>
+</h2>
+<p>Before working with metadata, it is important to know which data
+releases are available for each study. You can use the
+<code><a href="../reference/get_releases.html">get_releases()</a></code> function to retrieve the list of available
+releases:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_releases.html">get_releases</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "6.0" "6.1"</span></span>
+<span><span class="co"># study specific releases</span></span>
+<span><span class="fu"><a href="../reference/get_releases.html">get_releases_abcd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "6.0" "6.1"</span></span>
+<span><span class="fu"><a href="../reference/get_releases.html">get_releases_hbcd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "1.0" "1.1" "2.0"</span></span></code></pre></div>
+<p>We can also check what is the latest release for each study:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_releases.html">get_latest_release</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "6.1"</span></span>
+<span><span class="co"># study specific latest release</span></span>
+<span><span class="fu"><a href="../reference/get_releases.html">get_latest_release_abcd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "6.1"</span></span>
+<span><span class="fu"><a href="../reference/get_releases.html">get_latest_release_hbcd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "2.0"</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
 </h2>
 <p>The data dictionary contains information about all variables in the
@@ -120,12 +145,12 @@ structure of the data dictionary for NBDC studies, see <a href="https://docs.abc
 <div class="section level3">
 <h3 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data dictionary for the ABCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,206 × 44</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,223 × 44</span></span></span>
 <span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
@@ -136,8 +161,8 @@ structure of the data dictionary for NBDC studies, see <a href="https://docs.abc
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,196 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,213 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
@@ -146,32 +171,32 @@ structure of the data dictionary for NBDC studies, see <a href="https://docs.abc
 <span></span>
 <span><span class="co"># Get data dictionary for the HBCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd</a></span><span class="op">(</span><span class="st">"hbcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 48,699 × 30</span></span></span>
-<span><span class="co">#&gt;    study domain     source table_name table_label name  label instruction header</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Nail… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Numb… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Spec… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Any … <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Scre… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  BioSpecim… Biolo… bio_bm_bi… USDTL Nail… bio_… Conf… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 48,689 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 21 more variables: note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   type_level &lt;chr&gt;, type_field &lt;chr&gt;, order_display &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   branching_logic &lt;chr&gt;, label_es &lt;chr&gt;, instruction_es &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   header_es &lt;chr&gt;, note_es &lt;chr&gt;, name_short &lt;chr&gt;, name_stata &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   url_table &lt;chr&gt;, url_warn_use &lt;chr&gt;, url_warn_data &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   url_table_warn_use &lt;chr&gt;, url_table_warn_data &lt;chr&gt;, …</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 96,227 × 33</span></span></span>
+<span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  BioSpecime… <span style="color: #BB0000;">NA</span>         Biolo… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    bio_bm_bi… USDTL Nail… bio_…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 96,217 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 24 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   name_short &lt;chr&gt;, name_stata &lt;chr&gt;, url_table &lt;chr&gt;, url_warn_use &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   url_warn_data &lt;chr&gt;, url_table_warn_use &lt;chr&gt;, url_table_warn_data &lt;chr&gt;, …</span></span></span>
 <span></span>
 <span><span class="co"># Get data dictionary for a specific release</span></span>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd</a></span><span class="op">(</span><span class="st">"abcd"</span>, release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,206 × 44</span></span></span>
 <span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
@@ -183,7 +208,7 @@ structure of the data dictionary for NBDC studies, see <a href="https://docs.abc
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,196 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
@@ -194,22 +219,22 @@ structure of the data dictionary for NBDC studies, see <a href="https://docs.abc
 <span><span class="co"># and the function will return an error message presenting the available</span></span>
 <span><span class="co"># releases</span></span>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd</a></span><span class="op">(</span><span class="st">"abcd"</span>, release <span class="op">=</span> <span class="st">"999.0"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `get_dd()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Invalid release '999.0'. Valid releases are: 6.0, latest</span></span>
-<span><span class="co">#&gt; If you believe this version should exist, it might be the metadata</span></span>
-<span><span class="co">#&gt; is outdated. Please update the `NBDCtoolsData` package to get the latest metadata.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `get_metadata()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Invalid release '999.0'. Valid releases are: 6.0, 6.1</span></span>
+<span><span class="co">#&gt; If you believe this version should exist, your metadata might be outdated.</span></span>
+<span><span class="co">#&gt; Please update the `NBDCtoolsData` package to get the latest metadata.</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="study-specific-functions">Study-specific functions<a class="anchor" aria-label="anchor" href="#study-specific-functions"></a>
 </h3>
 <p>For convenience, you can use study-specific functions that do not
 require specifying the study parameter:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ABCD-specific function</span></span>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd_abcd</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,206 × 44</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,223 × 44</span></span></span>
 <span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
@@ -220,8 +245,8 @@ require specifying the study parameter:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,196 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,213 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
@@ -256,7 +281,7 @@ require specifying the study parameter:</p>
 </h3>
 <p>You can retrieve a subset of the data dictionary for specific
 variables:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data dictionary for specific variables</span></span>
 <span><span class="va">vars_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"ab_g_dyn__visit_dtt"</span>, </span>
@@ -266,7 +291,7 @@ variables:</p>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd</a></span><span class="op">(</span><span class="st">"abcd"</span>, vars <span class="op">=</span> <span class="va">vars_of_interest</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 44</span></span></span>
 <span><span class="co">#&gt;   study domain sub_domain source metric atlas table_name table_label name  label</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_stc   ABCD Stati… ab_g… Desi…</span></span>
@@ -283,7 +308,7 @@ variables:</p>
 </h3>
 <p>You can also retrieve a subset of the data dictionary for specific
 tables:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data dictionary for specific tables</span></span>
 <span><span class="va">tables_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"ab_g_dyn"</span>,</span>
@@ -292,7 +317,7 @@ tables:</p>
 <span><span class="fu"><a href="../reference/get_dd.html">get_dd_abcd</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="va">tables_of_interest</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 73 × 44</span></span></span>
 <span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
@@ -304,7 +329,7 @@ tables:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 63 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
@@ -322,46 +347,46 @@ table for NBDC studies, see <a href="https://docs.abcdstudy.org/latest/documenta
 <div class="section level3">
 <h3 id="basic-usage-1">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage-1"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get levels table for ABCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 63,502 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 63,498 × 5</span></span></span>
 <span><span class="co">#&gt;    name                      value order_level label                    label_es</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1               1 Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2               2 High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3               3 Some college             <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__cohort_edu__cgs 4               4 Bachelor’s degree        <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__cohort_edu__cgs 5               5 Graduate school or prof… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__cohort_grade    0               1 Kindergarten             <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__cohort_grade    1               2 1st grade                <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__cohort_grade    2               3 2nd grade                <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__cohort_grade    3               4 3rd grade                <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_dyn__cohort_grade    4               5 4th grade                <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 63,492 more rows</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1     1           Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2     2           High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3     3           Some college             <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__cohort_edu__cgs 4     4           Bachelor’s degree        <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__cohort_edu__cgs 5     5           Graduate school or prof… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__cohort_grade    0     1           Kindergarten             <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__cohort_grade    1     2           1st grade                <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__cohort_grade    2     3           2nd grade                <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__cohort_grade    3     4           3rd grade                <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_dyn__cohort_grade    4     5           4th grade                <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 63,488 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Get levels table for HBCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels</a></span><span class="op">(</span><span class="st">"hbcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17,051 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 90,666 × 5</span></span></span>
 <span><span class="co">#&gt;    name                                         value order_level label label_es</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_bio_test_ord… 1               1 Cust… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_bio_test_ord… 2               2 Only… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_bio_test_ord… 3               3 Canc… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_bio_test_ord… 4               4 no r… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_bio_c_any_sp… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_bio_c_any_sp… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_bio_c_any_sp… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_bio_c_any_st… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_bio_c_any_st… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_bio_c_any_st… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17,041 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_Nail_type     1               1 <span style="color: #949494;">"</span>\"F… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_Nail_type     2               2 <span style="color: #949494;">"</span>\"T… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_Nail_type     3               3 <span style="color: #949494;">"</span>\"B… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_Nail_type     4               4 <span style="color: #949494;">"</span>\"U… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_test_ordered… 1               1 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_test_ordered… 2               2 <span style="color: #949494;">"</span>\"O… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_test_ordered… 3               3 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_c_any_specim… 1               1 <span style="color: #949494;">"</span>\"P… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_c_any_specim… 0               2 <span style="color: #949494;">"</span>\"N… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_c_any_specim… 3               3 <span style="color: #949494;">"</span>\"Q… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90,656 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Get levels table for a specific release</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels</a></span><span class="op">(</span><span class="st">"abcd"</span>, release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 63,502 × 5</span></span></span>
 <span><span class="co">#&gt;    name                      value order_level label                    label_es</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1               1 Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2               2 High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3               3 Some college             <span style="color: #BB0000;">NA</span>      </span></span>
@@ -377,12 +402,12 @@ table for NBDC studies, see <a href="https://docs.abcdstudy.org/latest/documenta
 <div class="section level3">
 <h3 id="study-specific-functions-1">Study-specific functions<a class="anchor" aria-label="anchor" href="#study-specific-functions-1"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ABCD-specific function</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels_abcd</a></span><span class="op">(</span>release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 63,502 × 5</span></span></span>
 <span><span class="co">#&gt;    name                      value order_level label                    label_es</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__cohort_edu__cgs 1               1 Up to high school (No d… <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__cohort_edu__cgs 2               2 High school diploma/GED  <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__cohort_edu__cgs 3               3 Some college             <span style="color: #BB0000;">NA</span>      </span></span>
@@ -397,68 +422,68 @@ table for NBDC studies, see <a href="https://docs.abcdstudy.org/latest/documenta
 <span></span>
 <span><span class="co"># HBCD-specific function</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels_hbcd</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17,051 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 90,666 × 5</span></span></span>
 <span><span class="co">#&gt;    name                                         value order_level label label_es</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_bio_test_ord… 1               1 Cust… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_bio_test_ord… 2               2 Only… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_bio_test_ord… 3               3 Canc… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_bio_test_ord… 4               4 no r… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_bio_c_any_sp… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_bio_c_any_sp… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_bio_c_any_sp… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_bio_c_any_st… 1               1 posi… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_bio_c_any_st… 0               2 nega… <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_bio_c_any_st… 3               3 QNS   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17,041 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bio_bm_biosample_nails_results_Nail_type     1               1 <span style="color: #949494;">"</span>\"F… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bio_bm_biosample_nails_results_Nail_type     2               2 <span style="color: #949494;">"</span>\"T… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bio_bm_biosample_nails_results_Nail_type     3               3 <span style="color: #949494;">"</span>\"B… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bio_bm_biosample_nails_results_Nail_type     4               4 <span style="color: #949494;">"</span>\"U… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bio_bm_biosample_nails_results_test_ordered… 1               1 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bio_bm_biosample_nails_results_test_ordered… 2               2 <span style="color: #949494;">"</span>\"O… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bio_bm_biosample_nails_results_test_ordered… 3               3 <span style="color: #949494;">"</span>\"C… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bio_bm_biosample_nails_results_c_any_specim… 1               1 <span style="color: #949494;">"</span>\"P… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bio_bm_biosample_nails_results_c_any_specim… 0               2 <span style="color: #949494;">"</span>\"N… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bio_bm_biosample_nails_results_c_any_specim… 3               3 <span style="color: #949494;">"</span>\"Q… <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90,656 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="filtering-by-variables-andor-tables">Filtering by variables and/or tables<a class="anchor" aria-label="anchor" href="#filtering-by-variables-andor-tables"></a>
 </h3>
 <p>As for the data dictionary, you can also retrieve a subset of the
 levels table for specific variables or tables:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get levels for specific categorical variables</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels</a></span><span class="op">(</span><span class="st">"abcd"</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ab_g_dyn__visit_type"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
 <span><span class="co">#&gt;   name                 value order_level label   label_es</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1               1 On-site <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2               2 Remote  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3               3 Hybrid  <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1     1           On-site <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2     2           Remote  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3     3           Hybrid  <span style="color: #BB0000;">NA</span></span></span>
 <span></span>
 <span><span class="co"># Get levels for all categorical variables in specific tables</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels</a></span><span class="op">(</span><span class="st">"abcd"</span>, tables <span class="op">=</span> <span class="st">"ab_g_dyn"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 123 × 5</span></span></span>
 <span><span class="co">#&gt;    name                         value order_level label             label_es</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type         1               1 On-site           <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type         2               2 Remote            <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type         3               3 Hybrid            <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__visit__day1_inform 1               1 Biological mother <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__visit__day1_inform 2               2 Biological father <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__visit__day1_inform 3               3 Adoptive mother   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__visit__day1_inform 4               4 Adoptive father   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__visit__day1_inform 5               5 Custodial mother  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__visit__day1_inform 6               6 Custodial father  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_dyn__visit__day1_inform 7               7 Grandmother       <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type         1     1           On-site           <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type         2     2           Remote            <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type         3     3           Hybrid            <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_dyn__visit__day1_inform 1     1           Biological mother <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_dyn__visit__day1_inform 2     2           Biological father <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_dyn__visit__day1_inform 3     3           Adoptive mother   <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_dyn__visit__day1_inform 4     4           Adoptive father   <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_dyn__visit__day1_inform 5     5           Custodial mother  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_dyn__visit__day1_inform 6     6           Custodial father  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_dyn__visit__day1_inform 7     7           Grandmother       <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 113 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Get levels for a combination of specific variables and tables</span></span>
 <span><span class="fu"><a href="../reference/get_levels.html">get_levels_abcd</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="st">"ab_g_dyn__visit_type"</span>, tables <span class="op">=</span> <span class="st">"ab_g_stc"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 54 × 5</span></span></span>
 <span><span class="co">#&gt;    name                    value order_level label    label_es</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type    1               1 On-site  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type    2               2 Remote   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type    3               3 Hybrid   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_stc__design_famrel 0               1 Single   <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_stc__design_famrel 1               2 Sibling  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_stc__design_famrel 2               3 Twin     <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_stc__design_famrel 3               4 Triplet  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_stc__design_sstwin 0               1 No       <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_stc__design_sstwin 1               2 Yes      <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_stc__cohort_ethn   1               1 Hispanic <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ab_g_dyn__visit_type    1     1           On-site  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ab_g_dyn__visit_type    2     2           Remote   <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ab_g_dyn__visit_type    3     3           Hybrid   <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ab_g_stc__design_famrel 0     1           Single   <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ab_g_stc__design_famrel 1     2           Sibling  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ab_g_stc__design_famrel 2     3           Twin     <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ab_g_stc__design_famrel 3     4           Triplet  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ab_g_stc__design_sstwin 0     1           No       <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ab_g_stc__design_sstwin 1     2           Yes      <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ab_g_stc__cohort_ethn   1     1           Hispanic <span style="color: #BB0000;">NA</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 44 more rows</span></span></span></code></pre></div>
 </div>
 </div>
@@ -470,37 +495,39 @@ that are part of a given release as well as their labels.</p>
 <div class="section level3">
 <h3 id="basic-usage-2">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage-2"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get sessions information for ABCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_sessions.html">get_sessions</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 2</span></span></span>
-<span><span class="co">#&gt;    session_id label   </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ses-00S    Screener</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ses-00A    Baseline</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ses-00M    0.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ses-01A    1 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ses-01M    1.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ses-02A    2 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ses-02M    2.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ses-03A    3 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ses-03M    3.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ses-04A    4 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 16 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    session_id label    order     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ses-00S    Screener     1 <span style="text-decoration: underline;">11</span>867</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ses-00A    Baseline     2 <span style="text-decoration: underline;">11</span>868</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ses-00M    0.5 Year     3 <span style="text-decoration: underline;">11</span>388</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ses-01A    1 Year       4 <span style="text-decoration: underline;">11</span>219</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ses-01M    1.5 Year     5 <span style="text-decoration: underline;">11</span>082</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ses-02A    2 Year       6 <span style="text-decoration: underline;">10</span>973</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ses-02M    2.5 Year     7 <span style="text-decoration: underline;">10</span>253</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ses-03A    3 Year       8 <span style="text-decoration: underline;">10</span>450</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ses-03M    3.5 Year     9  <span style="text-decoration: underline;">9</span>573</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ses-04A    4 Year      10  <span style="text-decoration: underline;">9</span>739</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Get sessions information for HBCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_sessions.html">get_sessions</a></span><span class="op">(</span><span class="st">"hbcd"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
 <span><span class="co">#&gt;   session_id label  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ses-V01    Visit 1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ses-V02    Visit 2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ses-V03    Visit 3</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ses-V03    Visit 3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ses-V04    Visit 4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ses-V05    Visit 5</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="study-specific-functions-2">Study-specific functions<a class="anchor" aria-label="anchor" href="#study-specific-functions-2"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ABCD-specific function (for a specified release)</span></span>
 <span><span class="fu"><a href="../reference/get_sessions.html">get_sessions_abcd</a></span><span class="op">(</span>release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 2</span></span></span>
@@ -538,7 +565,7 @@ retrieves the identifier columns for a given study.</p>
 <div class="section level3">
 <h3 id="basic-usage-3">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage-3"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get identifier columns for ABCD Study (latest release)</span></span>
 <span><span class="fu"><a href="../reference/get_id_cols.html">get_id_cols</a></span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "participant_id" "session_id"</span></span>
@@ -550,7 +577,7 @@ retrieves the identifier columns for a given study.</p>
 <div class="section level3">
 <h3 id="study-specific-functions-3">Study-specific functions<a class="anchor" aria-label="anchor" href="#study-specific-functions-3"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ABCD-specific function (for a specified release)</span></span>
 <span><span class="fu"><a href="../reference/get_id_cols.html">get_id_cols_abcd</a></span><span class="op">(</span>release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "participant_id" "session_id"</span></span>
@@ -566,12 +593,12 @@ retrieves the identifier columns for a given study.</p>
 <p>The <code><a href="../reference/get_metadata.html">get_metadata()</a></code> function is the low-level function
 that is used by all specific metadata functions. You can use it directly
 to retrieve any type of metadata:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data dictionary (same as get_dd)</span></span>
 <span><span class="fu"><a href="../reference/get_metadata.html">get_metadata</a></span><span class="op">(</span><span class="st">"abcd"</span>, type <span class="op">=</span> <span class="st">"dd"</span>, release <span class="op">=</span> <span class="st">"6.0"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 83,206 × 44</span></span></span>
 <span><span class="co">#&gt;    study domain      sub_domain source metric atlas table_name table_label name </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
@@ -583,7 +610,7 @@ to retrieve any type of metadata:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 83,196 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span></span>
@@ -594,27 +621,27 @@ to retrieve any type of metadata:</p>
 <span><span class="fu"><a href="../reference/get_metadata.html">get_metadata</a></span><span class="op">(</span><span class="st">"abcd"</span>, type <span class="op">=</span> <span class="st">"levels"</span>, vars <span class="op">=</span> <span class="st">"ab_g_dyn__visit_type"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
 <span><span class="co">#&gt;   name                 value order_level label   label_es</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1               1 On-site <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2               2 Remote  <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3               3 Hybrid  <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ab_g_dyn__visit_type 1     1           On-site <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ab_g_dyn__visit_type 2     2           Remote  <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ab_g_dyn__visit_type 3     3           Hybrid  <span style="color: #BB0000;">NA</span></span></span>
 <span></span>
 <span><span class="co"># Get sessions table (same as get_sessions)</span></span>
 <span><span class="fu"><a href="../reference/get_metadata.html">get_metadata</a></span><span class="op">(</span><span class="st">"abcd"</span>, type <span class="op">=</span> <span class="st">"sessions"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 2</span></span></span>
-<span><span class="co">#&gt;    session_id label   </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ses-00S    Screener</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ses-00A    Baseline</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ses-00M    0.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ses-01A    1 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ses-01M    1.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ses-02A    2 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ses-02M    2.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ses-03A    3 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ses-03M    3.5 Year</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ses-04A    4 Year  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 16 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    session_id label    order     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ses-00S    Screener     1 <span style="text-decoration: underline;">11</span>867</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ses-00A    Baseline     2 <span style="text-decoration: underline;">11</span>868</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ses-00M    0.5 Year     3 <span style="text-decoration: underline;">11</span>388</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ses-01A    1 Year       4 <span style="text-decoration: underline;">11</span>219</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ses-01M    1.5 Year     5 <span style="text-decoration: underline;">11</span>082</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ses-02A    2 Year       6 <span style="text-decoration: underline;">10</span>973</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ses-02M    2.5 Year     7 <span style="text-decoration: underline;">10</span>253</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ses-03A    3 Year       8 <span style="text-decoration: underline;">10</span>450</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ses-03M    3.5 Year     9  <span style="text-decoration: underline;">9</span>573</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ses-04A    4 Year      10  <span style="text-decoration: underline;">9</span>739</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -627,7 +654,7 @@ to retrieve any type of metadata:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

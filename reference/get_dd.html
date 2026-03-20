@@ -29,7 +29,7 @@ should not be set by the user."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,9 +128,9 @@ included.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,206 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,223 × 44</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
@@ -141,8 +141,8 @@ included.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,196 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,213 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
@@ -174,7 +174,7 @@ included.</p></dd>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ab_g_dyn__visit_dtt"</span>, <span class="st">"ab_g_dyn__visit_age"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 44</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   study domain sub_domain source metric atlas table_name table_label name  label</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Core  ABCD … Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g… Visi…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 34 more variables: instruction &lt;chr&gt;, header &lt;chr&gt;, note &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
@@ -188,7 +188,7 @@ included.</p></dd>
 <span class="r-in"><span><span class="fu">get_dd</span><span class="op">(</span><span class="st">"abcd"</span>, tables <span class="op">=</span> <span class="st">"ab_g_dyn"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 24 × 44</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
@@ -200,7 +200,7 @@ included.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
@@ -208,9 +208,9 @@ included.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   name_deap &lt;chr&gt;, name_redcap &lt;chr&gt;, name_redcap_exp &lt;chr&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_dd_abcd</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,206 × 44</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 83,223 × 44</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    study domain      sub_domain source metric atlas table_name table_label name </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
@@ -221,8 +221,8 @@ included.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Core  ABCD (Gene… Standard … Gener… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    ab_g_dyn   ABCD Dynam… ab_g…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,196 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;glue&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 83,213 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more variables: label &lt;chr&gt;, instruction &lt;chr&gt;, header &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, unit &lt;chr&gt;, type_var &lt;chr&gt;, type_data &lt;chr&gt;, type_level &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   type_field &lt;chr&gt;, order_display &lt;chr&gt;, branching_logic &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   label_es &lt;chr&gt;, instruction_es &lt;chr&gt;, header_es &lt;chr&gt;, note_es &lt;chr&gt;,</span></span>
@@ -261,7 +261,7 @@ included.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

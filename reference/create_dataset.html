@@ -41,7 +41,7 @@ should not be set by the user."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,6 +113,7 @@ should not be set by the user.</p>
 <span>  release <span class="op">=</span> <span class="st">"latest"</span>,</span>
 <span>  format <span class="op">=</span> <span class="st">"parquet"</span>,</span>
 <span>  bypass_ram_check <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  ignore_version_mismatch <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  categ_to_factor <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  add_labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  value_to_label <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -183,6 +184,20 @@ estimated RAM before running this function.</p>
 <p>This argument is only used for the ABCD study, as the HBCD data
 is small enough to be loaded without RAM issues with most personal computers.
 As HBCD data grows in the future, this may change.</p></dd>
+
+
+<dt id="arg-ignore-version-mismatch">ignore_version_mismatch<a class="anchor" aria-label="anchor" href="#arg-ignore-version-mismatch"></a></dt>
+<dd><p>logical. Whether to ignore version mismatch
+between data files and metadata (dd, levels, etc)
+and proceed with joining anyway (default: <code>FALSE</code>).</p>
+<p>The function performs a version check by reading a specific file from the
+<code>dir_data</code> directory to determine the latest session in the data files.
+This session is then compared to the expected latest session for the
+specified <code>release</code>. If there is a mismatch, a warning or error
+is raised depending on the value of this parameter.
+If set to <code>FALSE</code>, the function will abort on version mismatch. If set to
+<code>TRUE</code>, a warning will be issued, and the function will proceed with
+joining the data.</p></dd>
 
 
 <dt id="arg-categ-to-factor">categ_to_factor<a class="anchor" aria-label="anchor" href="#arg-categ-to-factor"></a></dt>
@@ -326,7 +341,7 @@ shadow matrix from the data using <code><a href="https://naniar.njtierney.com/re
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
