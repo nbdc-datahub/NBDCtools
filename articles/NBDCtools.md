@@ -114,10 +114,10 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [283ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [287ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [184ms]
+#> ✔ Joining 8 variables from 3 tables... [182ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
@@ -125,7 +125,7 @@ create_dataset(
 #> ✔ Converting categorical variables to factors. [115ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [220ms]
+#> ✔ Adding variable and value labels. [223ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.02
 #>   minutes.
@@ -203,18 +203,18 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [67ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [66ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables (1 main; 7 additional) from 3 tables
-#> ✔ Joining 15 variables (8 main; 7 additional) from 3 tables [99ms]
+#> ✔ Joining 15 variables (8 main; 7 additional) from 3 tables [100ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [111ms]
+#> ✔ Converting categorical variables to factors. [109ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [217ms]
+#> ✔ Adding variable and value labels. [215ms]
 #> 
 #> ✔ A dataset with 7 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
@@ -297,27 +297,27 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [31ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [33ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [151ms]
+#> ✔ Joining 8 variables from 3 tables... [146ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [110ms]
+#> ✔ Converting categorical variables to factors. [109ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [222ms]
+#> ✔ Adding variable and value labels. [220ms]
 #> 
 #> ℹ Converting categorical variables' numeric values to labels.
-#> ✔ Converting categorical variables' numeric values to labels. [19ms]
+#> ✔ Converting categorical variables' numeric values to labels. [18ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
-#> ✔ Converting categorical missingness/non-response codes to "NA". [87ms]
+#> ✔ Converting categorical missingness/non-response codes to "NA". [86ms]
 #> 
 #> ℹ Converting time variables to <hms> class.
-#> ✔ Converting time variables to <hms> class. [83ms]
+#> ✔ Converting time variables to <hms> class. [81ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
@@ -440,24 +440,24 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [31ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [32ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [149ms]
+#> ✔ Joining 8 variables from 3 tables... [147ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [111ms]
+#> ✔ Converting categorical variables to factors. [110ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [220ms]
+#> ✔ Adding variable and value labels. [217ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
 #> ℹ Argument `missing_codes` is passed to `transf_value_to_na()`.
 #> ✔ Argument `missing_codes` is passed to `transf_value_to_na()`. [11ms]
 #> 
-#> ℹ Converting categorical missingness/non-response codes to "NA".✔ Converting categorical missingness/non-response codes to "NA". [111ms]
+#> ℹ Converting categorical missingness/non-response codes to "NA".✔ Converting categorical missingness/non-response codes to "NA". [109ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
@@ -509,21 +509,21 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [31ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [32ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [148ms]
+#> ✔ Joining 8 variables from 3 tables... [146ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [110ms]
+#> ✔ Converting categorical variables to factors. [109ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [214ms]
+#> ✔ Adding variable and value labels. [213ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
-#> ✔ Converting categorical missingness/non-response codes to "NA". [87ms]
+#> ✔ Converting categorical missingness/non-response codes to "NA". [86ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.

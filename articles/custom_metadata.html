@@ -156,10 +156,12 @@ package.</p>
 <p>For users who have their own metadata, they can add the metadata to
 the NBDCtools by using the <code><a href="../reference/add_custom_metadata.html">add_custom_metadata()</a></code> function.
 This function will add the metadata to the NBDCtools environment, and
-make it available for use in various functions. The metadata should be
-can be used on <code>dd</code>, <code>levels</code>, and
-<code>sessions</code> tables, and should have the same format as the
-original metadata tables.</p>
+make it available for use in various functions. The metadata can be used
+on <code>dd</code>, <code>levels</code>, and <code>sessions</code>
+tables, and should have the same format as the original metadata tables.
+Users are not expected to add all three tables, they can choose to add
+only one or two tables, and leave the other tables empty, and the
+function will only update the tables that are provided.</p>
 <p>Now we can add previously loaded metadata to the NBDCtools
 environment:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -225,14 +227,14 @@ pre-release metadata is created but not in the
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[71ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[70ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 1 variable from 1 table...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[334ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[328ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -249,7 +251,7 @@ pre-release metadata is created but not in the
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[139ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[135ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -294,7 +296,7 @@ metadata, and use the custom metadata to prepare the data.</p>
 metadata, and use the custom metadata to create the dataset again.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># fix the label in the dd</span></span>
-<span><span class="va">dd_fixed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_dd.html">get_dd_abcd</a></span><span class="op">(</span>release <span class="op">=</span> <span class="st">"custom"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">dd_fixed</span> <span class="op">&lt;-</span> <span class="va">dds</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    label <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span></span>
 <span>      <span class="va">name</span> <span class="op">==</span> <span class="st">"mr_y_qc__raw__dmri__r01__series_t"</span>,</span>
@@ -315,10 +317,10 @@ metadata, and use the custom metadata to create the dataset again.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.<span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[26ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.<span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[27ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BBBB;">ℹ</span> Joining 1 variable from 1 table...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[131ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[127ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -326,7 +328,7 @@ metadata, and use the custom metadata to create the dataset again.</p>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[115ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[132ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[125ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">7</span> rows and <span style="color: #0000BB;">3</span> columns has been created. Time used: <span style="color: #0000BB;">0.01</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>

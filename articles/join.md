@@ -109,7 +109,7 @@ join_tabulated(
   )
 )
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [109ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [126ms]
 #> 
 #> ℹ Joining 8 variables from 3 tables...
 #> ✔ Joining 8 variables from 3 tables... [307ms]

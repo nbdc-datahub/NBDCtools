@@ -88,8 +88,11 @@ NBDCtools by using the
 [`add_custom_metadata()`](https://software.nbdc-datahub.org/NBDCtools/reference/add_custom_metadata.md)
 function. This function will add the metadata to the NBDCtools
 environment, and make it available for use in various functions. The
-metadata should be can be used on `dd`, `levels`, and `sessions` tables,
-and should have the same format as the original metadata tables.
+metadata can be used on `dd`, `levels`, and `sessions` tables, and
+should have the same format as the original metadata tables. Users are
+not expected to add all three tables, they can choose to add only one or
+two tables, and leave the other tables empty, and the function will only
+update the tables that are provided.
 
 Now we can add previously loaded metadata to the NBDCtools environment:
 
@@ -161,14 +164,14 @@ mydata <- create_dataset(
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "custom" to join data
 #> ℹ Custom release specified. Skipping data and metadata version check.
-#> ✔ Using metadata "abcd" version "custom" to join data [71ms]
+#> ✔ Using metadata "abcd" version "custom" to join data [70ms]
 #> 
 #> 
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Joining 1 variable from 1 table...
 #> 
-#> ✔ Joining 1 variable from 1 table... [334ms]
+#> ✔ Joining 1 variable from 1 table... [328ms]
 #> 
 #> 
 #> 
@@ -185,7 +188,7 @@ mydata <- create_dataset(
 #> 
 #> ℹ Adding variable and value labels.
 #> 
-#> ✔ Adding variable and value labels. [139ms]
+#> ✔ Adding variable and value labels. [135ms]
 #> 
 #> 
 #> 
@@ -238,7 +241,7 @@ to create the dataset again.
 
 ``` r
 # fix the label in the dd
-dd_fixed <- get_dd_abcd(release = "custom") |>
+dd_fixed <- dds |>
   mutate(
     label = if_else(
       name == "mr_y_qc__raw__dmri__r01__series_t",
@@ -259,10 +262,10 @@ mydata_fixed <- create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "custom" to join data
-#> ℹ Custom release specified. Skipping data and metadata version check.✔ Using metadata "abcd" version "custom" to join data [26ms]
+#> ℹ Custom release specified. Skipping data and metadata version check.✔ Using metadata "abcd" version "custom" to join data [27ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 1 variable from 1 table...
-#> ✔ Joining 1 variable from 1 table... [131ms]
+#> ✔ Joining 1 variable from 1 table... [127ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
@@ -270,7 +273,7 @@ mydata_fixed <- create_dataset(
 #> ✔ Converting categorical variables to factors. [115ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [132ms]
+#> ✔ Adding variable and value labels. [125ms]
 #> 
 #> ✔ A dataset with 7 rows and 3 columns has been created. Time used: 0.01
 #>   minutes.
