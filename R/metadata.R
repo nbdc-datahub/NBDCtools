@@ -57,6 +57,9 @@ get_latest_release_hbcd <- function() {
 #' @return character. The resolved release version number.
 #' @noRd
 resolve_release <- function(study, release) {
+  if (release == "custom") {
+    return("custom")
+  }
   if (release == "latest") {
     return(get_latest_release(study))
   }
@@ -111,16 +114,23 @@ get_metadata <- function(
   tables = NULL,
   type = "dd"
 ) {
-  check_data_pkg_installed()
-  chk::chk_string(study)
-  chk::chk_subset(study, names(get_data_pkg("dds")))
+  # check_data_pkg_installed()
   chk::chk_string(release)
+  chk::chk_string(study)
+  if (release != "custom") {
+    chk::chk_subset(study, names(get_data_pkg("dds")))
+  }
 
   release <- resolve_release(study, release)
-
+  if (release == "custom") {
+    study <- "custom_study"
+  }
   if (!is.null(vars)) {
     chk::chk_character(vars)
-    vars_valid <- get_data_pkg("dds")[[study]][[release]] |>
+    vars_valid <- get_data_pkg(
+      x = "dds",
+      is_custom = release == "custom"
+    )[[study]][[release]] |>
       pull(name)
     if (!chk::vld_subset(vars, vars_valid)) {
       chk::abort_chk(
@@ -133,7 +143,10 @@ get_metadata <- function(
   }
   if (!is.null(tables)) {
     chk::chk_character(tables)
-    tables_valid <- get_data_pkg("dds")[[study]][[release]] |>
+    tables_valid <- get_data_pkg(
+      x = "dds",
+      is_custom = release == "custom"
+    )[[study]][[release]] |>
       pull(table_name)
     if (!chk::vld_subset(tables, tables_valid)) {
       chk::abort_chk(
@@ -149,9 +162,9 @@ get_metadata <- function(
 
   meta <- switch(
     type,
-    dd = get_data_pkg("dds")[[study]][[release]],
-    levels = get_data_pkg("levels")[[study]][[release]],
-    sessions = get_data_pkg("sessions")[[study]][[release]]
+    dd = get_data_pkg("dds", is_custom = release == "custom")[[study]][[release]],
+    levels = get_data_pkg("levels", is_custom = release == "custom")[[study]][[release]],
+    sessions = get_data_pkg("sessions", is_custom = release == "custom")[[study]][[release]]
   )
 
   if (is.null(meta)) {
@@ -168,7 +181,7 @@ get_metadata <- function(
 
   vars_combined <- c(
     vars,
-    get_data_pkg("dds")[[study]][[release]] |>
+    get_data_pkg("dds", is_custom = release == "custom")[[study]][[release]] |>
       filter(
         table_name %in% tables
       ) |>
@@ -386,14 +399,14 @@ get_sessions_hbcd <- function(...) {
   get_sessions(study = "hbcd", ...)
 }
 
-get_session_latest <- function(study, release) {
-  chk::chk_string(study)
-  chk::chk_subset(study, names(get_data_pkg("sessions")))
-  chk::chk_string(release)
-  session_latest <- get_data_pkg("session_latest")[[study]]
-  chk::chk_subset(release, names(session_latest))
-  session_latest[[length(session_latest)]]
-}
+# get_session_latest <- function(study, release) {
+#   chk::chk_string(study)
+#   chk::chk_subset(study, names(get_data_pkg("sessions")))
+#   chk::chk_string(release)
+#   session_latest <- get_data_pkg("session_latest")[[study]]
+#   chk::chk_subset(release, names(session_latest))
+#   session_latest[[length(session_latest)]]
+# }
 
 # identifier columns -----------------------------------------------------------
 
@@ -456,4 +469,74 @@ get_id_cols_hbcd <- function(...) {
     {.fn get_id_cols_hbcd}. It is set to {.val hbcd} by default.")
   }
   get_id_cols(study = "hbcd", ...)
+}
+
+
+# custom metadata ---------------------------------------------------------
+
+#' Add custom metadata
+#' @description This function allows users to add custom metadata
+#' (data dictionary, levels table, sessions table) to the package environment.
+#' This can be useful for users who want to use their own metadata instead of
+#' the ones provided by the package, or for testing and development purposes.
+#' @param dd data frame. Custom data dictionary.
+#' Should have the same structure as the data dictionary provided by
+#' the package.
+#' @param levels data frame. Custom levels table.
+#' @param sessions data frame. Custom sessions table.
+#' @details
+#' The custom metadata will be stored in the package environment can be
+#' accessed with any function that contains the "release" argument with
+#' `release = "custom"`. For example,
+#' `get_dd(study = "abcd", release = "custom")`.
+#'
+#' The default value for `dd`, `levels`, and `sessions` is `NULL`.
+#' If any of them is not `NULL`, it will be added to the package environment.
+#' If the argument is `NULL`, the corresponding metadata will not be added.
+#' @return invisible `TRUE`.
+#' @export
+#'
+#' @examples
+#' add_custom_metadata(
+#'   dd = tibble::tibble(
+#'     name = "var1",
+#'     table_name = "table1",
+#'     identifier_columns = "participant_id"
+#'   )
+#' )
+#' get_dd(study = "abcd", release = "custom")
+add_custom_metadata <- function(
+  dd = NULL,
+  levels = NULL,
+  sessions = NULL
+) {
+  data_env <- getOption("NBDCtoolsData.env")
+  if(!is.environment(data_env)) {
+    chk::abort_chk(
+      "The NBDCtoolsData package environment is not set. Restart your R session. ",
+      "If it happens again. Please report this issue to the package developers."
+    )
+  }
+  if (!is.null(dd)) {
+    if (!is.data.frame(dd)) {
+      chk::abort_chk("The 'dd' argument must be a data frame.")
+    }
+    cli::cli_inform(c(i = "Added custom data dictionary to NBDCtools"))
+    assign("custom_dds", dd, envir = data_env)
+  }
+  if (!is.null(levels)) {
+    if (!is.data.frame(levels)) {
+      chk::abort_chk("The 'levels' argument must be a data frame.")
+    }
+     cli::cli_inform(c(i = "Added custom levels table to NBDCtools"))
+    assign("custom_levels", levels, envir = data_env)
+  }
+  if (!is.null(sessions)) {
+    if (!is.data.frame(sessions)) {
+      chk::abort_chk("The 'sessions' argument must be a data frame.")
+    }
+    cli::cli_inform(c(i = "Added custom sessions table to NBDCtools"))
+    assign("custom_sessions", sessions, envir = data_env)
+  }
+  invisible(TRUE)
 }

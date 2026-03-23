@@ -149,10 +149,10 @@ shadow_bind_data <- function(
 #' )
 #' shadow_replace_binding_missing(data, shadow)
 shadow_replace_binding_missing <- function(
-  data,
-  shadow,
-  id_cols = union(get_id_cols_abcd(), get_id_cols_hbcd()),
-  replacement = "Missing due to joining"
+    data,
+    shadow,
+    id_cols = union(get_id_cols_abcd(), get_id_cols_hbcd()),
+    replacement = "Missing due to joining"
 ) {
   check_data(data)
   check_data(shadow)

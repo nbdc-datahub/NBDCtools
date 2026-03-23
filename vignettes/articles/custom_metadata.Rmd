@@ -1,0 +1,171 @@
+---
+title: "Custom metadata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+Sys.setenv("_R_CHECK_CRAN_INCOMING_" = "true") # always build vignette like on CRAN
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we will demonstrate some advanced use cases of 
+adding custom metadata to the NBDCtools enviornment, and use custom
+metadata in various functions. 
+
+## Prepare data
+
+> **NOTE:** Before running the code in this vignette, we assume that you have
+already read the [Get started](NBDCtools.html) vignette or the [Join
+data](join.html) vignette, and know how to load the data for a given NBDC study
+release.
+
+To load `NBDCtools`, use the following command:
+
+```{r setup}
+library(NBDCtools)
+suppressPackageStartupMessages({
+  library(dplyr)
+})
+```
+
+To demonstrate the custom metadata utilities, we load some trimmed ABCD
+metadata files and simulated ABCD files that are included with the package.
+
+metadata files:
+
+```{r}
+# assign the metadata objects to global and we will use later
+purrr::walk(
+  c("lst_dds", "lst_levels", "lst_sessions"),
+  ~ {
+    value <- readRDS(system.file(
+      "extdata", "meta_internal", glue::glue("{.x}.rds"),
+      package = "NBDCtools"
+    ))[[1]][[1]]
+    assign(gsub("lst_", "", .x), value = value, envir = sys.frame(which = 0))
+  }
+)
+dds[1:5, 1:5]
+levels[1:5, ]
+sessions[1:5, ]
+```
+
+Simulated data files:
+```{r}
+dir_abcd <- system.file("extdata", "phenotype", package = "NBDCtools")
+list.files(dir_abcd)
+```
+
+
+## Add custom metadata
+
+For users who have their own metadata, they can add the metadata to the NBDCtools
+by using the `add_custom_metadata()` function. This function will add the 
+metadata to the NBDCtools environment, and make it available for use in various functions. 
+The metadata should be can be used on `dd`, `levels`, and `sessions` tables, 
+and should have the same format as the original metadata tables.
+
+Now we can add previously loaded metadata to the NBDCtools environment:
+```{r}
+add_custom_metadata(
+  dd = dds,
+  levels = levels,
+  sessions = sessions
+)
+```
+
+## get custom metadata
+
+To test if the custom metadata is added successfully, 
+we can use the `get_<x>` function to retrieve the metadata from the 
+NBDCtools environment. Please read [Metadata](metadata.html) vignette for more 
+details on how to use the `get_<x>` functions.
+
+The key of using custom metadata is to specify the **release** to be `"custom"`.
+
+```{r}
+get_dd_abcd(release = "custom")[1:5, 1:5]
+```
+
+When using the custom metadata, `study` argument is still needed but it can be 
+either `"abcd"` or `"hbcd"`.
+
+```{r}
+get_dd_hbcd(release = "custom")[1:5, 1:5]
+```
+
+We can see they give the same `dd` table. 
+
+## Use custom metadata in data preparation
+
+The `release = "custom"` can be used in most functions that accept 
+`release` argument.
+Custom metadata can be very useful when preparing the data, especially for internal 
+use when the pre-release metadata is created but not in the `NBDCtoolsData` package yet. 
+
+
+```{r}
+mydata <- create_dataset(
+  study = "abcd",
+  dir = dir_abcd,
+  release = "custom",
+  vars = c("mr_y_qc__raw__dmri__r01__series_t")
+)
+mydata
+```
+
+
+## Use case
+
+One use case could be when one uses the release metadata, e.g. `get_get_dd_abcd()`,
+and finds some errors in the metadata, they can fix the errors and add the 
+fixed metadata as custom metadata, and use the custom metadata to prepare the data.
+
+For example, the label of the dataset we just created for 
+`mr_y_qc__raw__dmri__r01__series_t` is `Diffusion MRI (run 1): Series time`. 
+
+```{r}
+attr(mydata$mr_y_qc__raw__dmri__r01__series_t, "label")
+```
+
+It is stored in the `dd`
+
+```{r}
+get_dd_abcd(release = "custom") |> 
+  filter(name == "mr_y_qc__raw__dmri__r01__series_t") |>
+  select(name, label)
+```
+
+If we find the label is not correct, we can fix it in the `dd` table, and add the
+fixed `dd` as custom metadata, and use the custom metadata to create the dataset again.
+
+```{r}
+# fix the label in the dd
+dd_fixed <- get_dd_abcd(release = "custom") |>
+  mutate(
+    label = if_else(
+      name == "mr_y_qc__raw__dmri__r01__series_t",
+      "my custom label",
+      label
+    )
+  )
+# add the fixed dd as custom metadata
+# we can leave levels and sessions empty so they will not be changed
+add_custom_metadata(dd = dd_fixed)
+# create the dataset again
+mydata_fixed <- create_dataset(
+  study = "abcd",
+  dir = dir_abcd,
+  release = "custom",
+  vars = c("mr_y_qc__raw__dmri__r01__series_t")
+)
+attr(mydata_fixed$mr_y_qc__raw__dmri__r01__series_t, "label")
+```

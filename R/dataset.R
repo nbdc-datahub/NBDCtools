@@ -300,7 +300,9 @@ create_dataset <- function(
       args = list(data = data, shadow = data_shadow),
       args_user = args_user
     ) |>
-      filter_empty_rows()
+      filter_empty_rows(
+        id_cols = union(get_id_cols_abcd(release = release), get_id_cols_hbcd(release = release))
+      )
   }
   time_end <- Sys.time()
   time_used <- difftime(time_end, time_start, units = "mins")

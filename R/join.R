@@ -112,11 +112,13 @@ join_tabulated <- function(
   bypass_ram_check = FALSE,
   ignore_version_mismatch = FALSE
 ) {
-  check_data_pkg_installed()
 
   chk::chk_dir(dir_data)
+  chk::chk_string(release)
   chk::chk_string(study)
-  chk::chk_subset(study, names(get_data_pkg("dds")))
+  if (release != "custom") {
+    chk::chk_subset(study, names(get_data_pkg("dds")))
+  }
   if (!is.null(vars)) chk::chk_character(vars)
   if (!is.null(tables)) chk::chk_character(tables)
   if (!is.null(vars_add)) chk::chk_character(vars_add)
@@ -147,7 +149,6 @@ join_tabulated <- function(
     format = format,
     ignore_version_mismatch = ignore_version_mismatch
   )
-
   dd <- get_dd(study, release, vars, tables)
   n_vars <- length(dd$name)
 
@@ -325,6 +326,19 @@ check_data_metadata_version <- function(
     format,
     ignore_version_mismatch = FALSE) {
   release <- resolve_release(study, release)
+  if (release == "custom") {
+    cli::cli_inform(c(
+      "i" = "Custom release specified. Skipping data and metadata version check."
+    ))
+    return(invisible(TRUE))
+  }
+  if (!requireNamespace("NBDCtoolsData", quietly = TRUE)) {
+    cli::cli_inform(c(
+      "i" = "NBDCtoolsData package is not installed. Skipping data and metadata
+      version check."
+    ))
+    return(invisible(TRUE))
+  }
   if (packageVersion("NBDCtoolsData") < "3.0.1") {
     cli::cli_inform(c(
       "i" = "Data and metadata version check is only available with

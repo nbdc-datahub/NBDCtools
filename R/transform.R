@@ -22,16 +22,19 @@ transf_factor <- function(
   release = "latest"
 ) {
   chk::chk_data(data)
+  chk::chk_string(release)
   chk::chk_string(study)
-  chk::chk_subset(study, names(get_data_pkg("dds")))
-
+  if (release != "custom") {
+    chk::chk_subset(study, names(get_data_pkg("dds")))
+  }
   dd <- get_dd(study = study, release = release)
   levels <- get_levels(study = study, release = release)
   sessions <- get_sessions(study = study, release = release)
 
   col_names <- check_dd(
     col_names = colnames(data),
-    dd = dd
+    dd = dd,
+    release = release
   )
   cols_factor <- dd |>
     filter(
@@ -133,10 +136,12 @@ transf_label <- function(
   chk::chk_logical(add_var_label)
   chk::chk_logical(add_value_label)
   chk::chk_character(id_cols_labels)
-  chk::chk_subset(
-    names(id_cols_labels),
-    union(get_id_cols_abcd(), get_id_cols_hbcd())
-  )
+  if (release != "custom") {
+    chk::chk_subset(
+      names(id_cols_labels),
+      union(get_id_cols_abcd(release = release), get_id_cols_hbcd(release = release))
+    )
+  }
 
   if (!add_var_label && !add_value_label) {
     cli::cli_abort(
@@ -151,7 +156,8 @@ transf_label <- function(
   col_names <- colnames(data)
   col_names <- check_dd(
     col_names = col_names,
-    dd = dd
+    dd = dd,
+    release = release
   )
   # factor cols
   cols_factor <- dd |>

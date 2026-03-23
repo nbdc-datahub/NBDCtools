@@ -67,7 +67,8 @@ create_bids_sidecar_data <- function(
   col_names <- check_dd(
     col_names = colnames(data),
     dd = dd,
-    silent = TRUE
+    silent = TRUE,
+    release = release
   )
   data <- data |>
     select(all_of(col_names))
@@ -114,13 +115,13 @@ create_bids_sidecar_data <- function(
 #'   tables = c("ph_y_mctq")
 #' )
 create_bids_sidecar_metadata <- function(
-  dd,
-  levels,
-  vars = NULL,
-  tables = NULL,
-  metadata_description = "Dataset exported using NBDCtools",
-  path_out = NULL,
-  pretty = TRUE
+    dd,
+    levels,
+    vars = NULL,
+    tables = NULL,
+    metadata_description = "Dataset exported using NBDCtools",
+    path_out = NULL,
+    pretty = TRUE
 ) {
   chk::chk_data(dd)
   chk::chk_data(levels)
@@ -170,10 +171,10 @@ create_bids_sidecar_metadata <- function(
 #' @noRd
 #' @return list list_bids
 bids_build_json <- function(
-  data,
-  dd,
-  metadata_description,
-  var_coding = "values"
+    data,
+    dd,
+    metadata_description,
+    var_coding = "values"
 ) {
   cli::cli_inform(c(i = "Building BIDS ..."))
   data <- data |>
@@ -230,11 +231,11 @@ bids_build_json <- function(
 #' @noRd
 #' @keywords internal
 build_bids_json2 <- function(
-  dd,
-  levels,
-  vars = NULL,
-  tables = NULL,
-  metadata_description = "Dataset exported using NBDCtools"
+    dd,
+    levels,
+    vars = NULL,
+    tables = NULL,
+    metadata_description = "Dataset exported using NBDCtools"
 ) {
   chk::chk_data(dd)
   chk::chk_data(levels)
@@ -983,12 +984,13 @@ check_type_label <- function(
 #' @param dd tibble. The data dictionary table.
 #' @param col_names character vector. The column names of the data
 #' @param silent logical. Whether to print warning/stop messages.
+#' @param release character. The release of the data dictionary to check against.
 #' @return A vector of strings, the column names of the data that
 #' are in the data dictionary.
 #' @noRd
-check_dd <- function(dd, col_names, silent = FALSE) {
+check_dd <- function(dd, col_names, release, silent = FALSE) {
   in_dd <- col_names %in%
-    c(dd$name, union(get_id_cols_abcd(), get_id_cols_hbcd()))
+    c(dd$name, union(get_id_cols_abcd(release = release), get_id_cols_hbcd(release = release)))
 
   if (!all(in_dd) && !silent) {
     cli::cli_warn(
@@ -1238,13 +1240,31 @@ get_data_pkg <- function(
       "levels",
       "sessions",
       "session_latest"
-    )) {
+    ),
+    is_custom = FALSE) {
   x <- rlang::arg_match(x)
-  data_name <- paste0("lst_", x)
+  if (is_custom && x == "session_latest") {
+    cli::cli_abort("Custom metadata does not support `session_latest`.")
+  }
+  data_name <- ifelse(is_custom, paste0("custom_", x), paste0("lst_", x))
   if(!exists(data_name, envir = getOption("NBDCtoolsData.env"))) {
+    if (is_custom) {
+      cli::cli_abort(c(
+        "Custom metadata `{x}` is not loaded. Please run `add_custom_metadata()` first."
+      ))
+    }
     check_data_pkg_installed()
   }
-  return(get(data_name, envir = getOption("NBDCtoolsData.env")))
+  if (is_custom) {
+    return(
+      list(
+        custom_study = list(
+          custom = get(data_name, envir = getOption("NBDCtoolsData.env"))
+        )
+      )
+    )
+  }
+  get(data_name, envir = getOption("NBDCtoolsData.env"))
 }
 
 # Memory and loading time estimation -------------------------------------------

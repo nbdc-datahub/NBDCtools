@@ -15,6 +15,7 @@ articles:
   - articles/transformation
   - articles/filter
   - articles/metadata
+  - articles/custom_metadata
   - articles/shadow
   - articles/benchmark
 reference:
@@ -49,6 +50,7 @@ reference:
     - get_metadata
     - matches("^get_dd|^get_levels|^get_sessions|^get_all_releases|^get_latest_release")
     - matches("^get_id_cols")
+    - matches("^add_custom_metadata")
 
   - title: "Utility functions"
     desc: Utility functions for working with data in the NBDC Data Hub.
