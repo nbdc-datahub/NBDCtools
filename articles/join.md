@@ -109,10 +109,10 @@ join_tabulated(
   )
 )
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [126ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [128ms]
 #> 
 #> ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [307ms]
+#> ✔ Joining 8 variables from 3 tables... [322ms]
 #> 
 #> # A tibble: 10 × 10
 #>    participant_id session_id mr_y_qc__raw__dmri__r01__ser…¹ ab_g_dyn__visit_type

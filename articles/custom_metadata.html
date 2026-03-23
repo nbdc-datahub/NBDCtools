@@ -227,14 +227,14 @@ pre-release metadata is created but not in the
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[70ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[77ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 1 variable from 1 table...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[328ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[343ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -245,13 +245,13 @@ pre-release metadata is created but not in the
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[118ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[125ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[135ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[144ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -273,9 +273,9 @@ pre-release metadata is created but not in the
 <h2 id="use-case">Use case<a class="anchor" aria-label="anchor" href="#use-case"></a>
 </h2>
 <p>One use case could be when one uses the release metadata,
-e.g. <code>get_get_dd_abcd()</code>, and finds some errors in the
-metadata, they can fix the errors and add the fixed metadata as custom
-metadata, and use the custom metadata to prepare the data.</p>
+e.g. <code><a href="../reference/get_dd.html">get_dd_abcd()</a></code>, and finds some errors in the metadata,
+they can fix the errors and add the fixed metadata as custom metadata,
+and use the custom metadata to prepare the data.</p>
 <p>For example, the label of the dataset we just created for
 <code>mr_y_qc__raw__dmri__r01__series_t</code> is
 <code>Diffusion MRI (run 1): Series time</code>.</p>
@@ -296,7 +296,7 @@ metadata, and use the custom metadata to prepare the data.</p>
 metadata, and use the custom metadata to create the dataset again.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># fix the label in the dd</span></span>
-<span><span class="va">dd_fixed</span> <span class="op">&lt;-</span> <span class="va">dds</span> <span class="op">|&gt;</span></span>
+<span><span class="va">dd_fixed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_dd.html">get_dd_abcd</a></span><span class="op">(</span>release <span class="op">=</span> <span class="st">"custom"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    label <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span></span>
 <span>      <span class="va">name</span> <span class="op">==</span> <span class="st">"mr_y_qc__raw__dmri__r01__series_t"</span>,</span>
@@ -317,18 +317,18 @@ metadata, and use the custom metadata to create the dataset again.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.<span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[27ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Custom release specified. Skipping data and metadata version check.<span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"custom"</span> to join data <span style="color: #B2B2B2;">[28ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BBBB;">ℹ</span> Joining 1 variable from 1 table...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[127ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 1 variable from 1 table... <span style="color: #B2B2B2;">[133ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…<span style="color: #00BB00;">✔</span> Loading the data from the <span style="color: #0000BB;">"/home/runner/.cache/R/renv/library/NBDCtools-2ca88</span>…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Converting categorical variables to factors.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[115ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Converting categorical variables to factors. <span style="color: #B2B2B2;">[133ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding variable and value labels.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[125ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Adding variable and value labels. <span style="color: #B2B2B2;">[149ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> A dataset with <span style="color: #0000BB;">7</span> rows and <span style="color: #0000BB;">3</span> columns has been created. Time used: <span style="color: #0000BB;">0.01</span></span></span>
 <span><span class="co">#&gt;   minutes.</span></span>
