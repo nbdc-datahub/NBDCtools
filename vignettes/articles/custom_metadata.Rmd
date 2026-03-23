@@ -127,7 +127,7 @@ mydata
 
 ## Use case
 
-One use case could be when one uses the release metadata, e.g. `get_get_dd_abcd()`,
+One use case could be when one uses the release metadata, e.g. `get_dd_abcd()`,
 and finds some errors in the metadata, they can fix the errors and add the 
 fixed metadata as custom metadata, and use the custom metadata to prepare the data.
 
@@ -151,7 +151,7 @@ fixed `dd` as custom metadata, and use the custom metadata to create the dataset
 
 ```{r}
 # fix the label in the dd
-dd_fixed <- dds |>
+dd_fixed <- get_dd_abcd(release = "custom") |>
   mutate(
     label = if_else(
       name == "mr_y_qc__raw__dmri__r01__series_t",
