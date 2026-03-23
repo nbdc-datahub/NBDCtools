@@ -10,6 +10,8 @@
   data](https://software.nbdc-datahub.org/NBDCtools/articles/filter.md):
 - [Work with
   metadata](https://software.nbdc-datahub.org/NBDCtools/articles/metadata.md):
+- [Custom
+  metadata](https://software.nbdc-datahub.org/NBDCtools/articles/custom_metadata.md):
 - [Work with shadow
   matrices](https://software.nbdc-datahub.org/NBDCtools/articles/shadow.md):
 - [NBDCtools

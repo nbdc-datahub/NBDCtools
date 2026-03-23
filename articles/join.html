@@ -38,6 +38,7 @@
     <li><a class="dropdown-item" href="../articles/transformation.html">Transform data</a></li>
     <li><a class="dropdown-item" href="../articles/filter.html">Filter data</a></li>
     <li><a class="dropdown-item" href="../articles/metadata.html">Work with metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/custom_metadata.html">Custom metadata</a></li>
     <li><a class="dropdown-item" href="../articles/shadow.html">Work with shadow matrices</a></li>
     <li><a class="dropdown-item" href="../articles/benchmark.html">NBDCtools Benchmark</a></li>
   </ul>
@@ -147,13 +148,13 @@ variables and/or tables specified in the these four arguments:</p>
 specify the main variables and/or tables of interest. They will be
 extracted from the respective files on disk and will be joined by the
 identifier columns into a single data frame in memory. The used join
-operation is a <code>full_join()</code>, i.e., the resulting data frame
+operation is a <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">full_join()</a></code>, i.e., the resulting data frame
 retains all rows that have at least one non-missing value in the chosen
 variables/tables.</p>
 <p>The <code>vars_add</code> and <code>tables_add</code> arguments are
 used to specify additional variables and/or tables to be joined with the
 main variables/tables of interest. The used join operation for adding
-these variables is a <code>left_join()</code>, i.e., only values for
+these variables is a <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join()</a></code>, i.e., only values for
 already existing rows will be added and no new rows will be created.
 This is useful for adding variables to the dataset that are important
 for a given analysis but are not the main variables of interest (e.g.,
@@ -177,10 +178,10 @@ for the main variables of interest selected using <code>vars</code> and
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"6.0"</span> to join data</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"6.0"</span> to join data <span style="color: #B2B2B2;">[107ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using metadata <span style="color: #0000BB;">"abcd"</span> version <span style="color: #0000BB;">"6.0"</span> to join data <span style="color: #B2B2B2;">[109ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Joining 8 variables from 3 tables...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[297ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Joining 8 variables from 3 tables... <span style="color: #B2B2B2;">[307ms]</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 10</span></span></span>
 <span><span class="co">#&gt;    participant_id session_id mr_y_qc__raw__dmri__r01__ser…¹ ab_g_dyn__visit_type</span></span>

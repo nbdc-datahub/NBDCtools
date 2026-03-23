@@ -76,20 +76,22 @@ the variables and/or tables specified in the these four arguments:
 The `vars` and `tables` arguments are used to specify the main variables
 and/or tables of interest. They will be extracted from the respective
 files on disk and will be joined by the identifier columns into a single
-data frame in memory. The used join operation is a `full_join()`, i.e.,
-the resulting data frame retains all rows that have at least one
+data frame in memory. The used join operation is a
+[`full_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html),
+i.e., the resulting data frame retains all rows that have at least one
 non-missing value in the chosen variables/tables.
 
 The `vars_add` and `tables_add` arguments are used to specify additional
 variables and/or tables to be joined with the main variables/tables of
 interest. The used join operation for adding these variables is a
-`left_join()`, i.e., only values for already existing rows will be added
-and no new rows will be created. This is useful for adding variables to
-the dataset that are important for a given analysis but are not the main
-variables of interest (e.g., design/nesting or demographic information).
-By left-joining these variables, one avoids creating new rows that
-contain only missing values for the main variables of interest selected
-using `vars` and `tables`.
+[`left_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html),
+i.e., only values for already existing rows will be added and no new
+rows will be created. This is useful for adding variables to the dataset
+that are important for a given analysis but are not the main variables
+of interest (e.g., design/nesting or demographic information). By
+left-joining these variables, one avoids creating new rows that contain
+only missing values for the main variables of interest selected using
+`vars` and `tables`.
 
 ``` r
 join_tabulated(
@@ -107,10 +109,10 @@ join_tabulated(
   )
 )
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [107ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [109ms]
 #> 
 #> ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [297ms]
+#> ✔ Joining 8 variables from 3 tables... [307ms]
 #> 
 #> # A tibble: 10 × 10
 #>    participant_id session_id mr_y_qc__raw__dmri__r01__ser…¹ ab_g_dyn__visit_type

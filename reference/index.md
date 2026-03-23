@@ -96,6 +96,8 @@ Data Hub.
   [`get_id_cols_abcd()`](https://software.nbdc-datahub.org/NBDCtools/reference/get_id_cols.md)
   [`get_id_cols_hbcd()`](https://software.nbdc-datahub.org/NBDCtools/reference/get_id_cols.md)
   : Get identifier columns
+- [`add_custom_metadata()`](https://software.nbdc-datahub.org/NBDCtools/reference/add_custom_metadata.md)
+  : Add custom metadata
 
 ## Utility functions
 

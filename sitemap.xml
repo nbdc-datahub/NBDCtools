@@ -2,6 +2,7 @@
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/404.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/NBDCtools.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/benchmark.html</loc></url>
+<url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/custom_metadata.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/filter.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/index.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/articles/join.html</loc></url>
@@ -12,6 +13,7 @@
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/index.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/news/index.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/NBDCtools-package.html</loc></url>
+<url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/add_custom_metadata.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/benchmark_models.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/convert_names_data.html</loc></url>
 <url><loc>https://software.nbdc-datahub.org/NBDCtools/reference/convert_names_file.html</loc></url>

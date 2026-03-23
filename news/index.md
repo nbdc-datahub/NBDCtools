@@ -1,6 +1,6 @@
 # Changelog
 
-## NBDCtools 1.0.3
+## NBDCtools 1.1.0
 
 ### New Features
 
@@ -22,6 +22,12 @@
   session IDs for that release. If this file is not found, users will
   get a warning message and futher validation is skipped. If the file is
   found but the session IDs do not match, an error is raised.
+- Added
+  [`add_custom_metadata()`](https://software.nbdc-datahub.org/NBDCtools/reference/add_custom_metadata.md)
+  function to allow users to add their own metadata to the NBDCtools
+  environment. This is useful for users who have their own metadata. A
+  new vignette “Add custom metadata” has been added to demonstrate how
+  to use this function.
 
 ### Other Changes
 

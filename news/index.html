@@ -23,6 +23,7 @@
     <li><a class="dropdown-item" href="../articles/transformation.html">Transform data</a></li>
     <li><a class="dropdown-item" href="../articles/filter.html">Filter data</a></li>
     <li><a class="dropdown-item" href="../articles/metadata.html">Work with metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/custom_metadata.html">Custom metadata</a></li>
     <li><a class="dropdown-item" href="../articles/shadow.html">Work with shadow matrices</a></li>
     <li><a class="dropdown-item" href="../articles/benchmark.html">NBDCtools Benchmark</a></li>
   </ul></li>
@@ -49,15 +50,16 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.3" id="nbdctools-103">NBDCtools 1.0.3<a class="anchor" aria-label="anchor" href="#nbdctools-103"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="nbdctools-110">NBDCtools 1.1.0<a class="anchor" aria-label="anchor" href="#nbdctools-110"></a></h2>
 <div class="section level3">
-<h3 id="new-features-1-0-3">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-0-3"></a></h3>
+<h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
 <ul><li>Added <code><a href="../reference/create_bids_sidecar_metadata.html">create_bids_sidecar_metadata()</a></code> function to create BIDS sidecar from metadata without using any processed datasets. The old <code>create_bids_sidecar()</code> function is now renamed to <code><a href="../reference/create_bids_sidecar_data.html">create_bids_sidecar_data()</a></code>.</li>
 <li>Added <code>get_all_releases()</code> and <code><a href="../reference/get_releases.html">get_latest_release()</a></code> functions to retrieve information about all data releases, the latest release, respectively.</li>
 <li>Added a validation step in <code><a href="../reference/join_tabulated.html">join_tabulated()</a></code> that checks if the specified release version is the same as the data version of files in the <code>dir_data</code> directory. This is done by searching for a special file by study that contains the correct session IDs for that release. If this file is not found, users will get a warning message and futher validation is skipped. If the file is found but the session IDs do not match, an error is raised.</li>
+<li>Added <code><a href="../reference/add_custom_metadata.html">add_custom_metadata()</a></code> function to allow users to add their own metadata to the NBDCtools environment. This is useful for users who have their own metadata. A new vignette “Add custom metadata” has been added to demonstrate how to use this function.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="other-changes-1-0-3">Other Changes<a class="anchor" aria-label="anchor" href="#other-changes-1-0-3"></a></h3>
+<h3 id="other-changes-1-1-0">Other Changes<a class="anchor" aria-label="anchor" href="#other-changes-1-1-0"></a></h3>
 <ul><li>Updated instructions on how to install install the package from a release downloaded tarball file in the README.md.</li>
 </ul></div>
 </div>
