@@ -70,8 +70,10 @@ list.files(dir_abcd)
 For users who have their own metadata, they can add the metadata to the NBDCtools
 by using the `add_custom_metadata()` function. This function will add the 
 metadata to the NBDCtools environment, and make it available for use in various functions. 
-The metadata should be can be used on `dd`, `levels`, and `sessions` tables, 
-and should have the same format as the original metadata tables.
+The metadata can be used on `dd`, `levels`, and `sessions` tables, 
+and should have the same format as the original metadata tables. Users 
+are not expected to add all three tables, they can choose to add only one or two tables, 
+and leave the other tables empty, and the function will only update the tables that are provided.
 
 Now we can add previously loaded metadata to the NBDCtools environment:
 ```{r}
@@ -149,7 +151,7 @@ fixed `dd` as custom metadata, and use the custom metadata to create the dataset
 
 ```{r}
 # fix the label in the dd
-dd_fixed <- get_dd_abcd(release = "custom") |>
+dd_fixed <- dds |>
   mutate(
     label = if_else(
       name == "mr_y_qc__raw__dmri__r01__series_t",
