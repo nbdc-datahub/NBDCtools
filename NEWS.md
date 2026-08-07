@@ -1,3 +1,14 @@
+# NBDCtools 1.1.1
+
+## Bug fixes
+
+- Fixed double import of `utils` package in `DESCRIPTION` file.
+- Fixed arrangement of variable levels in `create_bids_sidecar_metadata()` function
+- Fixed an error in `check_dd()` function that caused an error when using a release version.
+  When trying to get `id_cols`, the release number was not used in study-specific way,
+  which caused a search in both studies, and caused release not found in the second study.
+  Now the search is done in a study-specific way.
+
 # NBDCtools 1.1.0
 
 ## New Features

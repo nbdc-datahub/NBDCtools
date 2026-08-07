@@ -33,7 +33,7 @@ These functions retrieve all release version number(s)
 for a given study, or the latest release version number.
 }
 \examples{
-\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 get_releases("abcd")
 get_releases("hbcd")
 get_latest_release("abcd")

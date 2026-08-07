@@ -23,7 +23,7 @@ A tibble with the filtered data.
 This function filters out columns that are empty.
 }
 \examples{
-\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 data <- tibble::tibble(
   participant_id = c("sub-001", "sub-002", "sub-003"),
   session_id = c("ses-001", "ses-001", "ses-002"),

@@ -22,7 +22,7 @@ or \code{.csv} file.
 }
 \description{
 Reads in a \code{.tsv} or \code{.csv} file with correctly formatted column types.
-Uses \code{\link[readr:read_delim]{readr::read_tsv()}}/\code{\link[readr:read_delim]{readr::read_csv()}} internally and specifies the
+Uses \code{\link[readr:read_tsv]{readr::read_tsv()}}/\code{\link[readr:read_csv]{readr::read_csv()}} internally and specifies the
 column types explicitly using the \code{col_types} argument utilizing information
 from the data dictionary. Returns only the identifier columns and the columns
 specified in the data dictionary, i.e., all columns in the file that are not

@@ -35,7 +35,7 @@ for a given study and release version. Allows for filtering by
 variables and tables.
 }
 \examples{
-\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 get_metadata("abcd", type = "levels")
 
 get_metadata("hbcd", release = "1.0")

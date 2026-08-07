@@ -68,6 +68,7 @@ create_bids_sidecar_data <- function(
     col_names = colnames(data),
     dd = dd,
     silent = TRUE,
+    study = study,
     release = release
   )
   data <- data |>
@@ -331,7 +332,7 @@ build_bids_json2 <- function(
 
     var_levels <- levels_filtered |>
       filter(name == var_name) |>
-      arrange(order_level, value)
+      arrange(as.numeric(order_level), value)
 
     if (nrow(var_levels) > 0) {
       levels_list <- as.list(as.character(var_levels$label))
@@ -985,12 +986,13 @@ check_type_label <- function(
 #' @param col_names character vector. The column names of the data
 #' @param silent logical. Whether to print warning/stop messages.
 #' @param release character. The release of the data dictionary to check against.
+#' @param study character. The study of the data dictionary to check against.
 #' @return A vector of strings, the column names of the data that
 #' are in the data dictionary.
 #' @noRd
-check_dd <- function(dd, col_names, release, silent = FALSE) {
-  in_dd <- col_names %in%
-    c(dd$name, union(get_id_cols_abcd(release = release), get_id_cols_hbcd(release = release)))
+check_dd <- function(dd, col_names, study, release, silent = FALSE) {
+  id_cols <- get_id_cols(study = study, release = release)
+  in_dd <- col_names %in% c(dd$name, id_cols)
 
   if (!all(in_dd) && !silent) {
     cli::cli_warn(

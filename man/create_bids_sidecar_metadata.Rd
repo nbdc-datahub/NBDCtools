@@ -54,7 +54,7 @@ please use \code{\link[=create_bids_sidecar_metadata]{create_bids_sidecar_metada
 }
 }
 \examples{
-\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 create_bids_sidecar_metadata(
   dd = get_dd("abcd"),
   levels = get_levels("abcd"),

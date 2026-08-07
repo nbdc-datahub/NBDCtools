@@ -34,6 +34,7 @@ transf_factor <- function(
   col_names <- check_dd(
     col_names = colnames(data),
     dd = dd,
+    study = study,
     release = release
   )
   cols_factor <- dd |>
@@ -138,8 +139,8 @@ transf_label <- function(
   chk::chk_character(id_cols_labels)
   if (release != "custom") {
     chk::chk_subset(
-      names(id_cols_labels),
-      union(get_id_cols_abcd(release = release), get_id_cols_hbcd(release = release))
+      get_id_cols(study = study, release = release),
+      names(id_cols_labels)
     )
   }
 
@@ -157,6 +158,7 @@ transf_label <- function(
   col_names <- check_dd(
     col_names = col_names,
     dd = dd,
+    study = study,
     release = release
   )
   # factor cols
@@ -321,7 +323,7 @@ label_vars <- function(data, dd, col_names) {
 get_var_levels <- function(col_name, levels) {
   var_level_df <- levels |>
     filter(name == {{ col_name }}) |>
-    arrange(order_level)
+    arrange(as.numeric(order_level))
   if (nrow(var_level_df) == 0) {
     cli::cli_abort(
       "No levels found for {.var {col_name}} in levels table, please check"

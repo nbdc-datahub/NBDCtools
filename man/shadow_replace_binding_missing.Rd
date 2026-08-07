@@ -42,7 +42,7 @@ use the same column order and the same row order (by ID columns) in both
 dataframes, which saves some processing time.
 }
 \examples{
-\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("NBDCtoolsData", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 shadow <- tibble::tibble(
   participant_id = c("1", "2", "3"),
   session_id = c("1", "2", "3"),
