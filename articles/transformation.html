@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Transform data • NBDCtools</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Transform data">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBDCtools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,26 +156,26 @@ given study.</p>
 <code><a href="https://strengejacke.github.io/sjlabelled/reference/get_label.html" class="external-link">sjlabelled::get_label()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="https://strengejacke.github.io/sjlabelled/reference/get_label.html" class="external-link">get_label</a></span><span class="op">(</span><span class="va">data_transf</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                    participant_id </span></span>
-<span><span class="co">#&gt;                                                          "Participant identifier" </span></span>
-<span><span class="co">#&gt;                                                                        session_id </span></span>
-<span><span class="co">#&gt;                                                                "Event identifier" </span></span>
-<span><span class="co">#&gt;                                                              ab_g_dyn__visit_type </span></span>
-<span><span class="co">#&gt;                    "Visit information: Type of event (In-person, remote, hybrid)" </span></span>
-<span><span class="co">#&gt;                                                            ab_g_dyn__cohort_grade </span></span>
-<span><span class="co">#&gt; "Cohort description: Current school grade [Cross-listed: ab_p_demo__ed__yth_001]" </span></span>
-<span><span class="co">#&gt;                                                          ab_g_dyn__visit__day1_dt </span></span>
-<span><span class="co">#&gt;                                           "Visit information (day 1): Visit date" </span></span>
-<span><span class="co">#&gt;                                                              ab_g_stc__gen_pc__01 </span></span>
-<span><span class="co">#&gt;                         "Genetics: First principal component of genetic ancestry" </span></span>
-<span><span class="co">#&gt;                                                               ab_g_dyn__visit_age </span></span>
-<span><span class="co">#&gt;                        "Visit information: Youth's age at the start of the event" </span></span>
-<span><span class="co">#&gt;                                                              ab_g_dyn__visit_days </span></span>
-<span><span class="co">#&gt;                                         "Visit information: Number of visit days" </span></span>
-<span><span class="co">#&gt;                                                 mr_y_qc__raw__dmri__r01__series_t </span></span>
-<span><span class="co">#&gt;                                              "Diffusion MRI (run 1): Series time" </span></span>
-<span><span class="co">#&gt;                                                               ab_g_dyn__visit_dtt </span></span>
-<span><span class="co">#&gt;                      "Visit information: Date and time at the start of the event"</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                                participant_id </span></span>
+<span><span class="co">#&gt;                                                      "Participant identifier" </span></span>
+<span><span class="co">#&gt;                                                                    session_id </span></span>
+<span><span class="co">#&gt;                                                            "Event identifier" </span></span>
+<span><span class="co">#&gt;                                                          ab_g_dyn__visit_type </span></span>
+<span><span class="co">#&gt;                "Visit information: Type of visit (In-person, remote, hybrid)" </span></span>
+<span><span class="co">#&gt;                                                        ab_g_dyn__cohort_grade </span></span>
+<span><span class="co">#&gt; "Cohort description: Current school grade [Cross-listed: le_l_sedaadm_grade]" </span></span>
+<span><span class="co">#&gt;                                                      ab_g_dyn__visit__day1_dt </span></span>
+<span><span class="co">#&gt;                                       "Visit information: Visit date (Day 1)" </span></span>
+<span><span class="co">#&gt;                                                          ab_g_stc__gen_pc__01 </span></span>
+<span><span class="co">#&gt;                     "Genetics: First principal component of genetic ancestry" </span></span>
+<span><span class="co">#&gt;                                                           ab_g_dyn__visit_age </span></span>
+<span><span class="co">#&gt;                    "Visit information: Youth's age at the start of the event" </span></span>
+<span><span class="co">#&gt;                                                          ab_g_dyn__visit_days </span></span>
+<span><span class="co">#&gt;                                     "Visit information: Number of visit days" </span></span>
+<span><span class="co">#&gt;                                             mr_y_qc__raw__dmri__r01__series_t </span></span>
+<span><span class="co">#&gt;                                          "Diffusion MRI (Run 1): Series time" </span></span>
+<span><span class="co">#&gt;                                                           ab_g_dyn__visit_dtt </span></span>
+<span><span class="co">#&gt;                  "Visit information: Date and time at the start of the event"</span></span></code></pre></div>
 <p>To inspect the <em>value labels</em>, we can use
 <code><a href="https://strengejacke.github.io/sjlabelled/reference/get_labels.html" class="external-link">sjlabelled::get_labels()</a></code> function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -433,7 +433,7 @@ example, we can ignore all columns that start with
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

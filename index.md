@@ -33,6 +33,7 @@ To install the stable version of the main package from CRAN, and the
 data package from `r-universe`, use the following command:
 
 ``` r
+
 install.packages("NBDCtools")
 install.packages("NBDCtoolsData", repos = "https://nbdc-datahub.r-universe.dev")
 ```
@@ -42,6 +43,7 @@ To install the *latest version* of the packages from
 command:
 
 ``` r
+
 if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
@@ -56,6 +58,7 @@ processing shadow matrices. To install all the dependencies, use the
 following command:
 
 ``` r
+
 install.packages("NBDCtools", dependencies = TRUE)
 # or some specific dependencies
 install.packages("naniar") # e.g. shadow matrix processing
@@ -66,6 +69,7 @@ number in the `remotes::install_github()` call. For example, to install
 version 1.0.0, use the following command:
 
 ``` r
+
 remotes::install_github("nbdc-datahub/NBDCtools@v1.0.0")
 remotes::install_github("nbdc-datahub/NBDCtoolsData@v1.0.0")
 ```
@@ -89,6 +93,7 @@ target environment. Then, use the following command to install the
 packages from the local tarball files:
 
 ``` r
+
 install.packages("path/to/NBDCtools_x.y.z.tar.gz", repos = NULL, type = "source")
 install.packages("path/to/NBDCtoolsData_x.y.z.tar.gz", repos = NULL, type = "source")
 ```

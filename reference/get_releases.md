@@ -33,11 +33,11 @@ character. The latest release version number(s) of the specified study.
 
 ``` r
 get_releases("abcd")
-#> [1] "6.0" "6.1"
+#> [1] "6.0" "6.1" "7.0"
 get_releases("hbcd")
 #> [1] "1.0" "1.1" "2.0"
 get_latest_release("abcd")
-#> [1] "6.1"
+#> [1] "7.0"
 get_latest_release("hbcd")
 #> [1] "2.0"
 ```

@@ -17,6 +17,7 @@ various functions.
 To load `NBDCtools`, use the following command:
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -32,6 +33,7 @@ package.
 metadata files:
 
 ``` r
+
 # assign the metadata objects to global and we will use later
 purrr::walk(
   c("lst_dds", "lst_levels", "lst_sessions"),
@@ -75,6 +77,7 @@ sessions[1:5, ]
 Simulated data files:
 
 ``` r
+
 dir_abcd <- system.file("extdata", "phenotype", package = "NBDCtools")
 list.files(dir_abcd)
 #> [1] "ab_g_dyn.parquet"           "ab_g_stc.parquet"          
@@ -97,6 +100,7 @@ update the tables that are provided.
 Now we can add previously loaded metadata to the NBDCtools environment:
 
 ``` r
+
 add_custom_metadata(
   dd = dds,
   levels = levels,
@@ -119,6 +123,7 @@ The key of using custom metadata is to specify the **release** to be
 `"custom"`.
 
 ``` r
+
 get_dd_abcd(release = "custom")[1:5, 1:5]
 #> # A tibble: 5 × 5
 #>   study domain         sub_domain         source  metric
@@ -134,6 +139,7 @@ When using the custom metadata, `study` argument is still needed but it
 can be either `"abcd"` or `"hbcd"`.
 
 ``` r
+
 get_dd_hbcd(release = "custom")[1:5, 1:5]
 #> # A tibble: 5 × 5
 #>   study domain         sub_domain         source  metric
@@ -155,6 +161,7 @@ the data, especially for internal use when the pre-release metadata is
 created but not in the `NBDCtoolsData` package yet.
 
 ``` r
+
 mydata <- create_dataset(
   study = "abcd",
   dir = dir_abcd,
@@ -164,14 +171,14 @@ mydata <- create_dataset(
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "custom" to join data
 #> ℹ Custom release specified. Skipping data and metadata version check.
-#> ✔ Using metadata "abcd" version "custom" to join data [77ms]
+#> ✔ Using metadata "abcd" version "custom" to join data [75ms]
 #> 
 #> 
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Joining 1 variable from 1 table...
 #> 
-#> ✔ Joining 1 variable from 1 table... [343ms]
+#> ✔ Joining 1 variable from 1 table... [367ms]
 #> 
 #> 
 #> 
@@ -182,13 +189,13 @@ mydata <- create_dataset(
 #> 
 #> ℹ Converting categorical variables to factors.
 #> 
-#> ✔ Converting categorical variables to factors. [125ms]
+#> ✔ Converting categorical variables to factors. [77ms]
 #> 
 #> 
 #> 
 #> ℹ Adding variable and value labels.
 #> 
-#> ✔ Adding variable and value labels. [144ms]
+#> ✔ Adding variable and value labels. [93ms]
 #> 
 #> 
 #> 
@@ -220,6 +227,7 @@ For example, the label of the dataset we just created for
 `Diffusion MRI (run 1): Series time`.
 
 ``` r
+
 attr(mydata$mr_y_qc__raw__dmri__r01__series_t, "label")
 #> Diffusion MRI (run 1): Series time
 ```
@@ -227,6 +235,7 @@ attr(mydata$mr_y_qc__raw__dmri__r01__series_t, "label")
 It is stored in the `dd`
 
 ``` r
+
 get_dd_abcd(release = "custom") |> 
   filter(name == "mr_y_qc__raw__dmri__r01__series_t") |>
   select(name, label)
@@ -241,6 +250,7 @@ and add the fixed `dd` as custom metadata, and use the custom metadata
 to create the dataset again.
 
 ``` r
+
 # fix the label in the dd
 dd_fixed <- get_dd_abcd(release = "custom") |>
   mutate(
@@ -266,15 +276,15 @@ mydata_fixed <- create_dataset(
 #> ℹ Custom release specified. Skipping data and metadata version check.✔ Using metadata "abcd" version "custom" to join data [28ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 1 variable from 1 table...
-#> ✔ Joining 1 variable from 1 table... [133ms]
+#> ✔ Joining 1 variable from 1 table... [107ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [133ms]
+#> ✔ Converting categorical variables to factors. [77ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [149ms]
+#> ✔ Adding variable and value labels. [84ms]
 #> 
 #> ✔ A dataset with 7 rows and 3 columns has been created. Time used: 0.01
 #>   minutes.

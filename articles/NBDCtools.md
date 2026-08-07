@@ -70,6 +70,7 @@ options.
 To load `NBDCtools`, use the following command:
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -85,6 +86,7 @@ syntax.
 We can use the following command to inspect the simulated data files:
 
 ``` r
+
 dir_abcd <- system.file("extdata", "phenotype", package = "NBDCtools")
 list.files(dir_abcd)
 #> [1] "ab_g_dyn.parquet"           "ab_g_stc.parquet"          
@@ -97,6 +99,7 @@ function to load data from the files in `dir_abcd` with selected
 variables of interest.
 
 ``` r
+
 vars <- c(
   "ab_g_dyn__visit_type", 
   "ab_g_dyn__cohort_grade", 
@@ -114,18 +117,18 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [293ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [303ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [192ms]
+#> ✔ Joining 8 variables from 3 tables... [198ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [122ms]
+#> ✔ Converting categorical variables to factors. [89ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [229ms]
+#> ✔ Adding variable and value labels. [173ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.02
 #>   minutes.
@@ -185,6 +188,7 @@ For example, if we only specify the `mr_y_qc__raw__dmri` variable in
 rows in the data:
 
 ``` r
+
 create_dataset(
   dir_data = dir_abcd,
   study = "abcd",
@@ -203,18 +207,18 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [72ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [47ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables (1 main; 7 additional) from 3 tables
-#> ✔ Joining 15 variables (8 main; 7 additional) from 3 tables [106ms]
+#> ✔ Joining 15 variables (8 main; 7 additional) from 3 tables [129ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [116ms]
+#> ✔ Converting categorical variables to factors. [84ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [223ms]
+#> ✔ Adding variable and value labels. [143ms]
 #> 
 #> ✔ A dataset with 7 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
@@ -287,6 +291,7 @@ Here is an example of adding these additional transformations to the
 function:
 
 ``` r
+
 create_dataset(
   dir_data = dir_abcd,
   study = "abcd",
@@ -300,26 +305,26 @@ create_dataset(
 #> ✔ Using metadata "abcd" version "6.0" to join data [32ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [152ms]
+#> ✔ Joining 8 variables from 3 tables... [150ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [114ms]
+#> ✔ Converting categorical variables to factors. [83ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [233ms]
+#> ✔ Adding variable and value labels. [145ms]
 #> 
 #> ℹ Converting categorical variables' numeric values to labels.
-#> ✔ Converting categorical variables' numeric values to labels. [20ms]
+#> ✔ Converting categorical variables' numeric values to labels. [46ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
-#> ✔ Converting categorical missingness/non-response codes to "NA". [93ms]
+#> ✔ Converting categorical missingness/non-response codes to "NA". [86ms]
 #> 
 #> ℹ Converting time variables to <hms> class.
-#> ✔ Converting time variables to <hms> class. [86ms]
+#> ✔ Converting time variables to <hms> class. [56ms]
 #> 
-#> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.02
+#> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
 #> # A tibble: 10 × 10
 #>    participant_id session_id ab_g_dyn__visit_type ab_g_dyn__cohort_grade
@@ -351,6 +356,7 @@ data. Using the `bind_shadow = TRUE` argument, users can append the
 shadow matrix as additional columns to the end of the data frame.
 
 ``` r
+
 create_dataset(
   dir_data = dir_abcd,
   study = "abcd",
@@ -380,6 +386,7 @@ HBCD study datasets:
   instead:
 
   ``` r
+
   create_dataset(
     dir_data = dir_abcd,
     study = "abcd",
@@ -431,6 +438,7 @@ do so by passing the `missing_codes` argument to the
 function as follows:
 
 ``` r
+
 create_dataset(
   dir_data = dir_abcd,
   study = "abcd",
@@ -440,24 +448,24 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [34ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [33ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [155ms]
+#> ✔ Joining 8 variables from 3 tables... [152ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [117ms]
+#> ✔ Converting categorical variables to factors. [88ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [223ms]
+#> ✔ Adding variable and value labels. [148ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
 #> ℹ Argument `missing_codes` is passed to `transf_value_to_na()`.
-#> ✔ Argument `missing_codes` is passed to `transf_value_to_na()`. [11ms]
+#> ✔ Argument `missing_codes` is passed to `transf_value_to_na()`. [12ms]
 #> 
-#> ℹ Converting categorical missingness/non-response codes to "NA".✔ Converting categorical missingness/non-response codes to "NA". [111ms]
+#> ℹ Converting categorical missingness/non-response codes to "NA".✔ Converting categorical missingness/non-response codes to "NA". [136ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.
@@ -486,6 +494,7 @@ prints out the message that indicating which additional arguments are
 passed to the low-level functions:
 
 ``` r
+
 #> ℹ Argument `missing_codes` is passed to `transf_value_to_na()`.
 ```
 
@@ -500,6 +509,7 @@ function, it will be ignored and the returned data will be the same as
 if we did not pass this argument at all:
 
 ``` r
+
 create_dataset(
   dir_data = dir_abcd,
   study = "abcd",
@@ -509,21 +519,21 @@ create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [32ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [59ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [147ms]
+#> ✔ Joining 8 variables from 3 tables... [122ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [111ms]
+#> ✔ Converting categorical variables to factors. [83ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [223ms]
+#> ✔ Adding variable and value labels. [159ms]
 #> 
 #> ℹ Converting categorical missingness/non-response codes to "NA".
-#> ✔ Converting categorical missingness/non-response codes to "NA". [91ms]
+#> ✔ Converting categorical missingness/non-response codes to "NA". [111ms]
 #> 
 #> ✔ A dataset with 10 rows and 10 columns has been created. Time used: 0.01
 #>   minutes.

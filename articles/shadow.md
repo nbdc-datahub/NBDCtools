@@ -22,6 +22,7 @@ For demonstration purposes, we load a simulated HBCD dataset and shadow
 matrix that are included with the package.
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -103,6 +104,7 @@ by default).
   resulting data frame.
 
 ``` r
+
 shadow_bind_data(
   data = data,
   shadow = shadow
@@ -141,6 +143,7 @@ set `naniar_shadow = TRUE`.
 > following command:
 
 ``` r
+
 if (!requireNamespace("naniar", quietly = TRUE)) {
   install.packages("naniar")
 }
@@ -150,6 +153,7 @@ To create a shadow matrix using `naniar`, you can use the following
 command:
 
 ``` r
+
 shadow_bind_data(
   data = data,
   shadow = NULL, # no shadow matrix provided
@@ -200,6 +204,7 @@ and the shadow matrix.
 Here is a simplified example of this scenario:
 
 ``` r
+
 my_table1 <- dplyr::tibble(
   participant_id = c("sub-001", "sub-002"),
   session_id = c("ses-001", "ses-002"),
@@ -233,6 +238,7 @@ When binding these two tables together, we will get the following
 result:
 
 ``` r
+
 id_table <- dplyr::full_join(
   dplyr::select(my_table1, participant_id, session_id, run_id),
   dplyr::select(my_table2, participant_id, session_id, run_id)
@@ -267,6 +273,7 @@ has `NA` values due to joining. For demonstration, we will manually
 convert a few values to `NA`:
 
 ``` r
+
 shadow$mh_cg_ibqr_surg_001
 #>  [1] "Reason 1" "Reason 1" "Reason 1" "Reason 1" "Reason 1" "Reason 1"
 #>  [7] "Reason 1" "Reason 1" "Reason 1" "Reason 1" "Reason 1" "Reason 1"
@@ -287,6 +294,7 @@ function to replace the `NA` values in the shadow matrix with an
 indicator:
 
 ``` r
+
 shadow_replace_binding_missing(
   data = data,
   shadow = shadow

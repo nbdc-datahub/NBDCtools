@@ -54,8 +54,9 @@ Data frame with the data dictionary.
 ## Examples
 
 ``` r
+
 get_dd("abcd")
-#> # A tibble: 83,223 × 44
+#> # A tibble: 93,699 × 44
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
@@ -68,7 +69,7 @@ get_dd("abcd")
 #>  8 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #>  9 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #> 10 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
-#> # ℹ 83,213 more rows
+#> # ℹ 93,689 more rows
 #> # ℹ 35 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,
@@ -135,7 +136,7 @@ get_dd("abcd", tables = "ab_g_dyn")
 #> #   name_deap <chr>, name_redcap <chr>, name_redcap_exp <chr>, …
 
 get_dd_abcd()
-#> # A tibble: 83,223 × 44
+#> # A tibble: 93,699 × 44
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
@@ -148,7 +149,7 @@ get_dd_abcd()
 #>  8 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #>  9 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #> 10 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
-#> # ℹ 83,213 more rows
+#> # ℹ 93,689 more rows
 #> # ℹ 35 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,

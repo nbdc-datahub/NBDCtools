@@ -47,7 +47,7 @@ Data frame with the metadata.
 
 ``` r
 get_metadata("abcd", type = "levels")
-#> # A tibble: 63,498 × 5
+#> # A tibble: 102,969 × 5
 #>    name                      value order_level label                    label_es
 #>    <chr>                     <chr> <chr>       <chr>                    <chr>   
 #>  1 ab_g_dyn__cohort_edu__cgs 1     1           Up to high school (No d… NA      
@@ -60,7 +60,7 @@ get_metadata("abcd", type = "levels")
 #>  8 ab_g_dyn__cohort_grade    2     3           2nd grade                NA      
 #>  9 ab_g_dyn__cohort_grade    3     4           3rd grade                NA      
 #> 10 ab_g_dyn__cohort_grade    4     5           4th grade                NA      
-#> # ℹ 63,488 more rows
+#> # ℹ 102,959 more rows
 
 get_metadata("hbcd", release = "1.0")
 #> # A tibble: 48,699 × 30
@@ -143,18 +143,18 @@ get_metadata("abcd", tables = "ab_g_dyn")
 #> #   name_deap <chr>, name_redcap <chr>, name_redcap_exp <chr>, …
 
 get_metadata("abcd", type = "sessions")
-#> # A tibble: 27 × 4
+#> # A tibble: 33 × 4
 #>    session_id label    order     n
 #>    <chr>      <chr>    <dbl> <dbl>
-#>  1 ses-00S    Screener     1 11867
-#>  2 ses-00A    Baseline     2 11868
-#>  3 ses-00M    0.5 Year     3 11388
-#>  4 ses-01A    1 Year       4 11219
-#>  5 ses-01M    1.5 Year     5 11082
-#>  6 ses-02A    2 Year       6 10973
-#>  7 ses-02M    2.5 Year     7 10253
-#>  8 ses-03A    3 Year       8 10450
-#>  9 ses-03M    3.5 Year     9  9573
-#> 10 ses-04A    4 Year      10  9739
-#> # ℹ 17 more rows
+#>  1 ses-00S    Screener     1 11859
+#>  2 ses-00A    Baseline     2 11860
+#>  3 ses-00M    0.5 Year     3 11371
+#>  4 ses-01A    1 Year       4 11220
+#>  5 ses-01M    1.5 Year     5 11076
+#>  6 ses-02A    2 Year       6 10989
+#>  7 ses-02M    2.5 Year     7 10255
+#>  8 ses-03A    3 Year       8 10516
+#>  9 ses-03M    3.5 Year     9  9584
+#> 10 ses-04A    4 Year      10  9792
+#> # ℹ 23 more rows
 ```

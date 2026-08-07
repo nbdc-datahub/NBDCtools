@@ -17,6 +17,7 @@ For demonstration purposes, we load a simulated ABCD dataset that is
 included with the package.
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -51,6 +52,7 @@ specified participant/events and return a data frame with the filtered
 data.
 
 ``` r
+
 # filter using a vector of concatenated participant and session IDs
 vec_id_events = c(
   "sub-0000000006_ses-04A", 
@@ -96,6 +98,7 @@ specified participant and session IDs, we can set the `revert = TRUE`
 argument.
 
 ``` r
+
 data |> 
   filter_id_events(vec_id_events, revert = TRUE)
 #> # A tibble: 7 × 10
@@ -138,6 +141,7 @@ The following conditions are available:
 - any other string to be used as filter for the `session_id` column
 
 ``` r
+
 # retain only annual events
 data |> 
   filter_events_abcd("annual")
@@ -216,6 +220,7 @@ function, we can manually set some rows to `NA` values and apply the
 function afterwards.
 
 ``` r
+
 data_empty <- data[1:5, ] |>
   dplyr::mutate(dplyr::across(-c(participant_id, session_id), ~ NA)) |> 
   dplyr::bind_rows(data[-(1:5), ])
@@ -282,6 +287,7 @@ execute
 to remove them.
 
 ``` r
+
 data_empty_cols <- data |> 
   dplyr::mutate(
     ab_g_dyn__visit_type = NA,
@@ -334,6 +340,7 @@ participant/events, then filter by events, and finally remove empty rows
 using the following code:
 
 ``` r
+
 data_empty |> 
   filter_id_events(
     id_events = c("sub-0000000002_ses-03A"),

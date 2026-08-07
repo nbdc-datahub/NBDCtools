@@ -5,6 +5,7 @@ variables and/or tables from data files downloaded from the NBDC Data
 Hub into a single data frame in memory.
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -19,6 +20,7 @@ to demonstrate the package’s functionality.
 You can use the following command to inspect the simulated data files:
 
 ``` r
+
 dir_abcd <- system.file("extdata", "phenotype", package = "NBDCtools")
 list.files(dir_abcd)
 #> [1] "ab_g_dyn.parquet"           "ab_g_stc.parquet"          
@@ -41,6 +43,7 @@ you can use `NBDCtools`’
 function:
 
 ``` r
+
 dd_abcd <- get_dd_abcd()
 dd_abcd |>
   dplyr::distinct(table_name, table_label)
@@ -94,6 +97,7 @@ only missing values for the main variables of interest selected using
 `vars` and `tables`.
 
 ``` r
+
 join_tabulated(
   dir_data = dir_abcd,
   study = "abcd",
@@ -109,10 +113,10 @@ join_tabulated(
   )
 )
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [128ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [63ms]
 #> 
 #> ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [322ms]
+#> ✔ Joining 8 variables from 3 tables... [356ms]
 #> 
 #> # A tibble: 10 × 10
 #>    participant_id session_id mr_y_qc__raw__dmri__r01__ser…¹ ab_g_dyn__visit_type
@@ -169,6 +173,7 @@ matrices](https://software.nbdc-datahub.org/NBDCtools/articles/shadow.md)
 vignette.
 
 ``` r
+
 join_tabulated(
   dir_data = dir_abcd,
   study = "hbcd",

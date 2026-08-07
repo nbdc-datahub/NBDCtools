@@ -91,7 +91,7 @@ create_bids_sidecar_metadata(
 #>     "Derivative": [false]
 #>   },
 #>   "ph_y_mctq_age": {
-#>     "Description": ["Munich Chronotype Questionnaire [Youth]: Youth's age at data collection (note: if table-specific date/time is missing, the age at visit start is used)"],
+#>     "Description": ["Munich Chronotype Questionnaire [Youth]: Youth's age at data collection (Note: if table-specific date/time is missing, the age at visit start is used)"],
 #>     "Units": ["years (yr)"],
 #>     "Derivative": [false]
 #>   },
@@ -118,10 +118,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I go to bed at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -129,7 +125,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -137,8 +137,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I go to bed at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -146,7 +144,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -154,9 +154,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I go to bed at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -164,7 +161,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -182,10 +182,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I actually start trying to fall asleep at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -193,7 +189,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -201,8 +201,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I actually start trying to fall asleep at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -210,7 +208,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -218,9 +218,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I actually start trying to fall asleep at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -228,7 +225,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -236,6 +236,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I need ________ minutes to fall asleep."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -246,19 +254,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -271,6 +271,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: Altogether, these awakenings last ______minutes."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -281,19 +289,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -312,10 +312,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I wake up at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -323,7 +319,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -331,8 +331,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I wake up at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -340,7 +338,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -348,9 +348,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: I wake up at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -358,7 +355,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -366,6 +366,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["Free Days: After _________ minutes I get up."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -376,19 +384,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -592,6 +592,29 @@ create_bids_sidecar_metadata(
 #>     "Units": ["days (d)"],
 #>     "Derivative": [false]
 #>   },
+#>   "ph_y_mctq__school_001__01__v1": {
+#>     "Description": ["I go to school/work on ___ day(s) per week. [Version 1]"],
+#>     "Levels": {
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"]
+#>     },
+#>     "Units": ["days (d)"],
+#>     "Derivative": [false]
+#>   },
+#>   "ph_y_mctq__school_001__v01": {
+#>     "Description": ["Do you go to school/work on a regular basis? [Version 1]"],
+#>     "Levels": {
+#>       "1": ["Yes"],
+#>       "0": ["No"],
+#>       "777": ["Decline to answer"]
+#>     },
+#>     "Derivative": [false]
+#>   },
 #>   "ph_y_mctq__school_002": {
 #>     "Description": ["My usual school schedule starts at: What part of the day?"],
 #>     "Levels": {
@@ -607,10 +630,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["My usual school schedule starts at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -618,7 +637,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -626,8 +649,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["My usual school schedule starts at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -635,7 +656,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -643,9 +666,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["My usual school schedule starts at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -653,7 +673,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -672,10 +695,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["I leave the house to go to school in the morning at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -683,7 +702,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -691,8 +714,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["I leave the house to go to school in the morning at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -700,7 +721,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -708,9 +731,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["I leave the house to go to school in the morning at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -718,7 +738,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -736,10 +759,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I go to bed at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -747,7 +766,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -755,8 +778,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I go to bed at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -764,7 +785,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -772,9 +795,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I go to bed at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -782,7 +802,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -800,10 +823,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I actually start trying to fall asleep at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -811,7 +830,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -819,8 +842,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I actually start trying to fall asleep at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -828,7 +849,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -836,9 +859,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I actually start trying to fall asleep at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -846,7 +866,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -854,6 +877,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I need ________ minutes to fall asleep."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -864,19 +895,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -889,6 +912,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: Altogether, these awakenings last ______minutes."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -899,19 +930,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -930,10 +953,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I wake up at - 4am to 4pm: Hour"],
 #>     "Levels": {
 #>       "1": ["4 AM"],
-#>       "10": ["1 PM"],
-#>       "11": ["2 PM"],
-#>       "12": ["3 PM"],
-#>       "13": ["4 PM"],
 #>       "2": ["5 AM"],
 #>       "3": ["6 AM"],
 #>       "4": ["7 AM"],
@@ -941,7 +960,11 @@ create_bids_sidecar_metadata(
 #>       "6": ["9 AM"],
 #>       "7": ["10 AM"],
 #>       "8": ["11 AM"],
-#>       "9": ["12 PM"]
+#>       "9": ["12 PM"],
+#>       "10": ["1 PM"],
+#>       "11": ["2 PM"],
+#>       "12": ["3 PM"],
+#>       "13": ["4 PM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -949,8 +972,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I wake up at - 5pm to 3am: Hour"],
 #>     "Levels": {
 #>       "1": ["5 PM"],
-#>       "10": ["2 AM"],
-#>       "11": ["3 AM"],
 #>       "2": ["6 PM"],
 #>       "3": ["7 PM"],
 #>       "4": ["8 PM"],
@@ -958,7 +979,9 @@ create_bids_sidecar_metadata(
 #>       "6": ["10 PM"],
 #>       "7": ["11 PM"],
 #>       "8": ["12 AM"],
-#>       "9": ["1 AM"]
+#>       "9": ["1 AM"],
+#>       "10": ["2 AM"],
+#>       "11": ["3 AM"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -966,9 +989,6 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: I wake up at: Minutes"],
 #>     "Levels": {
 #>       "1": ["0 minutes"],
-#>       "10": ["45 minutes"],
-#>       "11": ["50 minutes"],
-#>       "12": ["55 minutes"],
 #>       "2": ["5 minutes"],
 #>       "3": ["10 minutes"],
 #>       "4": ["15 minutes"],
@@ -976,7 +996,10 @@ create_bids_sidecar_metadata(
 #>       "6": ["25 minutes"],
 #>       "7": ["30 minutes"],
 #>       "8": ["35 minutes"],
-#>       "9": ["40 minutes"]
+#>       "9": ["40 minutes"],
+#>       "10": ["45 minutes"],
+#>       "11": ["50 minutes"],
+#>       "12": ["55 minutes"]
 #>     },
 #>     "Derivative": [false]
 #>   },
@@ -984,6 +1007,14 @@ create_bids_sidecar_metadata(
 #>     "Description": ["School Days: After _________ minutes I get up."],
 #>     "Levels": {
 #>       "0": ["0"],
+#>       "1": ["1"],
+#>       "2": ["2"],
+#>       "3": ["3"],
+#>       "4": ["4"],
+#>       "5": ["5"],
+#>       "6": ["6"],
+#>       "7": ["7"],
+#>       "8": ["8"],
 #>       "9": ["9"],
 #>       "10": ["10"],
 #>       "11": ["15"],
@@ -994,19 +1025,11 @@ create_bids_sidecar_metadata(
 #>       "16": ["50"],
 #>       "17": ["1 hour"],
 #>       "18": ["1 hour 15 minute"],
-#>       "1": ["1"],
 #>       "19": ["1 hour 30 minute"],
 #>       "20": ["1 hour 45 minute"],
 #>       "21": ["2 hours"],
 #>       "22": ["3 hours"],
-#>       "23": ["4 hours"],
-#>       "2": ["2"],
-#>       "3": ["3"],
-#>       "4": ["4"],
-#>       "5": ["5"],
-#>       "6": ["6"],
-#>       "7": ["7"],
-#>       "8": ["8"]
+#>       "23": ["4 hours"]
 #>     },
 #>     "Units": ["minutes (min)"],
 #>     "Derivative": [false]
@@ -1235,8 +1258,8 @@ create_bids_sidecar_metadata(
 #>   "ph_y_mctq_outlier": {
 #>     "Description": ["Munich Chronotype Questionnaire [Youth]: Outlier"],
 #>     "Levels": {
-#>       "0": ["No"],
-#>       "1": ["Yes"]
+#>       "1": ["Yes"],
+#>       "0": ["No"]
 #>     },
 #>     "Derivative": [true]
 #>   }

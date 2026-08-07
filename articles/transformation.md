@@ -19,6 +19,7 @@ To demonstrate the transformation functions, we load a simulated ABCD
 dataset that is included with the package.
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -49,6 +50,7 @@ function to convert these columns to type “factor” which is the correct
 type for categorical variables in R.
 
 ``` r
+
 data_transf <- data |>
   transf_factor(study = "abcd")
 dplyr::glimpse(data_transf)
@@ -77,6 +79,7 @@ dictionary and levels table for a given study.
 Next, we can add variable and value labels to the dataset.
 
 ``` r
+
 data_transf <- data_transf |> 
   transf_label(study = "abcd")
 ```
@@ -86,27 +89,28 @@ To inspect the *variable labels*, we can use
 function:
 
 ``` r
+
 sjlabelled::get_label(data_transf)
-#>                                                                    participant_id 
-#>                                                          "Participant identifier" 
-#>                                                                        session_id 
-#>                                                                "Event identifier" 
-#>                                                              ab_g_dyn__visit_type 
-#>                    "Visit information: Type of event (In-person, remote, hybrid)" 
-#>                                                            ab_g_dyn__cohort_grade 
-#> "Cohort description: Current school grade [Cross-listed: ab_p_demo__ed__yth_001]" 
-#>                                                          ab_g_dyn__visit__day1_dt 
-#>                                           "Visit information (day 1): Visit date" 
-#>                                                              ab_g_stc__gen_pc__01 
-#>                         "Genetics: First principal component of genetic ancestry" 
-#>                                                               ab_g_dyn__visit_age 
-#>                        "Visit information: Youth's age at the start of the event" 
-#>                                                              ab_g_dyn__visit_days 
-#>                                         "Visit information: Number of visit days" 
-#>                                                 mr_y_qc__raw__dmri__r01__series_t 
-#>                                              "Diffusion MRI (run 1): Series time" 
-#>                                                               ab_g_dyn__visit_dtt 
-#>                      "Visit information: Date and time at the start of the event"
+#>                                                                participant_id 
+#>                                                      "Participant identifier" 
+#>                                                                    session_id 
+#>                                                            "Event identifier" 
+#>                                                          ab_g_dyn__visit_type 
+#>                "Visit information: Type of visit (In-person, remote, hybrid)" 
+#>                                                        ab_g_dyn__cohort_grade 
+#> "Cohort description: Current school grade [Cross-listed: le_l_sedaadm_grade]" 
+#>                                                      ab_g_dyn__visit__day1_dt 
+#>                                       "Visit information: Visit date (Day 1)" 
+#>                                                          ab_g_stc__gen_pc__01 
+#>                     "Genetics: First principal component of genetic ancestry" 
+#>                                                           ab_g_dyn__visit_age 
+#>                    "Visit information: Youth's age at the start of the event" 
+#>                                                          ab_g_dyn__visit_days 
+#>                                     "Visit information: Number of visit days" 
+#>                                             mr_y_qc__raw__dmri__r01__series_t 
+#>                                          "Diffusion MRI (Run 1): Series time" 
+#>                                                           ab_g_dyn__visit_dtt 
+#>                  "Visit information: Date and time at the start of the event"
 ```
 
 To inspect the *value labels*, we can use
@@ -114,6 +118,7 @@ To inspect the *value labels*, we can use
 function:
 
 ``` r
+
 sjlabelled::get_labels(data_transf, attr.only = TRUE, values = "n")
 #> $participant_id
 #> NULL
@@ -162,6 +167,7 @@ If the labeling is done incorrectly, we can simply rerun the
 function to fix it. If we want to remove all labels, we can use
 
 ``` r
+
 data_labels_removed <- sjlabelled::remove_all_labels(data_transf) 
 sjlabelled::get_label(data_labels_removed)
 #>                    participant_id                        session_id 
@@ -217,6 +223,7 @@ can use the
 function:
 
 ``` r
+
 data_transf <- data_transf |> 
   transf_time_to_hms(study = "abcd")
 dplyr::glimpse(data_transf)
@@ -245,6 +252,7 @@ categorical values to labels. We can use the
 function to do so:
 
 ``` r
+
 data_transf |> 
   transf_value_to_label()
 #> # A tibble: 10 × 10
@@ -290,6 +298,7 @@ function to convert these codes to `NA`.
 > and levels table for the specific study to see which codes to convert.
 
 ``` r
+
 data_transf |> 
   transf_value_to_na()
 #> # A tibble: 10 × 10
@@ -318,6 +327,7 @@ want to convert the categorical values `"1"` and `"2"` to `NA`, we can
 use:
 
 ``` r
+
 data_transf |> 
   transf_value_to_na(missing_codes = c("1", "2"))
 #> # A tibble: 10 × 10
@@ -349,6 +359,7 @@ all columns that match the pattern will be ignored. For example, we can
 ignore all columns that start with `ab_g_dyn__visit` by using:
 
 ``` r
+
 data_transf |> 
   transf_value_to_na(ignore_col_pattern = "^ab_g_dyn__visit")
 #> # A tibble: 10 × 10

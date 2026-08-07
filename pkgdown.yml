@@ -1,5 +1,5 @@
-pandoc: 3.1.11
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   articles/benchmark: benchmark.html
@@ -10,7 +10,7 @@ articles:
   NBDCtools: NBDCtools.html
   articles/shadow: shadow.html
   articles/transformation: transformation.html
-last_built: 2026-03-23T23:46Z
+last_built: 2026-08-07T22:12Z
 urls:
   reference: https://software.nbdc-datahub.org/NBDCtools/reference
   article: https://software.nbdc-datahub.org/NBDCtools/articles

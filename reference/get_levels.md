@@ -55,7 +55,7 @@ Data frame with the levels table.
 
 ``` r
 get_levels("abcd")
-#> # A tibble: 63,498 × 5
+#> # A tibble: 102,969 × 5
 #>    name                      value order_level label                    label_es
 #>    <chr>                     <chr> <chr>       <chr>                    <chr>   
 #>  1 ab_g_dyn__cohort_edu__cgs 1     1           Up to high school (No d… NA      
@@ -68,7 +68,7 @@ get_levels("abcd")
 #>  8 ab_g_dyn__cohort_grade    2     3           2nd grade                NA      
 #>  9 ab_g_dyn__cohort_grade    3     4           3rd grade                NA      
 #> 10 ab_g_dyn__cohort_grade    4     5           4th grade                NA      
-#> # ℹ 63,488 more rows
+#> # ℹ 102,959 more rows
 
 get_levels("hbcd", release = "1.0")
 #> # A tibble: 17,051 × 5
@@ -95,7 +95,7 @@ get_levels("abcd", vars = c("ab_g_dyn__visit_type"))
 #> 3 ab_g_dyn__visit_type 3     3           Hybrid  NA      
 
 get_levels("abcd", tables = "ab_g_dyn")
-#> # A tibble: 123 × 5
+#> # A tibble: 163 × 5
 #>    name                         value order_level label             label_es
 #>    <chr>                        <chr> <chr>       <chr>             <chr>   
 #>  1 ab_g_dyn__visit_type         1     1           On-site           NA      
@@ -108,7 +108,7 @@ get_levels("abcd", tables = "ab_g_dyn")
 #>  8 ab_g_dyn__visit__day1_inform 5     5           Custodial mother  NA      
 #>  9 ab_g_dyn__visit__day1_inform 6     6           Custodial father  NA      
 #> 10 ab_g_dyn__visit__day1_inform 7     7           Grandmother       NA      
-#> # ℹ 113 more rows
+#> # ℹ 153 more rows
 
 get_levels_abcd(release = "6.0")
 #> # A tibble: 63,502 × 5

@@ -15,12 +15,12 @@ Source:
 
 Zhang L, Linkersdoerfer J (2026). *NBDCtools: National Institutes of
 Health Brain Development Cohorts Data Hub Tools*. R package version
-1.1.0, <https://software.nbdc-datahub.org/NBDCtools/>.
+1.1.1, <https://software.nbdc-datahub.org/NBDCtools/>.
 
     @Manual{,
       title = {NBDCtools: National Institutes of Health Brain Development Cohorts Data Hub Tools},
       author = {Le Zhang and Janosch Linkersdoerfer},
       year = {2026},
-      note = {R package version 1.1.0},
+      note = {R package version 1.1.1},
       url = {https://software.nbdc-datahub.org/NBDCtools/},
     }

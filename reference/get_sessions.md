@@ -48,20 +48,20 @@ Data frame with the sessions table.
 
 ``` r
 get_sessions("abcd")
-#> # A tibble: 27 × 4
+#> # A tibble: 33 × 4
 #>    session_id label    order     n
 #>    <chr>      <chr>    <dbl> <dbl>
-#>  1 ses-00S    Screener     1 11867
-#>  2 ses-00A    Baseline     2 11868
-#>  3 ses-00M    0.5 Year     3 11388
-#>  4 ses-01A    1 Year       4 11219
-#>  5 ses-01M    1.5 Year     5 11082
-#>  6 ses-02A    2 Year       6 10973
-#>  7 ses-02M    2.5 Year     7 10253
-#>  8 ses-03A    3 Year       8 10450
-#>  9 ses-03M    3.5 Year     9  9573
-#> 10 ses-04A    4 Year      10  9739
-#> # ℹ 17 more rows
+#>  1 ses-00S    Screener     1 11859
+#>  2 ses-00A    Baseline     2 11860
+#>  3 ses-00M    0.5 Year     3 11371
+#>  4 ses-01A    1 Year       4 11220
+#>  5 ses-01M    1.5 Year     5 11076
+#>  6 ses-02A    2 Year       6 10989
+#>  7 ses-02M    2.5 Year     7 10255
+#>  8 ses-03A    3 Year       8 10516
+#>  9 ses-03M    3.5 Year     9  9584
+#> 10 ses-04A    4 Year      10  9792
+#> # ℹ 23 more rows
 
 get_sessions("hbcd")
 #> # A tibble: 5 × 2

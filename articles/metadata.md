@@ -19,6 +19,7 @@ metadata elements for ABCD and HBCD studies:
 ## Setup
 
 ``` r
+
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
 #> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
@@ -32,11 +33,12 @@ releases are available for each study. You can use the
 function to retrieve the list of available releases:
 
 ``` r
+
 get_releases("abcd")
-#> [1] "6.0" "6.1"
+#> [1] "6.0" "6.1" "7.0"
 # study specific releases
 get_releases_abcd()
-#> [1] "6.0" "6.1"
+#> [1] "6.0" "6.1" "7.0"
 get_releases_hbcd()
 #> [1] "1.0" "1.1" "2.0"
 ```
@@ -44,11 +46,12 @@ get_releases_hbcd()
 We can also check what is the latest release for each study:
 
 ``` r
+
 get_latest_release("abcd")
-#> [1] "6.1"
+#> [1] "7.0"
 # study specific latest release
 get_latest_release_abcd()
-#> [1] "6.1"
+#> [1] "7.0"
 get_latest_release_hbcd()
 #> [1] "2.0"
 ```
@@ -64,9 +67,10 @@ structure of the data dictionary for NBDC studies, see
 ### Basic usage
 
 ``` r
+
 # Get data dictionary for the ABCD Study (latest release)
 get_dd("abcd")
-#> # A tibble: 83,223 × 44
+#> # A tibble: 93,699 × 44
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
@@ -79,7 +83,7 @@ get_dd("abcd")
 #>  8 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #>  9 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #> 10 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
-#> # ℹ 83,213 more rows
+#> # ℹ 93,689 more rows
 #> # ℹ 35 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,
@@ -138,7 +142,7 @@ get_dd("abcd", release = "6.0")
 # releases
 get_dd("abcd", release = "999.0")
 #> Error in `get_metadata()`:
-#> ! Invalid release '999.0'. Valid releases are: 6.0, 6.1
+#> ! Invalid release '999.0'. Valid releases are: 6.0, 6.1, 7.0
 #> If you believe this version should exist, your metadata might be outdated.
 #> Please update the `NBDCtoolsData` package to get the latest metadata.
 ```
@@ -149,9 +153,10 @@ For convenience, you can use study-specific functions that do not
 require specifying the study parameter:
 
 ``` r
+
 # ABCD-specific function
 get_dd_abcd()
-#> # A tibble: 83,223 × 44
+#> # A tibble: 93,699 × 44
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
@@ -164,7 +169,7 @@ get_dd_abcd()
 #>  8 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #>  9 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #> 10 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
-#> # ℹ 83,213 more rows
+#> # ℹ 93,689 more rows
 #> # ℹ 35 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,
@@ -201,6 +206,7 @@ get_dd_hbcd(release = "1.0")
 You can retrieve a subset of the data dictionary for specific variables:
 
 ``` r
+
 # Get data dictionary for specific variables
 vars_of_interest <- c(
   "ab_g_dyn__visit_dtt", 
@@ -229,13 +235,14 @@ You can also retrieve a subset of the data dictionary for specific
 tables:
 
 ``` r
+
 # Get data dictionary for specific tables
 tables_of_interest <- c(
   "ab_g_dyn",
   "ab_g_stc"
 )
 get_dd_abcd(tables = tables_of_interest)
-#> # A tibble: 73 × 44
+#> # A tibble: 170 × 44
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
@@ -248,7 +255,7 @@ get_dd_abcd(tables = tables_of_interest)
 #>  8 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #>  9 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
 #> 10 Core  ABCD (Gene… Standard … Gener… NA     NA    ab_g_dyn   ABCD Dynam… ab_g…
-#> # ℹ 63 more rows
+#> # ℹ 160 more rows
 #> # ℹ 35 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,
@@ -268,9 +275,10 @@ table for NBDC studies, see
 ### Basic usage
 
 ``` r
+
 # Get levels table for ABCD Study (latest release)
 get_levels("abcd")
-#> # A tibble: 63,498 × 5
+#> # A tibble: 102,969 × 5
 #>    name                      value order_level label                    label_es
 #>    <chr>                     <chr> <chr>       <chr>                    <chr>   
 #>  1 ab_g_dyn__cohort_edu__cgs 1     1           Up to high school (No d… NA      
@@ -283,7 +291,7 @@ get_levels("abcd")
 #>  8 ab_g_dyn__cohort_grade    2     3           2nd grade                NA      
 #>  9 ab_g_dyn__cohort_grade    3     4           3rd grade                NA      
 #> 10 ab_g_dyn__cohort_grade    4     5           4th grade                NA      
-#> # ℹ 63,488 more rows
+#> # ℹ 102,959 more rows
 
 # Get levels table for HBCD Study (latest release)
 get_levels("hbcd")
@@ -323,6 +331,7 @@ get_levels("abcd", release = "6.0")
 ### Study-specific functions
 
 ``` r
+
 # ABCD-specific function
 get_levels_abcd(release = "6.0")
 #> # A tibble: 63,502 × 5
@@ -364,6 +373,7 @@ As for the data dictionary, you can also retrieve a subset of the levels
 table for specific variables or tables:
 
 ``` r
+
 # Get levels for specific categorical variables
 get_levels("abcd", vars = c("ab_g_dyn__visit_type"))
 #> # A tibble: 3 × 5
@@ -375,7 +385,7 @@ get_levels("abcd", vars = c("ab_g_dyn__visit_type"))
 
 # Get levels for all categorical variables in specific tables
 get_levels("abcd", tables = "ab_g_dyn")
-#> # A tibble: 123 × 5
+#> # A tibble: 163 × 5
 #>    name                         value order_level label             label_es
 #>    <chr>                        <chr> <chr>       <chr>             <chr>   
 #>  1 ab_g_dyn__visit_type         1     1           On-site           NA      
@@ -388,24 +398,24 @@ get_levels("abcd", tables = "ab_g_dyn")
 #>  8 ab_g_dyn__visit__day1_inform 5     5           Custodial mother  NA      
 #>  9 ab_g_dyn__visit__day1_inform 6     6           Custodial father  NA      
 #> 10 ab_g_dyn__visit__day1_inform 7     7           Grandmother       NA      
-#> # ℹ 113 more rows
+#> # ℹ 153 more rows
 
 # Get levels for a combination of specific variables and tables
 get_levels_abcd(vars = "ab_g_dyn__visit_type", tables = "ab_g_stc")
-#> # A tibble: 54 × 5
-#>    name                    value order_level label    label_es
-#>    <chr>                   <chr> <chr>       <chr>    <chr>   
-#>  1 ab_g_dyn__visit_type    1     1           On-site  NA      
-#>  2 ab_g_dyn__visit_type    2     2           Remote   NA      
-#>  3 ab_g_dyn__visit_type    3     3           Hybrid   NA      
-#>  4 ab_g_stc__design_famrel 0     1           Single   NA      
-#>  5 ab_g_stc__design_famrel 1     2           Sibling  NA      
-#>  6 ab_g_stc__design_famrel 2     3           Twin     NA      
-#>  7 ab_g_stc__design_famrel 3     4           Triplet  NA      
-#>  8 ab_g_stc__design_sstwin 0     1           No       NA      
-#>  9 ab_g_stc__design_sstwin 1     2           Yes      NA      
-#> 10 ab_g_stc__cohort_ethn   1     1           Hispanic NA      
-#> # ℹ 44 more rows
+#> # A tibble: 254 × 5
+#>    name                     value order_level label                     label_es
+#>    <chr>                    <chr> <chr>       <chr>                     <chr>   
+#>  1 ab_g_dyn__visit_type     1     1           On-site                   NA      
+#>  2 ab_g_dyn__visit_type     2     2           Remote                    NA      
+#>  3 ab_g_dyn__visit_type     3     3           Hybrid                    NA      
+#>  4 ab_g_stc__design_famrel  0     1           Single                    NA      
+#>  5 ab_g_stc__design_famrel  1     2           Sibling                   NA      
+#>  6 ab_g_stc__design_famrel  2     3           Twin                      NA      
+#>  7 ab_g_stc__design_famrel  3     4           Triplet                   NA      
+#>  8 ab_g_stc__design_sstwin  1     1           Yes                       NA      
+#>  9 ab_g_stc__design_sstwin  0     2           No                        NA      
+#> 10 ab_g_stc__cohort_country 1     1           In the United States or … En los …
+#> # ℹ 244 more rows
 ```
 
 ## Sessions table
@@ -416,22 +426,23 @@ that are part of a given release as well as their labels.
 ### Basic usage
 
 ``` r
+
 # Get sessions information for ABCD Study (latest release)
 get_sessions("abcd")
-#> # A tibble: 27 × 4
+#> # A tibble: 33 × 4
 #>    session_id label    order     n
 #>    <chr>      <chr>    <dbl> <dbl>
-#>  1 ses-00S    Screener     1 11867
-#>  2 ses-00A    Baseline     2 11868
-#>  3 ses-00M    0.5 Year     3 11388
-#>  4 ses-01A    1 Year       4 11219
-#>  5 ses-01M    1.5 Year     5 11082
-#>  6 ses-02A    2 Year       6 10973
-#>  7 ses-02M    2.5 Year     7 10253
-#>  8 ses-03A    3 Year       8 10450
-#>  9 ses-03M    3.5 Year     9  9573
-#> 10 ses-04A    4 Year      10  9739
-#> # ℹ 17 more rows
+#>  1 ses-00S    Screener     1 11859
+#>  2 ses-00A    Baseline     2 11860
+#>  3 ses-00M    0.5 Year     3 11371
+#>  4 ses-01A    1 Year       4 11220
+#>  5 ses-01M    1.5 Year     5 11076
+#>  6 ses-02A    2 Year       6 10989
+#>  7 ses-02M    2.5 Year     7 10255
+#>  8 ses-03A    3 Year       8 10516
+#>  9 ses-03M    3.5 Year     9  9584
+#> 10 ses-04A    4 Year      10  9792
+#> # ℹ 23 more rows
 
 # Get sessions information for HBCD Study (latest release)
 get_sessions("hbcd")
@@ -448,6 +459,7 @@ get_sessions("hbcd")
 ### Study-specific functions
 
 ``` r
+
 # ABCD-specific function (for a specified release)
 get_sessions_abcd(release = "6.0")
 #> # A tibble: 26 × 2
@@ -486,6 +498,7 @@ function retrieves the identifier columns for a given study.
 ### Basic usage
 
 ``` r
+
 # Get identifier columns for ABCD Study (latest release)
 get_id_cols("abcd")
 #> [1] "participant_id" "session_id"
@@ -498,6 +511,7 @@ get_id_cols("hbcd")
 ### Study-specific functions
 
 ``` r
+
 # ABCD-specific function (for a specified release)
 get_id_cols_abcd(release = "6.0")
 #> [1] "participant_id" "session_id"
@@ -515,6 +529,7 @@ function is the low-level function that is used by all specific metadata
 functions. You can use it directly to retrieve any type of metadata:
 
 ``` r
+
 # Get data dictionary (same as get_dd)
 get_metadata("abcd", type = "dd", release = "6.0")
 #> # A tibble: 83,206 × 44
@@ -549,18 +564,18 @@ get_metadata("abcd", type = "levels", vars = "ab_g_dyn__visit_type")
 
 # Get sessions table (same as get_sessions)
 get_metadata("abcd", type = "sessions")
-#> # A tibble: 27 × 4
+#> # A tibble: 33 × 4
 #>    session_id label    order     n
 #>    <chr>      <chr>    <dbl> <dbl>
-#>  1 ses-00S    Screener     1 11867
-#>  2 ses-00A    Baseline     2 11868
-#>  3 ses-00M    0.5 Year     3 11388
-#>  4 ses-01A    1 Year       4 11219
-#>  5 ses-01M    1.5 Year     5 11082
-#>  6 ses-02A    2 Year       6 10973
-#>  7 ses-02M    2.5 Year     7 10253
-#>  8 ses-03A    3 Year       8 10450
-#>  9 ses-03M    3.5 Year     9  9573
-#> 10 ses-04A    4 Year      10  9739
-#> # ℹ 17 more rows
+#>  1 ses-00S    Screener     1 11859
+#>  2 ses-00A    Baseline     2 11860
+#>  3 ses-00M    0.5 Year     3 11371
+#>  4 ses-01A    1 Year       4 11220
+#>  5 ses-01M    1.5 Year     5 11076
+#>  6 ses-02A    2 Year       6 10989
+#>  7 ses-02M    2.5 Year     7 10255
+#>  8 ses-03A    3 Year       8 10516
+#>  9 ses-03M    3.5 Year     9  9584
+#> 10 ses-04A    4 Year      10  9792
+#> # ℹ 23 more rows
 ```
