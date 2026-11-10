@@ -8,6 +8,11 @@
 \description{
 A suite of functions to work with data from the National Institutes of Health Brain Development Cohorts Data Hub. The package provides tools to create, clean, process, and filter datasets and associated metadata. These utilities are intended to simplify reproducible data-preparation for future research.
 }
+\references{
+Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A. M., & Linkersdörfer, J. (2026).
+NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in R and Python.
+\emph{bioRxiv}. \doi{10.64898/2026.11.02.763757}
+}
 \seealso{
 Useful links:
 \itemize{

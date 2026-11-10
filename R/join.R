@@ -21,6 +21,29 @@
 #' specified in `vars`/`tables` and `vars_add`/`tables_add`, the variables in
 #' `vars_add`/`tables_add` will be ignored.
 #'
+#' Tables are joined on their identifier columns, which differ by table:
+#' participant-level tables are identified by `participant_id` alone,
+#' session-level tables by `participant_id` and `session_id`, and run-level
+#' tables also by `run_id`. A variable from a coarser table is repeated on
+#' every finer row it applies to, so a participant-level variable such as
+#' birth data appears on every session and every run of that participant. The
+#' result does not depend on the order in which variables or tables are
+#' listed, and contains one row per distinct combination of identifier
+#' columns.
+#'
+#' If an additional table is more finely grained than everything selected in
+#' `vars`/`tables` (for example a session-level `vars_add` on top of a
+#' participant-level selection), its values cannot all be attached without
+#' adding rows, which conflicts with the rule that `vars_add`/`tables_add` do
+#' not create rows. Neither way out is right for every analysis, so
+#' `finer_add` decides; see that argument for the three options. By default
+#' this is an error, since silently dropping values and silently adding rows
+#' are both surprising.
+#'
+#' A third option is to not use `vars_add`/`tables_add` for those variables at
+#' all: selecting them via `vars`/`tables` keeps every value and makes the
+#' finer grain part of the row set, so no row is ambiguous.
+#'
 #' In addition to the main `join_tabulated()` function, there are two
 #' study-specific variations:
 #'
@@ -54,6 +77,24 @@
 #' @param remove_empty_rows logical. Whether to filter out rows that have
 #'   all values missing in the joined variables, except for the
 #'   ID columns (default: `TRUE`).
+#' @param finer_add character. How to treat an additional table that is more
+#'   finely grained than everything selected in `vars`/`tables` (one of
+#'   `"error"`, `"first"` or `"all"`; default: `"error"`).
+#'
+#'   - `"error"`: abort and ask for an explicit choice. This is the default
+#'     because the alternatives either drop values or add rows, and which is
+#'     appropriate depends on the analysis.
+#'   - `"first"`: keep one value per row of the main selection and drop the
+#'     rest, with a warning reporting how many were dropped. The value kept is
+#'     the first by the additional table's own identifier columns, i.e. the
+#'     earliest available session or the first run -- not necessarily the
+#'     baseline, since a participant need not have one. The whole row is
+#'     taken, so all variables from that table come from the same
+#'     session/run, and a missing value is not skipped over in favor of a
+#'     later one. The finer identifier columns are not added to the result.
+#'   - `"all"`: keep every value, which adds rows to the main selection. This
+#'     was the behavior before version 1.1.2.
+#'
 #' @param ignore_version_mismatch logical. Whether to ignore version mismatch
 #' between data files and metadata (dd, levels, etc)
 #' and proceed with joining anyway (default: `FALSE`).
@@ -110,8 +151,10 @@ join_tabulated <- function(
   shadow = FALSE,
   remove_empty_rows = TRUE,
   bypass_ram_check = FALSE,
-  ignore_version_mismatch = FALSE
+  ignore_version_mismatch = FALSE,
+  finer_add = c("error", "first", "all")
 ) {
+  finer_add <- match.arg(finer_add)
 
   chk::chk_dir(dir_data)
   chk::chk_string(release)
@@ -212,20 +255,19 @@ join_tabulated <- function(
     unique(dd$identifier_columns),
     ~ join_by_identifier(dir_data, dd, .x, format, shadow = shadow)
   )
-  # find first df with most id cols
-  first_full_tbl <- purrr::map_int(
-    data,
-    ~ {
-      names(.x) |>
-        intersect(id_cols) |>
-        length()
-    }) |>
-    which.max() |>
-    first()
+  # Join from the finest grain outwards, so that each coarser frame fans out
+  # onto the rows already materialized at the finer grain. Seeding from the
+  # widest frame but then folding the rest in data dictionary order (i.e. the
+  # order the user listed `vars`/`tables`) lets a participant-level frame be
+  # joined before a session-level one; its rows then cannot match sessions that
+  # have no run, so the static values strand on a new all-NA row (#89).
+  data <- data[
+    order(-purrr::map_int(data, ~ length(intersect(names(.x), id_cols))))
+  ]
 
   data <- purrr::reduce(
-    data[-first_full_tbl],
-    .init = data[[first_full_tbl]],
+    data[-1],
+    .init = data[[1]],
     ~ full_join(
       .x, .y,
       # join id_cols first then y to save time
@@ -241,37 +283,22 @@ join_tabulated <- function(
   }
 
   if (has_add) {
-    data_add <- purrr::map(
-      unique(dd_add$identifier_columns),
-      ~ join_by_identifier(dir_data, dd_add, .x, format, shadow = shadow)
-    )
-    # find first df with most id cols
-    first_full_tbl_add <- purrr::map_int(
-      data_add,
-      ~ {
-        names(.x) |>
-          intersect(id_cols) |>
-          length()
-      }) |>
-      which.max() |>
-      first()
-
-    data_add <- purrr::reduce(
-        data_add[-first_full_tbl_add],
-        .init = data_add[[first_full_tbl_add]],
-        ~ full_join(
-          .x, .y,
-          by = intersect(names(.x), id_cols) |>
-            intersect(names(.y))
-        )
+    # Each additional frame is left-joined on its own identifier columns.
+    # Full-joining the additional frames to each other first (as before #89)
+    # writes NA into their identifier columns, and those NAs then match real
+    # NAs in `data`, so one additional table could change another's values.
+    for (identifiers in unique(dd_add$identifier_columns)) {
+      data <- join_additional(
+        data,
+        join_by_identifier(dir_data, dd_add, identifiers, format,
+                           shadow = shadow),
+        id_cols = id_cols,
+        tables = unique(
+          dd_add$table_name[dd_add$identifier_columns == identifiers]
+        ),
+        finer_add = finer_add
       )
-
-    data <- left_join(
-      data,
-      data_add,
-      by = intersect(names(data), id_cols) |>
-        intersect(names(data_add))
-    )
+    }
   }
 
   data |>
@@ -485,6 +512,91 @@ join_by_identifier <- function(
         full_join(.x, .y, by = id_cols)
       }
     )
+}
+
+#' Left-join one additional-variable frame onto the main data
+#'
+#' @description
+#' Internal helper for [NBDCtools::join_tabulated()] that attaches a single
+#' grain's worth of additional variables to the already-joined main data, on
+#' the identifier columns the two share.
+#'
+#' @param data tibble. The main data joined so far.
+#' @param data_add tibble. One additional frame, at a single grain.
+#' @param id_cols character. All identifier columns for the study/release.
+#' @param tables character. Table name(s) `data_add` was built from, used in
+#'   diagnostics.
+#' @param finer_add character. How to treat `data_add` when it is more finely
+#'   grained than `data` (one of `"error"`, `"first"` or `"all"`).
+#'
+#' @return `data` with the columns of `data_add` attached.
+#' @noRd
+join_additional <- function(data, data_add, id_cols, tables,
+                            finer_add = "error") {
+  add_ids <- intersect(names(data_add), id_cols)
+  by <- intersect(intersect(names(data), id_cols), add_ids)
+
+  if (length(by) == 0) {
+    cli::cli_abort(c(
+      "No identifier column is shared between {.val {tables}} and the
+      selected variables.",
+      i = "Check the {.field identifier_columns} entries in the data
+      dictionary."
+    ))
+  }
+
+  # Duplicated keys would silently multiply the rows of `data`.
+  if (anyDuplicated(data_add[add_ids]) > 0) {
+    cli::cli_abort(c(
+      "Duplicate rows for {.field {add_ids}} in {.val {tables}}.",
+      i = "Additional variables must have at most one row per identifier
+      combination."
+    ))
+  }
+
+  # A finer-grained additional table cannot be attached as-is without adding
+  # rows, which `vars_add`/`tables_add` must not do. Neither way out is
+  # obviously right, so `finer_add` makes the caller choose.
+  finer <- setdiff(add_ids, by)
+  if (length(finer) > 0) {
+    if (finer_add == "error") {
+      cli::cli_abort(c(
+        "Additional variables from {.val {tables}} are more finely grained
+        than the selected variables ({.field {finer}}).",
+        i = "Set {.code finer_add = \"first\"} to keep one value per row
+        (the first by {.field {finer}}, i.e. the earliest available), or
+        {.code finer_add = \"all\"} to keep every value, which adds rows.",
+        i = "Selecting {.field {finer}} via {.arg vars}/{.arg tables}
+        instead keeps every value without changing the meaning of a row."
+      ))
+    }
+    if (finer_add == "first") {
+      # Pick by the finer identifiers, not by row order in the file, so the
+      # result is reproducible. The whole row is taken, so every column comes
+      # from the same session/run rather than being mixed across them.
+      data_add <- data_add |>
+        arrange(across(all_of(add_ids)))
+      keep <- !duplicated(data_add[by])
+      n_dropped <- sum(!keep)
+      data_add <- data_add[keep, setdiff(names(data_add), finer), drop = FALSE]
+      cli::cli_warn(c(
+        "Additional variables from {.val {tables}} are more finely grained
+        than the selected variables ({.field {finer}}).",
+        i = "Kept the first value per row by {.field {finer}} and dropped
+        {n_dropped} further value{?s}."
+      ))
+    } else {
+      # "all": the documented pre-1.1.2 behavior, kept for callers who want
+      # every value and accept that rows are added.
+      cli::cli_inform(c(
+        i = "Additional variables from {.val {tables}} are more finely
+        grained than the selected variables ({.field {finer}}); keeping every
+        value, which adds rows."
+      ))
+    }
+  }
+
+  left_join(data, data_add, by = by)
 }
 
 #' Read file

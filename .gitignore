@@ -56,3 +56,6 @@ docs/**/*
 nbdctools/*
 .positai
 .claude/
+
+# local DEAP exports used for cross-checking (real participant data)
+test_89/

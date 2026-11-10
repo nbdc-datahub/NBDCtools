@@ -29,6 +29,13 @@ functions to assist users in working with the data, including:
 - Functions to retrieve and utilize metadata from the studies.
 - A set of utility functions for various use cases.
 
+> **NOTE:** A Python version of this package,
+> [`nbdctools`](https://github.com/nbdc-datahub/nbdctools-py), is also
+> available. It offers both a wrapper around the functions of this R
+> package and a pure Python implementation for creating datasets. See
+> its [documentation](https://software.nbdc-datahub.org/nbdctools-py/)
+> for installation instructions and usage.
+
 ## Installation
 
 > **IMPORTANT:** Besides the `NBDCtools` main package, users also need
@@ -129,7 +136,12 @@ information on how to report issues with the data resource).
 
 ## Citation
 
-<!-- If you use this package for your research, please kindly cite the following paper: -->
+If you use this package for your research, please kindly cite the
+following paper:
 
-*We are currently preparing a paper about `NBDCtools`. The reference
-will be added here once the paper is published.*
+> Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A.
+> M., & Linkersdörfer, J. (2026). *NBDC Data Tools: Building
+> Analysis-ready Datasets From ABCD and HBCD Releases in R and Python*.
+> bioRxiv. <https://doi.org/10.64898/2026.11.02.763757>
+
+You can also get the citation in R with `citation("NBDCtools")`.

@@ -18,7 +18,8 @@ join_tabulated(
   shadow = FALSE,
   remove_empty_rows = TRUE,
   bypass_ram_check = FALSE,
-  ignore_version_mismatch = FALSE
+  ignore_version_mismatch = FALSE,
+  finer_add = c("error", "first", "all")
 )
 
 join_tabulated_abcd(...)
@@ -83,6 +84,25 @@ If set to \code{FALSE}, the function will abort on version mismatch. If set to
 \code{TRUE}, a warning will be issued, and the function will proceed with
 joining the data.}
 
+\item{finer_add}{character. How to treat an additional table that is more
+finely grained than everything selected in \code{vars}/\code{tables} (one of
+\code{"error"}, \code{"first"} or \code{"all"}; default: \code{"error"}).
+\itemize{
+\item \code{"error"}: abort and ask for an explicit choice. This is the default
+because the alternatives either drop values or add rows, and which is
+appropriate depends on the analysis.
+\item \code{"first"}: keep one value per row of the main selection and drop the
+rest, with a warning reporting how many were dropped. The value kept is
+the first by the additional table's own identifier columns, i.e. the
+earliest available session or the first run -- not necessarily the
+baseline, since a participant need not have one. The whole row is
+taken, so all variables from that table come from the same
+session/run, and a missing value is not skipped over in favor of a
+later one. The finer identifier columns are not added to the result.
+\item \code{"all"}: keep every value, which adds rows to the main selection. This
+was the behavior before version 1.1.2.
+}}
+
 \item{...}{Additional arguments passed to the underlying function
 \code{\link[=join_tabulated]{join_tabulated()}}
 
@@ -114,6 +134,29 @@ creating new rows that contain only missing values for the main variables of
 interest selected using \code{vars} and \code{tables}. If the same variables are
 specified in \code{vars}/\code{tables} and \code{vars_add}/\code{tables_add}, the variables in
 \code{vars_add}/\code{tables_add} will be ignored.
+
+Tables are joined on their identifier columns, which differ by table:
+participant-level tables are identified by \code{participant_id} alone,
+session-level tables by \code{participant_id} and \code{session_id}, and run-level
+tables also by \code{run_id}. A variable from a coarser table is repeated on
+every finer row it applies to, so a participant-level variable such as
+birth data appears on every session and every run of that participant. The
+result does not depend on the order in which variables or tables are
+listed, and contains one row per distinct combination of identifier
+columns.
+
+If an additional table is more finely grained than everything selected in
+\code{vars}/\code{tables} (for example a session-level \code{vars_add} on top of a
+participant-level selection), its values cannot all be attached without
+adding rows, which conflicts with the rule that \code{vars_add}/\code{tables_add} do
+not create rows. Neither way out is right for every analysis, so
+\code{finer_add} decides; see that argument for the three options. By default
+this is an error, since silently dropping values and silently adding rows
+are both surprising.
+
+A third option is to not use \code{vars_add}/\code{tables_add} for those variables at
+all: selecting them via \code{vars}/\code{tables} keeps every value and makes the
+finer grain part of the row set, so no row is ambiguous.
 
 In addition to the main \code{join_tabulated()} function, there are two
 study-specific variations:

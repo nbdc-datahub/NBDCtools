@@ -39,6 +39,12 @@
 #'   `hms` class, see [transf_time_to_hms()] (Default: `FALSE`).
 #' @param bind_shadow logical. Whether to bind the shadow matrix to the
 #'   dataset (Default: `FALSE`). See more in details.
+#' @param finer_add character. How to treat an additional table that is more
+#'   finely grained than everything selected in `vars`/`tables` (one of
+#'   `"error"`, `"first"` or `"all"`; default: `"error"`). Passed to
+#'   [join_tabulated()], where the options are described. The same value is
+#'   used for the data and for the shadow matrix, so that the two keep the
+#'   same rows.
 #' @param ... additional arguments passed to downstream functions after
 #'   the [join_tabulated()] step. See examples for details.
 #'
@@ -142,8 +148,10 @@ create_dataset <- function(
   value_to_na = FALSE,
   time_to_hms = FALSE,
   bind_shadow = FALSE,
+  finer_add = c("error", "first", "all"),
   ...
 ) {
+  finer_add <- match.arg(finer_add)
   time_start <- Sys.time()
   chk::chk_logical(categ_to_factor)
   chk::chk_logical(add_labels)
@@ -184,7 +192,8 @@ create_dataset <- function(
       shadow = TRUE,
       remove_empty_rows = !bind_shadow,
       bypass_ram_check = bypass_ram_check,
-      ignore_version_mismatch = ignore_version_mismatch
+      ignore_version_mismatch = ignore_version_mismatch,
+      finer_add = finer_add
     )
     invisible(gc()) # force garbage collection to free memory
   } else {
@@ -206,7 +215,8 @@ create_dataset <- function(
     shadow = FALSE,
     remove_empty_rows = !bind_shadow,
     bypass_ram_check = bypass_ram_check,
-    ignore_version_mismatch = ignore_version_mismatch
+    ignore_version_mismatch = ignore_version_mismatch,
+    finer_add = finer_add
   )
   invisible(gc())
 

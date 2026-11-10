@@ -152,7 +152,7 @@ low-level function `join_tabulated()` for data joining. For more information
 about the `join_tabulated()` function, refer to the [Join data](https://software.nbdc-datahub.org/NBDCtools/articles/join.html)
 vignette. For a diagram detailing the joining strategy for main and additional
 variables/tables, see [this
-page](https://docs.deapscience.com/create_edit/create.html#joining) (the
+page](https://docs.deapscience.com/datasets/create_dataset.html#joining) (the
 `NBCDtools` package uses the same approach as the
 [DEAP](https://nbdc.deapscience.com) application).
 

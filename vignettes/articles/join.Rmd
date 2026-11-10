@@ -95,6 +95,15 @@ design/nesting or demographic information). By left-joining these variables, one
 avoids creating new rows that contain only missing values for the main variables
 of interest selected using `vars` and `tables`.
 
+An additional table that is more finely grained than everything selected in
+`vars`/`tables` (e.g., a session-level variable in `vars_add` on top of a
+participant-level selection) cannot be attached without adding rows. The
+`finer_add` argument controls this case: by default (`"error"`) the function
+aborts; `"first"` keeps one value per row (the earliest available session or
+run) and warns how many values were dropped; `"all"` keeps every value and adds
+rows (the behavior before version 1.1.2). Alternatively, select these variables
+via `vars`/`tables` instead.
+
 ```{r echo=FALSE}
 dd_internal <- arrow::read_parquet(
   file = file.path(dir_abcd, "../dd.parquet")

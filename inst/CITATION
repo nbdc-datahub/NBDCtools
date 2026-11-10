@@ -1,0 +1,27 @@
+citHeader("To cite NBDCtools in publications use:")
+
+bibentry(
+  key       = "Zhang2026NBDCtools",
+  bibtype   = "Article",
+  title     = "NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in R and Python",
+  author    = c(
+    person(given = "Le", family = "Zhang"),
+    person(given = "Biplabendu", family = "Das"),
+    person(given = "Olivier", family = "Celhay"),
+    person(given = c("Calen", "J."), family = "Smith"),
+    person(given = c("Laura", "R."), family = "Ziemer"),
+    person(given = c("Anders", "M."), family = "Dale"),
+    person(given = "Janosch", family = "Linkersdörfer")
+  ),
+  journal   = "bioRxiv",
+  year      = "2026",
+  doi       = "10.64898/2026.11.02.763757",
+  note      = "Preprint",
+  textVersion = paste(
+    "Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R.,",
+    "Dale, A. M., & Linkersdörfer, J. (2026).",
+    "NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD",
+    "Releases in R and Python. bioRxiv.",
+    "doi:10.64898/2026.11.02.763757"
+  )
+)

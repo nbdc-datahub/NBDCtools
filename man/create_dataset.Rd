@@ -23,6 +23,7 @@ create_dataset(
   value_to_na = FALSE,
   time_to_hms = FALSE,
   bind_shadow = FALSE,
+  finer_add = c("error", "first", "all"),
   ...
 )
 
@@ -102,6 +103,13 @@ must be \code{TRUE}.}
 
 \item{bind_shadow}{logical. Whether to bind the shadow matrix to the
 dataset (Default: \code{FALSE}). See more in details.}
+
+\item{finer_add}{character. How to treat an additional table that is more
+finely grained than everything selected in \code{vars}/\code{tables} (one of
+\code{"error"}, \code{"first"} or \code{"all"}; default: \code{"error"}). Passed to
+\code{\link[=join_tabulated]{join_tabulated()}}, where the options are described. The same value is
+used for the data and for the shadow matrix, so that the two keep the
+same rows.}
 
 \item{...}{additional arguments passed to downstream functions after
 the \code{\link[=join_tabulated]{join_tabulated()}} step. See examples for details.}

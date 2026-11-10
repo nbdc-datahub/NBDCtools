@@ -6,7 +6,7 @@ Description: A suite of functions to work with data from the National Institutes
   utilities are intended to simplify reproducible data-preparation for 
   future research.
 URL: https://software.nbdc-datahub.org/NBDCtools/
-Version: 1.1.1
+Version: 1.1.2
 Authors@R: c(
     person(given = "Le",
        family = "Zhang",
