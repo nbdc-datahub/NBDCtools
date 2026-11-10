@@ -22,6 +22,29 @@ If the same variables are specified in `vars`/`tables` and
 `vars_add`/`tables_add`, the variables in `vars_add`/`tables_add` will
 be ignored.
 
+Tables are joined on their identifier columns, which differ by table:
+participant-level tables are identified by `participant_id` alone,
+session-level tables by `participant_id` and `session_id`, and run-level
+tables also by `run_id`. A variable from a coarser table is repeated on
+every finer row it applies to, so a participant-level variable such as
+birth data appears on every session and every run of that participant.
+The result does not depend on the order in which variables or tables are
+listed, and contains one row per distinct combination of identifier
+columns.
+
+If an additional table is more finely grained than everything selected
+in `vars`/`tables` (for example a session-level `vars_add` on top of a
+participant-level selection), its values cannot all be attached without
+adding rows, which conflicts with the rule that `vars_add`/`tables_add`
+do not create rows. Neither way out is right for every analysis, so
+`finer_add` decides; see that argument for the three options. By default
+this is an error, since silently dropping values and silently adding
+rows are both surprising.
+
+A third option is to not use `vars_add`/`tables_add` for those variables
+at all: selecting them via `vars`/`tables` keeps every value and makes
+the finer grain part of the row set, so no row is ambiguous.
+
 In addition to the main `join_tabulated()` function, there are two
 study-specific variations:
 
@@ -48,7 +71,8 @@ join_tabulated(
   shadow = FALSE,
   remove_empty_rows = TRUE,
   bypass_ram_check = FALSE,
-  ignore_version_mismatch = FALSE
+  ignore_version_mismatch = FALSE,
+  finer_add = c("error", "first", "all")
 )
 
 join_tabulated_abcd(...)
@@ -137,6 +161,28 @@ join_tabulated_hbcd(...)
   `FALSE`, the function will abort on version mismatch. If set to
   `TRUE`, a warning will be issued, and the function will proceed with
   joining the data.
+
+- finer_add:
+
+  character. How to treat an additional table that is more finely
+  grained than everything selected in `vars`/`tables` (one of `"error"`,
+  `"first"` or `"all"`; default: `"error"`).
+
+  - `"error"`: abort and ask for an explicit choice. This is the default
+    because the alternatives either drop values or add rows, and which
+    is appropriate depends on the analysis.
+
+  - `"first"`: keep one value per row of the main selection and drop the
+    rest, with a warning reporting how many were dropped. The value kept
+    is the first by the additional table's own identifier columns, i.e.
+    the earliest available session or the first run – not necessarily
+    the baseline, since a participant need not have one. The whole row
+    is taken, so all variables from that table come from the same
+    session/run, and a missing value is not skipped over in favor of a
+    later one. The finer identifier columns are not added to the result.
+
+  - `"all"`: keep every value, which adds rows to the main selection.
+    This was the behavior before version 1.1.2.
 
 - ...:
 

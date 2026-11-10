@@ -8,7 +8,9 @@ Hub into a single data frame in memory.
 
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
-#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
+#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI).
+#> If `NBDCtools` is helpful to your research, please cite:
+#> Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A. M., & Linkersdörfer, J. (2026). NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in R and Python. bioRxiv. https://doi.org/10.64898/2026.11.02.763757
 ```
 
 To download data from the ABCD or HBCD studies through the NBDC Data
@@ -96,6 +98,16 @@ left-joining these variables, one avoids creating new rows that contain
 only missing values for the main variables of interest selected using
 `vars` and `tables`.
 
+An additional table that is more finely grained than everything selected
+in `vars`/`tables` (e.g., a session-level variable in `vars_add` on top
+of a participant-level selection) cannot be attached without adding
+rows. The `finer_add` argument controls this case: by default
+(`"error"`) the function aborts; `"first"` keeps one value per row (the
+earliest available session or run) and warns how many values were
+dropped; `"all"` keeps every value and adds rows (the behavior before
+version 1.1.2). Alternatively, select these variables via
+`vars`/`tables` instead.
+
 ``` r
 
 join_tabulated(
@@ -113,10 +125,10 @@ join_tabulated(
   )
 )
 #> ℹ Using metadata "abcd" version "6.0" to join data
-#> ✔ Using metadata "abcd" version "6.0" to join data [63ms]
+#> ✔ Using metadata "abcd" version "6.0" to join data [65ms]
 #> 
 #> ℹ Joining 8 variables from 3 tables...
-#> ✔ Joining 8 variables from 3 tables... [356ms]
+#> ✔ Joining 8 variables from 3 tables... [321ms]
 #> 
 #> # A tibble: 10 × 10
 #>    participant_id session_id mr_y_qc__raw__dmri__r01__ser…¹ ab_g_dyn__visit_type

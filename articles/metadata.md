@@ -22,7 +22,9 @@ metadata elements for ABCD and HBCD studies:
 
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
-#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
+#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI).
+#> If `NBDCtools` is helpful to your research, please cite:
+#> Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A. M., & Linkersdörfer, J. (2026). NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in R and Python. bioRxiv. https://doi.org/10.64898/2026.11.02.763757
 ```
 
 ## Release information
@@ -40,7 +42,7 @@ get_releases("abcd")
 get_releases_abcd()
 #> [1] "6.0" "6.1" "7.0"
 get_releases_hbcd()
-#> [1] "1.0" "1.1" "2.0"
+#> [1] "1.0" "1.1" "2.0" "2.1"
 ```
 
 We can also check what is the latest release for each study:
@@ -53,7 +55,7 @@ get_latest_release("abcd")
 get_latest_release_abcd()
 #> [1] "7.0"
 get_latest_release_hbcd()
-#> [1] "2.0"
+#> [1] "2.1"
 ```
 
 ## Data dictionary
@@ -93,7 +95,7 @@ get_dd("abcd")
 
 # Get data dictionary for the HBCD Study (latest release)
 get_dd("hbcd")
-#> # A tibble: 96,227 × 33
+#> # A tibble: 97,242 × 33
 #>    study domain      sub_domain source metric atlas table_name table_label name 
 #>    <chr> <chr>       <chr>      <chr>  <chr>  <chr> <chr>      <chr>       <chr>
 #>  1 Core  BioSpecime… NA         Biolo… NA     NA    bio_bm_bi… USDTL Nail… bio_…
@@ -106,13 +108,13 @@ get_dd("hbcd")
 #>  8 Core  BioSpecime… NA         Biolo… NA     NA    bio_bm_bi… USDTL Nail… bio_…
 #>  9 Core  BioSpecime… NA         Biolo… NA     NA    bio_bm_bi… USDTL Nail… bio_…
 #> 10 Core  BioSpecime… NA         Biolo… NA     NA    bio_bm_bi… USDTL Nail… bio_…
-#> # ℹ 96,217 more rows
+#> # ℹ 97,232 more rows
 #> # ℹ 24 more variables: label <chr>, instruction <chr>, header <chr>,
 #> #   note <chr>, unit <chr>, type_var <chr>, type_data <chr>, type_level <chr>,
 #> #   type_field <chr>, order_display <chr>, branching_logic <chr>,
 #> #   label_es <chr>, instruction_es <chr>, header_es <chr>, note_es <chr>,
 #> #   name_short <chr>, name_stata <chr>, url_table <chr>, url_warn_use <lgl>,
-#> #   url_warn_data <chr>, url_table_warn_use <chr>, url_table_warn_data <chr>, …
+#> #   url_warn_data <lgl>, url_table_warn_use <chr>, url_table_warn_data <chr>, …
 
 # Get data dictionary for a specific release
 get_dd("abcd", release = "6.0")
@@ -295,20 +297,20 @@ get_levels("abcd")
 
 # Get levels table for HBCD Study (latest release)
 get_levels("hbcd")
-#> # A tibble: 90,666 × 5
+#> # A tibble: 92,458 × 5
 #>    name                                         value order_level label label_es
 #>    <chr>                                        <chr>       <int> <chr> <lgl>   
-#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 "\"F… NA      
-#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 "\"T… NA      
-#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 "\"B… NA      
-#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 "\"U… NA      
-#>  5 bio_bm_biosample_nails_results_test_ordered… 1               1 "\"C… NA      
-#>  6 bio_bm_biosample_nails_results_test_ordered… 2               2 "\"O… NA      
-#>  7 bio_bm_biosample_nails_results_test_ordered… 3               3 "\"C… NA      
-#>  8 bio_bm_biosample_nails_results_c_any_specim… 1               1 "\"P… NA      
-#>  9 bio_bm_biosample_nails_results_c_any_specim… 0               2 "\"N… NA      
-#> 10 bio_bm_biosample_nails_results_c_any_specim… 3               3 "\"Q… NA      
-#> # ℹ 90,656 more rows
+#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 Fing… NA      
+#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 Toen… NA      
+#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 Both  NA      
+#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 Unkn… NA      
+#>  5 bio_bm_biosample_nails_results_c_acfent_n_c… 1               1 Posi… NA      
+#>  6 bio_bm_biosample_nails_results_c_acfent_n_c… 0               2 Nega… NA      
+#>  7 bio_bm_biosample_nails_results_c_acfent_n_c… 3               3 QNS   NA      
+#>  8 bio_bm_biosample_nails_results_c_acfent_n_c… 4               4 Scre… NA      
+#>  9 bio_bm_biosample_nails_results_c_acnfent_n_… 1               1 Posi… NA      
+#> 10 bio_bm_biosample_nails_results_c_acnfent_n_… 0               2 Nega… NA      
+#> # ℹ 92,448 more rows
 
 # Get levels table for a specific release
 get_levels("abcd", release = "6.0")
@@ -351,20 +353,20 @@ get_levels_abcd(release = "6.0")
 
 # HBCD-specific function
 get_levels_hbcd()
-#> # A tibble: 90,666 × 5
+#> # A tibble: 92,458 × 5
 #>    name                                         value order_level label label_es
 #>    <chr>                                        <chr>       <int> <chr> <lgl>   
-#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 "\"F… NA      
-#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 "\"T… NA      
-#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 "\"B… NA      
-#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 "\"U… NA      
-#>  5 bio_bm_biosample_nails_results_test_ordered… 1               1 "\"C… NA      
-#>  6 bio_bm_biosample_nails_results_test_ordered… 2               2 "\"O… NA      
-#>  7 bio_bm_biosample_nails_results_test_ordered… 3               3 "\"C… NA      
-#>  8 bio_bm_biosample_nails_results_c_any_specim… 1               1 "\"P… NA      
-#>  9 bio_bm_biosample_nails_results_c_any_specim… 0               2 "\"N… NA      
-#> 10 bio_bm_biosample_nails_results_c_any_specim… 3               3 "\"Q… NA      
-#> # ℹ 90,656 more rows
+#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 Fing… NA      
+#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 Toen… NA      
+#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 Both  NA      
+#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 Unkn… NA      
+#>  5 bio_bm_biosample_nails_results_c_acfent_n_c… 1               1 Posi… NA      
+#>  6 bio_bm_biosample_nails_results_c_acfent_n_c… 0               2 Nega… NA      
+#>  7 bio_bm_biosample_nails_results_c_acfent_n_c… 3               3 QNS   NA      
+#>  8 bio_bm_biosample_nails_results_c_acfent_n_c… 4               4 Scre… NA      
+#>  9 bio_bm_biosample_nails_results_c_acnfent_n_… 1               1 Posi… NA      
+#> 10 bio_bm_biosample_nails_results_c_acnfent_n_… 0               2 Nega… NA      
+#> # ℹ 92,448 more rows
 ```
 
 ### Filtering by variables and/or tables
@@ -446,14 +448,20 @@ get_sessions("abcd")
 
 # Get sessions information for HBCD Study (latest release)
 get_sessions("hbcd")
-#> # A tibble: 5 × 2
-#>   session_id label  
-#>   <chr>      <chr>  
-#> 1 ses-V01    Visit 1
-#> 2 ses-V02    Visit 2
-#> 3 ses-V03    Visit 3
-#> 4 ses-V04    Visit 4
-#> 5 ses-V05    Visit 5
+#> # A tibble: 22 × 4
+#>    session_id    label           order     n
+#>    <chr>         <chr>           <dbl> <dbl>
+#>  1 ses-V01       Visit 1             1  3545
+#>  2 ses-V02       Visit 2             2  2310
+#>  3 ses-V02_run-1 Visit 2 (Run 1)     3  1772
+#>  4 ses-V02_run-2 Visit 2 (Run 2)     4  1650
+#>  5 ses-V02_run-3 Visit 2 (Run 3)     5   156
+#>  6 ses-V02_run-4 Visit 2 (Run 4)     6    29
+#>  7 ses-V02_run-5 Visit 2 (Run 5)     7     4
+#>  8 ses-V02_run-6 Visit 2 (Run 6)     8     1
+#>  9 ses-V02_run-9 Visit 2 (Run 9)     9     1
+#> 10 ses-V03       Visit 3            10  1398
+#> # ℹ 12 more rows
 ```
 
 ### Study-specific functions

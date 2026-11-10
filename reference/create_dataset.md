@@ -45,6 +45,7 @@ create_dataset(
   value_to_na = FALSE,
   time_to_hms = FALSE,
   bind_shadow = FALSE,
+  finer_add = c("error", "first", "all"),
   ...
 )
 
@@ -165,6 +166,15 @@ create_dataset_hbcd(...)
 
   logical. Whether to bind the shadow matrix to the dataset (Default:
   `FALSE`). See more in details.
+
+- finer_add:
+
+  character. How to treat an additional table that is more finely
+  grained than everything selected in `vars`/`tables` (one of `"error"`,
+  `"first"` or `"all"`; default: `"error"`). Passed to
+  [`join_tabulated()`](https://software.nbdc-datahub.org/NBDCtools/reference/join_tabulated.md),
+  where the options are described. The same value is used for the data
+  and for the shadow matrix, so that the two keep the same rows.
 
 - ...:
 

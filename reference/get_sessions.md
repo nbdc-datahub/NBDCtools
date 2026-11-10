@@ -64,14 +64,20 @@ get_sessions("abcd")
 #> # ℹ 23 more rows
 
 get_sessions("hbcd")
-#> # A tibble: 5 × 2
-#>   session_id label  
-#>   <chr>      <chr>  
-#> 1 ses-V01    Visit 1
-#> 2 ses-V02    Visit 2
-#> 3 ses-V03    Visit 3
-#> 4 ses-V04    Visit 4
-#> 5 ses-V05    Visit 5
+#> # A tibble: 22 × 4
+#>    session_id    label           order     n
+#>    <chr>         <chr>           <dbl> <dbl>
+#>  1 ses-V01       Visit 1             1  3545
+#>  2 ses-V02       Visit 2             2  2310
+#>  3 ses-V02_run-1 Visit 2 (Run 1)     3  1772
+#>  4 ses-V02_run-2 Visit 2 (Run 2)     4  1650
+#>  5 ses-V02_run-3 Visit 2 (Run 3)     5   156
+#>  6 ses-V02_run-4 Visit 2 (Run 4)     6    29
+#>  7 ses-V02_run-5 Visit 2 (Run 5)     7     4
+#>  8 ses-V02_run-6 Visit 2 (Run 6)     8     1
+#>  9 ses-V02_run-9 Visit 2 (Run 9)     9     1
+#> 10 ses-V03       Visit 3            10  1398
+#> # ℹ 12 more rows
 
 get_sessions_abcd(release = "6.0")
 #> # A tibble: 26 × 2

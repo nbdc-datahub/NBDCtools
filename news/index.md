@@ -1,5 +1,77 @@
 # Changelog
 
+## NBDCtools 1.1.2
+
+### New Features
+
+- [`join_tabulated()`](https://software.nbdc-datahub.org/NBDCtools/reference/join_tabulated.md)
+  and
+  [`create_dataset()`](https://software.nbdc-datahub.org/NBDCtools/reference/create_dataset.md)
+  gained a `finer_add` argument, controlling what happens when an
+  additional table is more finely grained than everything selected in
+  `vars`/`tables` (for example a session-level `vars_add` on top of a
+  participant-level selection). Such a table cannot be attached without
+  adding rows, which conflicts with `vars_add`/`tables_add` never
+  creating rows.
+
+  - `"error"` (default): abort, naming the tables and both ways out.
+  - `"first"`: keep one value per row and drop the rest, with a warning
+    reporting how many. The value kept is the first by the additional
+    table’s own identifier columns, i.e. the earliest *available*
+    session or run rather than a fixed baseline. The whole row is taken,
+    so all variables from that table come from the same session/run and
+    a missing value is not skipped in favor of a later one. The finer
+    identifier columns are not added to the result.
+  - `"all"`: keep every value and add rows. This is the behavior of
+    earlier versions.
+
+  Selecting those variables via `vars`/`tables` instead keeps every
+  value without making a row ambiguous.
+
+  **This is a breaking change.** Selections that previously expanded
+  rows now raise an error by default; pass `finer_add = "all"` to
+  restore the old result, or `"first"` for one row per main-row
+  identifier combination.
+
+### Bug fixes
+
+- Fixed
+  [`join_tabulated()`](https://software.nbdc-datahub.org/NBDCtools/reference/join_tabulated.md)
+  returning missing or wrong values when the selected variables come
+  from tables with different identifier columns. Two cases were
+  affected, both silent:
+  - Participant-level variables requested via `vars_add`/`tables_add`
+    (such as demographic information) were missing on most rows as soon
+    as a session-level additional variable was requested as well, and
+    adding an unrelated additional variable could change the values of
+    another one. The additional tables are no longer joined to each
+    other before being added to the data; each is now attached on its
+    own identifier columns.
+  - A selection spanning participant-, session- and run-level tables
+    gave different results depending on the order in which the variables
+    or tables were listed, in some orders splitting a participant across
+    two rows and dropping participant-level values. Tables are now
+    always joined from the finest identifier set outwards, so the result
+    no longer depends on the order of the arguments.
+- [`join_tabulated()`](https://software.nbdc-datahub.org/NBDCtools/reference/join_tabulated.md)
+  now fails with an informative error, instead of silently duplicating
+  rows, when an additional table has more than one row per identifier
+  combination.
+
+### Other Changes
+
+- Added the package citation: Zhang, L., Das, B., Celhay, O., Smith, C.
+  J., Ziemer, L. R., Dale, A. M., & Linkersdörfer, J. (2026). *NBDC Data
+  Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in
+  R and Python*. bioRxiv. <https://doi.org/10.64898/2026.11.02.763757>.
+  It is available via `citation("NBDCtools")` (new `inst/CITATION`), the
+  package startup message, the package-level documentation, and the
+  README.
+- Added a note to the README.md about the Python version of the package,
+  [`nbdctools`](https://github.com/nbdc-datahub/nbdctools-py), which
+  provides both a wrapper around the R package and a pure Python
+  implementation.
+
 ## NBDCtools 1.1.1
 
 ### Bug fixes

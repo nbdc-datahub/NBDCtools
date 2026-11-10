@@ -20,7 +20,9 @@ To load `NBDCtools`, use the following command:
 
 library(NBDCtools)
 #> Welcome to the `NBDCtools` package! For more information, visit: https://software.nbdc-datahub.org/NBDCtools/
-#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI)
+#> This package is developed by the ABCD Data Analysis, Informatics & Resource Center (DAIRC) at the J. Craig Venter Institute (JCVI).
+#> If `NBDCtools` is helpful to your research, please cite:
+#> Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A. M., & Linkersdörfer, J. (2026). NBDC Data Tools: Building Analysis-ready Datasets From ABCD and HBCD Releases in R and Python. bioRxiv. https://doi.org/10.64898/2026.11.02.763757
 suppressPackageStartupMessages({
   library(dplyr)
 })
@@ -171,14 +173,14 @@ mydata <- create_dataset(
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "custom" to join data
 #> ℹ Custom release specified. Skipping data and metadata version check.
-#> ✔ Using metadata "abcd" version "custom" to join data [75ms]
+#> ✔ Using metadata "abcd" version "custom" to join data [71ms]
 #> 
 #> 
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Joining 1 variable from 1 table...
 #> 
-#> ✔ Joining 1 variable from 1 table... [367ms]
+#> ✔ Joining 1 variable from 1 table... [327ms]
 #> 
 #> 
 #> 
@@ -189,13 +191,13 @@ mydata <- create_dataset(
 #> 
 #> ℹ Converting categorical variables to factors.
 #> 
-#> ✔ Converting categorical variables to factors. [77ms]
+#> ✔ Converting categorical variables to factors. [75ms]
 #> 
 #> 
 #> 
 #> ℹ Adding variable and value labels.
 #> 
-#> ✔ Adding variable and value labels. [93ms]
+#> ✔ Adding variable and value labels. [91ms]
 #> 
 #> 
 #> 
@@ -273,18 +275,18 @@ mydata_fixed <- create_dataset(
 )
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> ℹ Using metadata "abcd" version "custom" to join data
-#> ℹ Custom release specified. Skipping data and metadata version check.✔ Using metadata "abcd" version "custom" to join data [28ms]
+#> ℹ Custom release specified. Skipping data and metadata version check.✔ Using metadata "abcd" version "custom" to join data [26ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…ℹ Joining 1 variable from 1 table...
-#> ✔ Joining 1 variable from 1 table... [107ms]
+#> ✔ Joining 1 variable from 1 table... [105ms]
 #> 
 #> ℹ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…✔ Loading the data from the "/home/runner/.cache/R/renv/library/NBDCtools-2ca88…
 #> 
 #> ℹ Converting categorical variables to factors.
-#> ✔ Converting categorical variables to factors. [77ms]
+#> ✔ Converting categorical variables to factors. [75ms]
 #> 
 #> ℹ Adding variable and value labels.
-#> ✔ Adding variable and value labels. [84ms]
+#> ✔ Adding variable and value labels. [88ms]
 #> 
 #> ✔ A dataset with 7 rows and 3 columns has been created. Time used: 0.01
 #>   minutes.

@@ -127,18 +127,18 @@ get_levels_abcd(release = "6.0")
 #> # ℹ 63,492 more rows
 
 get_levels_hbcd()
-#> # A tibble: 90,666 × 5
+#> # A tibble: 92,458 × 5
 #>    name                                         value order_level label label_es
 #>    <chr>                                        <chr>       <int> <chr> <lgl>   
-#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 "\"F… NA      
-#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 "\"T… NA      
-#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 "\"B… NA      
-#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 "\"U… NA      
-#>  5 bio_bm_biosample_nails_results_test_ordered… 1               1 "\"C… NA      
-#>  6 bio_bm_biosample_nails_results_test_ordered… 2               2 "\"O… NA      
-#>  7 bio_bm_biosample_nails_results_test_ordered… 3               3 "\"C… NA      
-#>  8 bio_bm_biosample_nails_results_c_any_specim… 1               1 "\"P… NA      
-#>  9 bio_bm_biosample_nails_results_c_any_specim… 0               2 "\"N… NA      
-#> 10 bio_bm_biosample_nails_results_c_any_specim… 3               3 "\"Q… NA      
-#> # ℹ 90,656 more rows
+#>  1 bio_bm_biosample_nails_results_Nail_type     1               1 Fing… NA      
+#>  2 bio_bm_biosample_nails_results_Nail_type     2               2 Toen… NA      
+#>  3 bio_bm_biosample_nails_results_Nail_type     3               3 Both  NA      
+#>  4 bio_bm_biosample_nails_results_Nail_type     4               4 Unkn… NA      
+#>  5 bio_bm_biosample_nails_results_c_acfent_n_c… 1               1 Posi… NA      
+#>  6 bio_bm_biosample_nails_results_c_acfent_n_c… 0               2 Nega… NA      
+#>  7 bio_bm_biosample_nails_results_c_acfent_n_c… 3               3 QNS   NA      
+#>  8 bio_bm_biosample_nails_results_c_acfent_n_c… 4               4 Scre… NA      
+#>  9 bio_bm_biosample_nails_results_c_acnfent_n_… 1               1 Posi… NA      
+#> 10 bio_bm_biosample_nails_results_c_acnfent_n_… 0               2 Nega… NA      
+#> # ℹ 92,448 more rows
 ```

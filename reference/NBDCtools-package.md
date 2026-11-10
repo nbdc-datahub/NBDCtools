@@ -6,6 +6,13 @@ create, clean, process, and filter datasets and associated metadata.
 These utilities are intended to simplify reproducible data-preparation
 for future research.
 
+## References
+
+Zhang, L., Das, B., Celhay, O., Smith, C. J., Ziemer, L. R., Dale, A.
+M., & Linkersdörfer, J. (2026). NBDC Data Tools: Building Analysis-ready
+Datasets From ABCD and HBCD Releases in R and Python. *bioRxiv*.
+[doi:10.64898/2026.11.02.763757](https://doi.org/10.64898/2026.11.02.763757)
+
 ## See also
 
 Useful links:
